@@ -103,66 +103,7 @@ var results = "The test results are here: \(str3)"
 var city = "Cardiff"
 var message = "Welcome to \(city)!"
 
-//https://www.hackingwithswift.com/articles/178/super-powered-string-interpolation-in-swift-5-0
 
-//let age = 38
-var user: String?
-print("You are \(age)")
-print("Hi, \(user ?? "Anonymous")")
-
-/*
- Well, after five years of hard service, Swift Evolution has finally come for string interpolation: in Swift 5.0 it gains new super powers that give us substantially more control over how it works.
-
- To try it out, let’s dive into some code.
-
- If we make a new age integer like this:
-
- let age = 38
- */
-
-print("Hi, I'm \(age).")
-
-//Using the new string interpolation system in Swift 5.0 we can extend String.StringInterpolation to add our own custom interpolations, like this:
-
-extension String.StringInterpolation {
-    mutating func appendInterpolation(_ value: Int) {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .spellOut
-
-        if let result = formatter.string(from: value as NSNumber) {
-            appendLiteral(result)
-        }
-    }
-    
-    mutating func appendInterpolation(_ value: Date) {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .full
-
-        let dateString = formatter.string(from: value)
-        appendLiteral(dateString)
-    }
-}
-
-/*
- We could use the same technique to adjust date formatting, because by default dates in strings don’t look great. Try writing this:
- */
-
-print("Today's date is \(Date()).")
-
-/*
- Note: to avoid confusing your colleagues, you probably shouldn’t override Swift’s defaults. So, name your parameters as needed to avoid confusion:
-
- mutating func appendInterpolation(format value: Int) {
- 
- Now we call that using a format parameter name, like this:
-
- print("Hi, I'm \(format: age).")
- 
- With that change it’s clear we’re triggering custom behavior now.
- */
-
-
-// TO DO: Continue article.
 
 // 6. Constants
 
@@ -245,3 +186,108 @@ var name: String
  5. Swift uses type inference to assign each variable or constant a type, but you can provide explicit types if you
  */
 
+
+//https://www.hackingwithswift.com/articles/178/super-powered-string-interpolation-in-swift-5-0
+
+//let age = 38
+var user: String?
+print("You are \(age)")
+
+/*
+ We take it for granted these days, but it was a huge quality of life improvement over the syntax we had previously:
+
+ [NSString stringWithFormat:@"%ld", (long)unreadCount];
+ */
+
+/*
+ String interpolation hasn’t changed much since Swift 1.0, with the only real change coming in Swift 2.1 where we gained the ability to use string literals in interpolations, like this:
+ */
+
+print("Hi, \(user ?? "Anonymous")")
+
+/*
+ Well, after five years of hard service, Swift Evolution has finally come for string interpolation: in Swift 5.0 it gains new super powers that give us substantially more control over how it works.
+
+ To try it out, let’s dive into some code.
+
+ If we make a new age integer like this:
+
+ let age = 38
+ */
+
+print("Hi, I'm \(age).")
+
+//Using the new string interpolation system in Swift 5.0 we can extend String.StringInterpolation to add our own custom interpolations, like this:
+
+extension String.StringInterpolation {
+    mutating func appendInterpolation(_ value: Int) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .spellOut
+
+        if let result = formatter.string(from: value as NSNumber) {
+            appendLiteral(result)
+        }
+    }
+    
+    mutating func appendInterpolation(format value: Int, using style: NumberFormatter.Style) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = style
+
+        if let result = formatter.string(from: value as NSNumber) {
+            appendLiteral(result)
+        }
+    }
+    
+    mutating func appendInterpolation(_ value: Date) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+
+        let dateString = formatter.string(from: value)
+        appendLiteral(dateString)
+    }
+    
+    mutating func appendInterpolation(twitter: String) {
+        appendLiteral("<a href=\"https://twitter.com/\(twitter)\">@\(twitter)</a>")
+    }
+    
+    mutating func appendInterpolation(_ values: [String], empty defaultValue: @autoclosure () -> String) {
+        if values.count == 0 {
+            appendLiteral(defaultValue())
+        } else {
+            appendLiteral(values.joined(separator: ", "))
+        }
+    }
+}
+
+/*
+ We could use the same technique to adjust date formatting, because by default dates in strings don’t look great. Try writing this:
+ */
+
+print("Today's date is \(Date()).")
+
+/*
+ Note: to avoid confusing your colleagues, you probably shouldn’t override Swift’s defaults. So, name your parameters as needed to avoid confusion:
+
+ mutating func appendInterpolation(format value: Int) {
+ 
+ Now we call that using a format parameter name, like this:
+
+ print("Hi, I'm \(format: age).")
+ 
+ With that change it’s clear we’re triggering custom behavior now.
+ */
+
+
+// Interpolation with parameters
+
+print("You should follow me on Twitter: \(twitter: "twostraws").")
+
+print("Hi, I'm \(format: age, using: .spellOut).")
+
+let names = ["Malcolm", "Jayne", "Kaylee"]
+let names1 = [String]()
+
+print("Crew: \(names, empty: "No one").")
+print("Crew: \(names1, empty: "No one").")
+
+// TO DO: Continue article.
