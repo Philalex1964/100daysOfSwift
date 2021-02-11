@@ -1,0 +1,601 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 HelveticaNeue-Italic;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red222\green43\blue91;
+\red252\green55\blue54;\red251\green2\blue7;\red235\green0\blue121;\red24\green24\blue28;\red246\green246\blue239;
+\red215\green165\blue255;\red72\green212\blue251;\red157\green101\blue255;\red93\green108\blue125;\red248\green60\blue79;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c90588\c27059\c43137;
+\cssrgb\c100000\c31373\c27059;\cssrgb\c100000\c14913\c0;\cssrgb\c94902\c14118\c54902;\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;
+\cssrgb\c87843\c72157\c100000;\cssrgb\c32941\c86275\c98824;\cssrgb\c68235\c50588\c100000;\cssrgb\c43922\c50196\c56471;\cssrgb\c98824\c33725\c38039;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid301\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid401\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid501\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid6}
+{\list\listtemplateid7\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid601\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid7}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}{\listoverride\listid7\listoverridecount0\ls7}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 \expnd0\expndtw0\kerning0
+Day 17. Project 1, part two\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 Yesterday you completed the basics our app, but of course it\'92s missing one important component: it isn\'92t drawing any pictures! For an app called Storm Viewer this part seems rather important \'96\'a0as Walt Disney said, \'93of all our inventions for mass communication, pictures still speak the most universally understood language.\'94\
+So, today you\'92ll be completing project one by adding a detail screen that can load pictures, making that screen animate in when the user selects an image name, then adding some tweaks to polish up the user interface.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you have three topics to work through, and you\'92ll meet 
+\f2 UIImageView
+\f0 , 
+\f2 UIImage
+\f0 , 
+\f2 UINavigationBar
+\f0 , and more.
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/1/4/building-a-detail-screen"}}{\fldrslt \expnd0\expndtw0\kerning0
+Building a detail screen}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/1/5/loading-images-with-uiimage"}}{\fldrslt \expnd0\expndtw0\kerning0
+Loading images with UIImage}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/1/6/final-tweaks-hidesbarsontap-safe-area-margins"}}{\fldrslt \expnd0\expndtw0\kerning0
+Final tweaks: hidesBarsOnTap, safe area margins}}\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Tip:
+\f1\b0  Different Xcode versions create image views slightly differently. If you want to use Aspect Fill for your image, make sure Clip To Bounds is checked to avoid the image overspilling \'96\'a0this is enabled by default in Xcode 10.2 or later.\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Building a detail screen
+\f1\b0\fs35\fsmilli17600 \
+\
+At this point in our app, we have a list of pictures to choose from, but although we can tap on them nothing happens. Our next goal is to design a new screen that will be shown when the user taps any row. We\'92re going to make it show their selected picture full screen, and it will slide in automatically when a picture is tapped.\
+This task can be split into two smaller tasks. First, we need to create some new code that will host this detail screen. Second, we need to draw the user interface for this screen inside Interface Builder.\
+Let\'92s start with the easy bit: create new code to host the detail screen. From the menu bar, go to the File menu and choose New > File, and a window full of options will appear. From that list, choose iOS > Cocoa Touch Class, then click Next.\
+You\'92ll be asked to name the new screen, and also tell iOS what it should build on. Please enter \'93DetailViewController\'94 for the name, and \'93UIViewController\'94 for \'93Subclass Of\'94. Make sure \'93Also create XIB file\'94 is deselected, then click Next and Create to add the new file.\
+That\'92s the first job done \'96 we have a new file that will contain code for the detail screen.\
+The second task takes a little more thinking. Go back to Main.storyboard, and you\'92ll see our existing two view controllers there: that\'92s the navigation view controller on the left, and the table view controller on the right. We\'92re going to add a new view controller \'96 a new screen \'96\'a0now, which will be our detail screen.\
+First, open the object library and find \'93View Controller\'94 in there. Drag it out into the space to the right of your existing view controller. You could place it anywhere, really, but it\'92s nice to arrange your screens so they flow logically from left to right.\
+Now, if you look in the document outline you\'92ll see a second \'93View Controller scene\'94 has appeared: one for the table view, and one for the detail view. If you\'92re not sure which is which, just click in the new screen \'96\'a0in the big white empty space that just got created \'96 and it should select the correct scene in the document outline.\
+When we created our table view cell previously, we gave it an identifier so that we could load it in code. We need to do the same thing for this new screen. When you selected it a moment ago, it should have highlighted \'93View\'94 in the document outline. Above that will be \'93View Controller\'94 with a yellow icon next to it \'96\'a0please click on that to select the whole view controller now.\
+To give this view controller a name, go to the identity inspector by pressing Cmd+Alt+3 or by using the menu. Now enter \'93Detail\'94 where it says \'93Storyboard ID\'94. That\'92s it: we can now refer to this view controller as \'93Detail\'94 in code. While you\'92re there, please click the arrow next to the Class box and select \'93DetailViewController\'94 so that our user interface is connected to the new code we made earlier.\
+\
+Now for the interesting part: we want this screen to display the user\'92s selected image nice and big, so we need to use a new user interface component called 
+\f2\b UIImageView
+\f1\b0 . As you should be able to tell from the name, this is a part of UIKit (hence the \'93UI\'94), and is responsible for viewing images \'96 perfect!\
+Look in the object library to find Image View; you might find it easiest to use the filter box again. Click and drag the image view from the object library onto the detail view controller, then let go. Now, drag its edges so that it fills the entire view controller.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \
+\cf2 This image view has no content right now, so it's filled with a pale blue background and the word 
+\f2\b UIImageView
+\f1\b0 . We won't be assigning any content to it right now, though \'96 that's something we'll do when the program runs. Instead, we need to tell the image view how to size itself for our screen, whether that's iPhone or iPad.\
+This might seem strange at first, after all you just placed it to fill the view controller, and it has the same size as the view controller, so that should be it, right? Well, not quite. Think about it: there are lots of iOS devices your app might run on, all with different sizes. So, how should the image view respond when it\'92s being shown on a 6 Plus or perhaps even an iPad?\
+iOS has an answer for this. And it's a brilliant answer that in many ways works like magic to do what you want. It's called \cf6 Auto Layout\cf2 : it lets you define rules for how your views should be laid out, and it automatically makes sure those rules are followed.\
+\cf3 \
+\cf2 But \'96 and this is a big but! \'96 it has two rules of its own, both of which must be followed by you:\
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf3 \kerning1\expnd0\expndtw0 {\listtext	\cf2 \uc0\u8226 	}\expnd0\expndtw0\kerning0
+Your layout rules must be complete. That is, you can't specify only an X position for something, you must also specify a Y position. If it's been a while since you were at school, "X" is position from the left of the screen, and "Y" is position from the top of the screen.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Your layout rules must not conflict. That is, you can't specify that a view must be 10 points away from the left edge, 10 points away from the right edge, and 1000 points wide. An iPhone 5 screen is only 320 points wide, so your layout is mathematically impossible. Auto Layout will try to recover from these problems by breaking rules until it finds a solution, but the end result is never what you want.\
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+You can create Auto Layout rules \'96 known as 
+\f3\i constraints
+\f1\i0  \'96 entirely inside Interface Builder, and it will warn you if you aren't following the two rules. It will even help you correct any mistakes you make by suggesting fixes. Note: the fixes it suggests 
+\f3\i might
+\f1\i0  be correct, but they might not be \'96 tread carefully!\
+We're going to create four constraints now: one each for the top, bottom, left and right of the image view so that it expands to fill the detail view controller regardless of its size. There are lots of ways of adding Auto Layout constraints, but the easiest way right now is to select the image view then go to the Editor menu and choose > Resolve Auto Layout Issues > Reset To Suggested Constraints.\
+You\'92ll see that option listed twice in the menu because there are two subtly different options, but in this instance it doesn\'92t matter which one you choose. If you prefer keyboard shortcuts, press Shift+Alt+Cmd+= to accomplish the same thing.\
+Visually, your layout will look pretty much identical once you've added the constraints, but there are two subtle differences. First, there's a thin blue line surrounding the 
+\f2\b UIImageView
+\f1\b0  on the detail view controller, which is Interface Builder's way of showing you that the image view has a correct Auto Layout definition.\
+Second, in the document outline pane you'll see a new entry for "Constraints" beneath the image view. All four constraints that were added are hidden under that Constraints item, and you can expand it to view them individually if you\'92re curious.\
+\
+With the constraints added, there's one more thing to do here before we're finished with Interface Builder, and that's to connect our new image view to some code. You see, having the image view inside the layout isn't enough \'96 if we actually want to 
+\f3\i use
+\f1\i0  the image view inside code, we need to create a property for it that's attached to the layout.\
+This property is like the 
+\f2\b pictures
+\f1\b0  array we made previously, but it has a little bit more \'93interesting\'94 Swift syntax we need to cover. Even more cunningly, it\'92s created using a really bizarre piece of user interface design that will send your brain for a loop if you\'92ve used other graphical IDEs.\
+Let\'92s dive in, and I\'92ll explain on the way. Xcode has a special display layout called the Assistant Editor, which splits your Xcode editor in two: the view you had before on top, and a related view at the bottom. In this case, it's going to show us Interface Builder on top, and the code for the detail view controller below.\
+Xcode decides what code to show based on what item is selected in Interface Builder, so make sure the image view is still selected and choose View > Assistant Editor > Show Assistant Editor from the menu. You can also use the keyboard shortcut Alt+Cmd+Return if you prefer.\
+Xcode can display the assistant editor as two vertical panes rather than two horizontal panes. I find the horizontal panes easiest \'96 i.e., one above the other. You can switch between them by going to View > Assistant Editor and choosing either Assistant Editors On Right or Assistant Editors on Bottom.\
+\
+So, we Ctrl-dragged from Interface Builder straight into our Swift file, and Xcode wrote a line of code for us as a result. Some bits of that code are new, so let's break down the whole line:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0
+\f2\b \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+@IBOutlet
+\f1\b0 : This attribute is used to tell Xcode that there's a connection between this line of code and Interface Builder.\
+\ls3\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+var
+\f1\b0 : This declares a new variable or variable property.\
+\ls3\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+imageView
+\f1\b0 : This was the property name assigned to the 
+\f2\b UIImageView
+\f1\b0 . Note the way capital letters are used: variables and constants should start with a lowercase letter, then use a capital letter at the start of any subsequent words. For example, 
+\f2\b myAwesomeVariable
+\f1\b0 . This is sometimes called camel case.\
+\ls3\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+UIImageView!
+\f1\b0 : This declares the property to be of type 
+\f2\b UIImageView
+\f1\b0 , and again we see the implicitly unwrapped optional symbol: 
+\f2\b !
+\f1\b0 . This means that that 
+\f2\b UIImageView
+\f1\b0  may be there or it may not be there, but we're certain it definitely will be there by the time we want to use it.\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Loading images with UIImage\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 At this point we have our original table view controller full of pictures to select, plus a detail view controller in our storyboard. The next goal is to show the detail screen when any table row is tapped, and have it show the selected image.\
+To make this work we need to add another specially named method to 
+\f2\b ViewController
+\f1\b0 . This one is called 
+\f2\b tableView(_, didSelectRowAt:)
+\f1\b0 , which takes an 
+\f2\b IndexPath
+\f1\b0  value just like 
+\f2\b cellForRowAt
+\f1\b0  that tells us what row we\'92re working with. This time we need to do a bit more work:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+We need to create a property in 
+\f2\b DetailViewController
+\f1\b0  that will hold the name of the image to load.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+We\'92ll implement the 
+\f2\b didSelectRowAt
+\f1\b0  method so that it loads a 
+\f2\b DetailViewController
+\f1\b0  from the storyboard.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Finally, we\'92ll fill in 
+\f2\b viewDidLoad()
+\f1\b0  inside 
+\f2\b DetailViewController
+\f1\b0  so that it loads an image into its image view based on the name we set earlier.\
+\pard\pardeftab720\partightenfactor0
+\cf2 Let\'92s solve each of those in order, starting with the first one: creating a property in 
+\f2\b DetailViewController
+\f1\b0  that will hold the name of the image to load.\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 This property will be a string \'96 the name of the image to load \'96 but it needs to be an 
+\f3\i optional
+\f1\i0  string because when the view controller is first created it won\'92t exist. We\'92ll be setting it straight away, but it still starts off life empty.\
+So, add this property to 
+\f2\b DetailViewController
+\f1\b0  now, just below the existing 
+\f2\b @IBOutlet
+\f1\b0  line:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  selectedImage: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?\
+\pard\tx560\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 That\'92s the first task done, so onto the second: implement 
+\f2\b didSelectRowAt
+\f1\b0  so that it loads a 
+\f2\b DetailViewController
+\f1\b0  from the storyboard.\
+When we created the detail view controller, you gave it the storyboard ID \'93Detail\'94, which allows us to load it from the storyboard using a method called 
+\f2\b instantiateViewController(withIdentifier:)
+\f1\b0 . Every view controller has a property called 
+\f2\b storyboard
+\f1\b0  that is either the storyboard it was loaded from or nil. In the case of 
+\f2\b ViewController
+\f1\b0  it will be Main.storyboard, which is the same storyboard that contains the detail view controller, so we\'92ll be loading from there.\
+We can break this task down into three smaller tasks, two of which are new:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Load the detail view controller layout from our storyboard.\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Set its 
+\f2\b selectedImage
+\f1\b0  property to be the correct item from the 
+\f2\b pictures
+\f1\b0  array.\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Show the new view controller.\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 The first of those is done by calling 
+\f2\b instantiateViewController
+\f1\b0 , but it has two small complexities. First, we call it on the 
+\f2\b storyboard
+\f1\b0  property that we get from Apple\'92s 
+\f2\b UIViewController
+\f1\b0  type, but it\'92s optional because Swift doesn\'92t know we came from a storyboard. So, we need to use 
+\f2\b ?
+\f1\b0  just like when we were setting the text label of our cell: \'93try doing this, but do nothing if there was a problem.\'94\
+\
+Second, even though 
+\f2\b instantiateViewController()
+\f1\b0  will send us back a 
+\f2\b DetailViewController
+\f1\b0  if everything worked correctly, Swift 
+\f3\i thinks
+\f1\i0  it will return back a 
+\f2\b UIViewController
+\f1\b0  because it can\'92t see inside the storyboard to know what\'92s what.\
+This will seem confusing if you\'92re new to programming, so let me try to explain using an analogy. Let\'92s say you want to go out on a date tonight, so you ask me to arrange a couple of tickets to an event. I go off, find tickets, then hand them to you in an envelope. I fulfilled my part of the deal: you asked for tickets, I got you tickets. But what tickets are they \'96 tickets for a sporting event? Tickets for an opera? Train tickets? The only way for you to find out is to open the envelope and look.\
+Swift has the same problem: 
+\f2\b instantiateViewController()
+\f1\b0  has the return type 
+\f2\b UIViewController
+\f1\b0 , so as far as Swift is concerned any view controller created with it is actually a 
+\f2\b UIViewController
+\f1\b0 . This causes a problem for us because we want to adjust the property we just made in 
+\f2\b DetailViewController
+\f1\b0 . The solution: we need to tell Swift that what it has is not what it thinks it is.\
+\
+The technical term for this is \'93typecasting\'94: asking Swift to treat a value as a different type. Swift has several ways of doing this, but we\'92re going to use the safest version: it effectively means, \'93please try to treat this as a DetailViewController, but if it fails then do nothing and move on.\'94\
+Once we have a detail view controller on our hands, we can set its 
+\f2\b selectedImage
+\f1\b0  property to be equal to 
+\f2\b pictures[indexPath.row]
+\f1\b0  just like we were doing in 
+\f2\b cellForRowAt
+\f1\b0  \'96\'a0that\'92s the easy bit.\
+\
+The third mini-step is to make the new screen show itself. You already saw that view controllers have an optional 
+\f2\b storyboard
+\f1\b0  property that either contains the storyboard they were loaded from or nil. Well, they also have an optional 
+\f2\b navigationController
+\f1\b0  property that contains the navigation controller they are inside if it exists, or nil otherwise.\
+This is perfect for us, because navigation controllers are responsible for showing screens. Sure, they provide that nice grey bar across the top that you see in lots of apps, but they are also responsible for maintaining a big stack of screens that users navigate through.\
+By default they contain the first view controller you created for them in the storyboard, but when new screens are created you can push them onto the navigation controller\'92s stack to have them slide in smoothly just like you see in Settings. As more screens are pushed on, they just keep sliding in. When users go back a screen \'96 i.e. by tapping Back or by swiping from left to right \'96\'a0the navigation controller will automatically destroy the old view controller and free up its memory.\
+Those three mini-steps complete the new method, so it\'92s time for the code. Please add this method to ViewController.swift \'96\'a0I\'92ve added comments to make it easier to understand:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 tableView\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  tableView: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITableView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , didSelectRowAt indexPath: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 IndexPath\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+    \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // 1: try loading the "Detail" view controller and typecasting it to be DetailViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  vc = storyboard?.\cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 instantiateViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withIdentifier: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Detail"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 as
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DetailViewController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // 2: success! Set its selectedImage property\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        vc.selectedImage = pictures[indexPath.row]\
+\
+        \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // 3: now push it onto the navigation controller\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        navigationController?.\cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 pushViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (vc, animated: \cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\}
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\
+Let\'92s look at the 
+\f2\b if let
+\f1\b0  line a bit more closely for a moment. There are three parts of it that might fail: the 
+\f2\b storyboard
+\f1\b0  property might be nil (in which case the 
+\f2\b ?
+\f1\b0  will stop the rest of the line from executing), the 
+\f2\b instantiateViewController()
+\f1\b0  call might fail if we had requested \'93Fzzzzz\'94 or some other invalid storyboard ID, and the typecast \'96 the 
+\f2\b as?
+\f1\b0  part \'96 also might fail, because we might have received back a view controller of a different type.\
+So, three things in that one line have the potential to fail. If you\'92ve followed all my steps correctly they 
+\f3\i won\'92t
+\f1\i0  fail, but they have the 
+\f3\i potential
+\f1\i0  to fail. That\'92s where 
+\f2\b if let
+\f1\b0  is clever: if any of those things return nil (i.e., they fail), then the code inside the 
+\f2\b if let
+\f1\b0  braces won\'92t execute. This guarantees your program is in a safe state before any action is taken.\
+\
+There\'92s only one small thing left to do before you can take a look at the results: we need to make the image actually load into the image view in 
+\f2\b DetailViewController
+\f1\b0 .\
+This new code will draw on a new data type, called 
+\f2\b UIImage
+\f1\b0 . This doesn't have "View" in its name like 
+\f2\b UIImageView
+\f1\b0  does, so it's not something you can view \'96 it's not something that's actually visible to users. Instead, 
+\f2\b UIImage
+\f1\b0  is the data type you'll use to load image data, such as PNG or JPEGs.\
+When you create a 
+\f2\b UIImage
+\f1\b0 , it takes a parameter called 
+\f2\b named
+\f1\b0  that lets you specify the name of the image to load. 
+\f2\b UIImage
+\f1\b0  then looks for this filename in your app's bundle, and loads it. By passing in the 
+\f2\b selectedImage
+\f1\b0  property here, which was sent from 
+\f2\b ViewController
+\f1\b0 , this will load the image that was selected by the user.\
+However, we can\'92t use 
+\f2\b selectedImage
+\f1\b0  directly. If you remember, we created it like this:\cf3 \
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  selectedImage: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That 
+\f2\b ?
+\f1\b0  means it might have a value or it might not, and Swift doesn\'92t let you use these \'93maybes\'94 without checking them first. This is another opportunity for 
+\f2\b if let
+\f1\b0 : we can check that 
+\f2\b selectedImage
+\f1\b0  has a value, and if so pull it out for usage; otherwise, do nothing.\
+Add this code to 
+\f2\b viewDidLoad()
+\f1\b0  inside 
+\f2\b DetailViewController
+\f1\b0 , 
+\f3\i after
+\f1\i0  the call to 
+\f2\b super.viewDidLoad()
+\f1\b0 :\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  imageToLoad = selectedImage \{\
+    imageView.image  = \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIImage\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (named: imageToLoad)\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 The first line is what checks and unwraps the optional in 
+\f2\b selectedImage
+\f1\b0 . If for some reason 
+\f2\b selectedImage
+\f1\b0  is nil (which it should never be, in theory) then the 
+\f2\b imageView.image
+\f1\b0  line will never be executed. If it has a value, it will be placed into 
+\f2\b imageToLoad
+\f1\b0 , then passed to 
+\f2\b UIImage
+\f1\b0  and loaded.\
+OK, that\'92s it: press play or Cmd+R now to run the app and try it out! You should be able to select any of the pictures to have them slide in and displayed full screen.\
+Notice that we get a Back button in the navigation bar that lets us return back to 
+\f2\b ViewController
+\f1\b0 . If you click and drag carefully, you\'92ll find you can create a swipe gesture too \'96 click at the very left edge of the screen, then drag to the right, just as you would do with your thumb on a phone.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Final tweaks: hidesBarsOnTap and large titles\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 At this point you have a working project: you can press Cmd+R to run it, flick through the images in the table, then tap one to view it. But before this project is complete, there are several other small changes we're going to make that makes the end result a little more polished.\
+First, you might have noticed that all the images are being stretched to fit the screen. This isn't an accident \'96 it's the default setting of 
+\f2\b UIImageView
+\f1\b0 .\
+This takes just a few clicks to fix: choose Main.storyboard, select the image view in the detail view controller, then choose the attributes inspector. This is in the right-hand pane, near the top, and is the fourth of six inspectors, just to the left of the ruler icon.\
+If you don't fancy hunting around for it, just press Cmd+Alt+4 to bring it up. The stretching is caused by the view mode, which is a dropdown button that defaults to either \'93Aspect Fit\'94 or \'93Aspect Fill\'94 depending on your version of Xcode Try changing that to \'93Aspect Fill\'94 to see the image scaled up to fit the available space.\
+\
+If you were wondering, Aspect Fit sizes the image so that it's all visible. There's also Scale to Fill, which sizes the image so that there's no space left blank by stretching it on both axes. If you use Aspect Fill, the image effectively hangs outside its view area, so you should make sure you enable Clip To Bounds to avoid the image overspilling.\cf3 \
+\
+\cf2 The second change we're going to make is to allow users to view the images fullscreen, with no navigation bar getting in their way. There's a really easy way to make this happen, and it's a property on 
+\f2\b UINavigationController
+\f1\b0  called 
+\f2\b hidesBarsOnTap
+\f1\b0 . When this is set to true, the user can tap anywhere on the current view controller to hide the navigation bar, then tap again to show it.\
+Be warned: you need to set it carefully when working with iPhones. If we had it set on all the time then it would affect taps in the table view, which would cause havoc when the user tried to select things. So, we need to enable it when showing the detail view controller, then disable it when hiding.\
+You already met the method 
+\f2\b viewDidLoad()
+\f1\b0 , which is called when the view controller's layout has been loaded. There are several others that get called when the view is about to be shown, when it has been shown, when it's about to go away, and when it has gone away. These are called, respectively, 
+\f2\b viewWillAppear()
+\f1\b0 , 
+\f2\b viewDidAppear()
+\f1\b0 , 
+\f2\b viewWillDisappear()
+\f1\b0  and 
+\f2\b viewDidDisappear()
+\f1\b0 . We're going to use 
+\f2\b viewWillAppear()
+\f1\b0  and 
+\f2\b viewWillDisappear()
+\f1\b0  to modify the 
+\f2\b hidesBarsOnTap
+\f1\b0  property so that it's set to true only when the detail view controller is showing.\
+Open DetailViewController.swift, then add these two new methods directly below the end of the 
+\f2\b viewDidLoad()
+\f1\b0  method:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewWillAppear\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  animated: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Bool\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 super
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewWillAppear\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (animated)\
+    navigationController?.hidesBarsOnTap = \cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\}\
+\
+
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewWillDisappear\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  animated: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Bool\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 super
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewWillDisappear\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (animated)\
+    navigationController?.hidesBarsOnTap = \cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf3 \cb1 \shad0 \
+\cf2 There are some important things to note in there:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We're using 
+\f2\b override
+\f1\b0  for each of these methods, because they already have defaults defined in 
+\f2\b UIViewController
+\f1\b0  and we're asking it to use ours instead. Don't worry if you aren't sure when to use override and when not, because if you don't use it and it's required Xcode will tell you.\
+\ls6\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Both methods have a single parameter: whether the action is animated or not. We don't really care in this instance, so we ignore it.\
+\ls6\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Both methods use the 
+\f2\b super
+\f1\b0  prefix again: 
+\f2\b super.viewWillAppear()
+\f1\b0  and 
+\f2\b super.viewWillDisappear()
+\f1\b0 . This means "tell my parent data type that these methods were called." In this instance, it means that it passes the method on to 
+\f2\b UIViewController
+\f1\b0 , which may do its own processing.\
+\ls6\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We\'92re using the 
+\f2\b navigationController
+\f1\b0  property again, which will work fine because we were pushed onto the navigation controller stack from 
+\f2\b ViewController
+\f1\b0 . We\'92re accessing the property using 
+\f2\b ?
+\f1\b0 , so if somehow we 
+\f3\i weren\'92t
+\f1\i0  inside a navigation controller the 
+\f2\b hidesBarsOnTap
+\f1\b0  lines will do nothing.\cf3 \
+\pard\tx560\pardeftab720\partightenfactor0
+\cf3 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls7\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+If you run the app now, you'll see that you can tap to see a picture full size, and it will no longer be stretched. While you're viewing a picture you can tap to hide the navigation bar at the top, then tap to show it again.\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\ls7\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+The third change is a small but important one. If you look at other apps that use table views and navigation controllers to display screens (again, Settings is great for this), you might notice gray arrows at the right of the table view cells. This is called a disclosure indicator, and it\'92s a subtle user interface hint that tapping this row will show more information.\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+It only takes a few clicks in Interface Builder to get this disclosure arrow in our table view. Open Main.storyboard, then click on the table view cell\'a0\'96\'a0that\'92s the one that says \'93Title\'94, directly below \'93Prototype Cells\'94. The table view contains a cell, the cell contains a content view, and the content view contains a label called \'93Title\'94 so it\'92s easy to select the wrong thing. As a result, you\'92re likely to find it easiest to use the document outline to select exactly the right thing \'96 you want to select the thing marked \'93Picture\'94, which is the reuse identifier we attached to our table view cell.\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+When that\'92s selected, you should be able go to the attributes inspector and see \'93Style: Basic\'94, \'93Identifier: Picture\'94, and so on. You will also see \'93Accessory: None\'94 \'96 please change that to \'93Disclosure Indicator\'94, which will cause the gray arrow to show.\cf3 \
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\cf2 \expnd0\expndtw0\kerning0
+The fourth is small but important: we\'92re going to place some text in the gray bar at the top. You\'92ve already seen that view controllers have 
+\f2\b storyboard
+\f1\b0  and 
+\f2\b navigationController
+\f1\b0  properties that we get from 
+\f2\b UIViewController
+\f1\b0 . Well, they also have a 
+\f2\b title
+\f1\b0  property that automatically gets read by navigation controller: if you provide this title, it will be displayed in the gray navigation bar at the top.\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+In 
+\f2\b ViewController
+\f1\b0 , add this code to 
+\f2\b viewDidLoad()
+\f1\b0  after the call to 
+\f2\b super.viewDidLoad()
+\f1\b0 :\
+\pard\pardeftab720\partightenfactor0
+\ls7\ilvl0
+\f4\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\shad\shadx0\shady-20\shadr0\shado0 \shadc0 title = \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Storm Viewer"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+\ls7\ilvl0
+\f1\fs35\fsmilli17600 \cf3 \cb1 \kerning1\expnd0\expndtw0 \shad0 {\listtext	\uc0\u8226 	}\cf2 \expnd0\expndtw0\kerning0
+This title is also automatically used for the \'93Back\'94 button, so that users know what they are going back to.\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+In 
+\f2\b DetailViewController
+\f1\b0  we 
+\f3\i could
+\f1\i0  add something like this to 
+\f2\b viewDidLoad()
+\f1\b0 :\
+\pard\pardeftab720\partightenfactor0
+\ls7\ilvl0
+\f4\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\shad\shadx0\shady-20\shadr0\shado0 \shadc0 title = \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "View Picture"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+\ls7\ilvl0
+\f1\fs35\fsmilli17600 \cf3 \cb1 \kerning1\expnd0\expndtw0 \shad0 {\listtext	\uc0\u8226 	}\cf2 \expnd0\expndtw0\kerning0
+That would work fine, but instead we\'92re going to use some dynamic text: we\'92re going to display the name of the selected picture instead.\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Add this to 
+\f2\b viewDidLoad()
+\f1\b0  in 
+\f2\b DetailViewController
+\f1\b0 :\cf3 \
+\pard\pardeftab720\partightenfactor0
+\ls7\ilvl0
+\f4\fs36 \cf9 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\shad\shadx0\shady-20\shadr0\shado0 \shadc0 title = selectedImage\
+\pard\pardeftab720\partightenfactor0
+\ls7\ilvl0
+\f1\fs35\fsmilli17600 \cf3 \cb1 \kerning1\expnd0\expndtw0 \shad0 {\listtext	\uc0\u8226 	}\cf2 \expnd0\expndtw0\kerning0
+We don\'92t need to unwrap 
+\f2\b selectedImage
+\f1\b0  here because both 
+\f2\b selectedImage
+\f1\b0  and 
+\f2\b title
+\f1\b0  are optional strings \'96\'a0we\'92re assigning one optional string to another. 
+\f2\b title
+\f1\b0  is optional because it\'92s nil by default: view controllers have no title, thus showing no text in the navigation bar.\
+\ls7\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Large titles\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 This is an entirely optional change, but I wanted to introduce it to you nice and early so you can try it for yourself and see what you think.\
+One of Apple\'92s design guidelines is the use of 
+\f3\i large titles
+\f1\i0  \'96\'a0the text that appears in the gray bar at the top of apps. The default style is small text, which is what we\'92ve had so far, but with a couple of lines of code we can adopt the new design.\
+First, add this to 
+\f2\b viewDidLoad()
+\f1\b0  in ViewController.swift:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 navigationController?.navigationBar.prefersLargeTitles = \cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That enables large titles across our app, and you\'92ll see an immediate difference: \'93Storm Viewer\'94 becomes much bigger, and in the detail view controller all the image titles are also big. You\'92ll notice the title is no longer static either \'96\'a0if you pull down gently you\'92ll see it stretches ever so slightly, and if you try scrolling up in our table view you\'92ll see the titles shrinks away.\
+Apple recommends you use large titles only when it makes sense, and that usually means only on the first screen of your app. As you\'92ve seen, the default behavior when enabled is to have large titles everywhere, but that\'92s because each new view controller that pushed onto the navigation controller stack inherits the style of its predecessor.\
+In this app we want \'93Storm Viewer\'94 to appear big, but the detail screen to look normal. To make that happen we need to add a line of code to 
+\f2\b viewDidLoad()
+\f1\b0  in DetailViewController.swift:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 navigationItem.largeTitleDisplayMode = .never\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That\'92s all it takes \'96 the large titles should behave properly now.\
+}
