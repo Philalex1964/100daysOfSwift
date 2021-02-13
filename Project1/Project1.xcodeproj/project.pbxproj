@@ -26,6 +26,7 @@
 		2CD0C26025D2D905006DBBC6 /* nssl0034.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CD0C25625D2D904006DBBC6 /* nssl0034.jpg */; };
 		2CD0C26225D3FA03006DBBC6 /* Day17.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CD0C26125D3FA02006DBBC6 /* Day17.rtf */; };
 		2CD0C26425D3FB83006DBBC6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0C26325D3FB83006DBBC6 /* DetailViewController.swift */; };
+		2CD0C26625D7ED92006DBBC6 /* Day18.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CD0C26525D7ED91006DBBC6 /* Day18.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		2CD0C25625D2D904006DBBC6 /* nssl0034.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0034.jpg; sourceTree = "<group>"; };
 		2CD0C26125D3FA02006DBBC6 /* Day17.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day17.rtf; sourceTree = "<group>"; };
 		2CD0C26325D3FB83006DBBC6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2CD0C26525D7ED91006DBBC6 /* Day18.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day18.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2CD0C23525D2C2EA006DBBC6 /* Project1 */,
 				2CD0C24A25D2C445006DBBC6 /* Day16.rtf */,
 				2CD0C26125D3FA02006DBBC6 /* Day17.rtf */,
+				2CD0C26525D7ED91006DBBC6 /* Day18.rtf */,
 				2CD0C23425D2C2EA006DBBC6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				2CD0C25A25D2D905006DBBC6 /* nssl0045.jpg in Resources */,
 				2CD0C26025D2D905006DBBC6 /* nssl0034.jpg in Resources */,
 				2CD0C24B25D2C445006DBBC6 /* Day16.rtf in Resources */,
+				2CD0C26625D7ED92006DBBC6 /* Day18.rtf in Resources */,
 				2CD0C25D25D2D905006DBBC6 /* nssl0042.jpg in Resources */,
 				2CD0C26225D3FA03006DBBC6 /* Day17.rtf in Resources */,
 				2CD0C25925D2D905006DBBC6 /* nssl0091.jpg in Resources */,
