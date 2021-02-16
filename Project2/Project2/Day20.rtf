@@ -1,0 +1,426 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 HelveticaNeue-Italic;
+\f3\fnil\fcharset0 Menlo-Bold;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red222\green43\blue91;
+\red252\green55\blue54;\red246\green246\blue239;\red24\green24\blue28;\red72\green212\blue251;\red235\green0\blue121;
+\red157\green101\blue255;\red215\green165\blue255;\red224\green213\blue97;\red251\green2\blue7;\red248\green60\blue79;
+\red74\green200\blue164;\red244\green0\blue95;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c90588\c27059\c43137;
+\cssrgb\c100000\c31373\c27059;\cssrgb\c97255\c97255\c94902;\cssrgb\c12549\c12549\c14510;\cssrgb\c32941\c86275\c98824;\cssrgb\c94902\c14118\c54902;
+\cssrgb\c68235\c50588\c100000;\cssrgb\c87843\c72157\c100000;\cssrgb\c90196\c85882\c45490;\cssrgb\c100000\c14913\c0;\cssrgb\c98824\c33725\c38039;
+\cssrgb\c33725\c81569\c70196;\cssrgb\c97647\c14902\c44706;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid301\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 \expnd0\expndtw0\kerning0
+Project 2, part two\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 You\'92re already 1/5th of the way through the 100 Days of Swift, and you\'92re still coming back \'96 that\'92s 
+\f2\i amazing
+\f1\i0 , and I hope you feel proud that your consistency and persistency are paying off.\
+Years ago Steve Jobs said, "I believe life is an intelligent thing: that things aren't random.\'94 I don\'92t know whether he\'92s right or wrong, but I 
+\f2\i do
+\f1\i0  know that things really 
+\f2\i ought
+\f1\i0  to be random if we\'92re playing a game, otherwise it wouldn\'92t be much fun!\
+So, today we\'92ll be completing project two by showing random flags, letting the user make their guess, and showing a score alert. This 
+\f2\i could
+\f1\i0  have involved using closures for the first time, but here we\'92re going to take a little shortcut so you can start to get a feel for how closures, functions, and methods are really different flavors of the same thing.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you have just two topics to work through, and you\'92ll meet array shuffling, random number generation, 
+\f3 @IBAction
+\f0 , and 
+\f3 UIAlertController
+\f0 .
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/2/4/guess-which-flag-random-numbers"}}{\fldrslt \expnd0\expndtw0\kerning0
+Guess which flag: random numbers}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/2/5/from-outlets-to-actions-creating-an-ibaction"}}{\fldrslt \expnd0\expndtw0\kerning0
+From outlets to actions: creating an IBAction}}\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 Hopefully those two shouldn\'92t prove too much work for you, so you should have a little time to experiment with your code before tomorrow\'92s challenges.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Guess which flag: random numbers
+\f1\b0\fs35\fsmilli17600 \
+Our current code chooses the first three items in the countries array, and places them into the three buttons on our view controller. This is fine to begin with, but really we need to choose random countries each time. There are two ways of doing this:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Pick three random numbers, and use those to read the flags from the array.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Shuffle up the order of the array, then pick the first three items.\
+\pard\pardeftab720\partightenfactor0
+\cf2 Both approaches are valid, but the former takes a little more work because we need to ensure that all three numbers are different \'96 this game would be even less fun if all three flags were the same!\
+The second approach is easier to do, because Swift has built-in methods for shuffling arrays: 
+\f3\b shuffle()
+\f1\b0  for in-place shuffling, and 
+\f3\b shuffled()
+\f1\b0  to return a new, shuffled array.\
+At the start of the 
+\f3\b askQuestion()
+\f1\b0  method, just before you call the first 
+\f3\b setImage()
+\f1\b0  method, add this line of code:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 countries.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 shuffle\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That will automatically randomize the order of the countries in the array, meaning that 
+\f3\b countries[0]
+\f1\b0 , 
+\f3\b countries[1]
+\f1\b0  and 
+\f3\b countries[2]
+\f1\b0  will refer to different flags each time the 
+\f3\b askQuestion()
+\f1\b0  method is called. To try it out, press Cmd+R to run your program a few times to see different flags each time.\
+\
+The next step is to track which answer should be the correct one, and to do that we're going to create a new property for our view controller called 
+\f3\b correctAnswer
+\f1\b0 . Put this near the top, just above 
+\f3\b var score = 0
+\f1\b0 :\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  correctAnswer = \cf10 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 This gives us a new integer property that will store whether it's flag 0, 1 or 2 that holds the correct answer.\
+To choose which should be the right answer requires using Swift\'92s random system again, because we need to choose a random number for the correct answer. All Swift\'92s numeric types, such as 
+\f3\b Int
+\f1\b0 , 
+\f3\b Double
+\f1\b0 , and 
+\f3\b CGFloat
+\f1\b0 , have a 
+\f3\b random(in:)
+\f1\b0  method that generates a random number in a range. So, to generate a random number between 0 and 2 inclusive you need to put this line just below the three 
+\f3\b setImage()
+\f1\b0  calls in 
+\f3\b askQuestion()
+\f1\b0 :\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 correctAnswer = \cf11 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Int\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 random\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (
+\f3\b \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : \cf10 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ...\cf10 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 2\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Now that we have the correct answer, we just need to put its text into the navigation bar. This can be done by using the 
+\f3\b title
+\f1\b0  property of our view controller, but we need to add one more thing: we don't want to write "france" or "uk" in the navigation bar, because it looks ugly. We could capitalize the first letter, and that would work great for France, Germany, and so on, but it would look poor for \'93Us\'94 and \'93Uk\'94, which should be \'93US\'94 and \'93UK\'94.\
+The solution here is simple: uppercase the entire string. This is done using the 
+\f3\b uppercased()
+\f1\b0  method of any string, so all we need to do is read the string out from the countries array at the position of 
+\f3\b correctAnswer
+\f1\b0 , then uppercase it. Add this to the end of the 
+\f3\b askQuestion()
+\f1\b0  method, just after 
+\f3\b correctAnswer
+\f1\b0  is set:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 title = countries[correctAnswer].\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 uppercased\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 With that done, you can run the game and it's now almost playable: you'll get three different flags each time, and the flag the player needs to tap on will have its name shown at the top.\
+\
+With that done, you can run the game and it's now almost playable: you'll get three different flags each time, and the flag the player needs to tap on will have its name shown at the top.\
+Of course, there's one piece missing: the user can tap on the flag buttons, but they don't actually 
+\f2\i do
+\f1\i0  anything. Let's fix that\'85\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 From outlets to actions: creating an IBAction\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 I said we'd return to Interface Builder, and now the time has come: we're going to connect the "tap" action of our 
+\f3\b UIButtons
+\f1\b0  to some code. So, select Main.storyboard, then change to the assistant editor so you can see the code alongside the layout.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Warning:
+\f1\b0  please read the following text very carefully. In my haste I screw this up all the time, and I don't want it to confuse you!\
+Select the first button, then Ctrl+drag from it down to the space in your code immediately after the end of the 
+\f3\b askQuestion()
+\f1\b0  method. If you're doing it correctly, you should see a tooltip saying, "Insert Outlet, Action, or Outlet Collection." When you let go, you'll see the same popup you normally see when creating outlets, but here's the catch: 
+\f0\b don't choose outlet
+\f1\b0 .
+\f0\b\fs98 \cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 \
+That's right: where it says "Connection: Outlet" at the top of the popup, I want you to change that to be \'93Action\'94. If you choose Outlet here (which I do all too often because I'm in a rush), you'll cause problems for yourself!\
+When you choose Action rather than Outlet, the popup changes a little. You'll still get asked for a name, but now you'll see an Event field, and the Type field has changed from 
+\f3\b UIButton
+\f1\b0  to 
+\f3\b Any
+\f1\b0 . Please change Type back to 
+\f3\b UIButton
+\f1\b0 , then enter 
+\f3\b buttonTapped
+\f1\b0  for the name, and click Connect.\
+Here's what Xcode will write for you:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf12 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 @IBAction\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 buttonTapped\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf10 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  sender: \cf11 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIButton\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \'85and again, notice the gray circle with a ring around it on the left, signifying this has a connection in Interface Builder.\
+Before we look at what this is doing, I want you to make two more connections. This time it's a bit different, because we're connecting the other two flag buttons to the same 
+\f3\b buttonTapped()
+\f1\b0  method. To do that, select each of the remaining two buttons, then Ctrl-drag onto the 
+\f3\b buttonTapped()
+\f1\b0  method that was just created. The whole method will turn blue signifying that it's going to be connected, so you can just let go to make it happen. If the method flashes after you let go, it means the connection was made.\
+So, what do we have? Well, we have a single method called 
+\f3\b buttonTapped()
+\f1\b0 , which is connected to all three 
+\f3\b UIButton
+\f1\b0 s. The event used for the attachment is called 
+\f3\b TouchUpInside
+\f1\b0 , which is the iOS way of saying, "the user touched this button, then released their finger while they were still over it" \'96 i.e., the button was tapped.\
+Again, Xcode has inserted an attribute to the start of this line so it knows that this is relevant to Interface Builder, and this time it's 
+\f3\b @IBAction
+\f1\b0 . 
+\f3\b @IBAction
+\f1\b0  is similar to 
+\f3\b @IBOutlet
+\f1\b0 , but goes the other way: 
+\f3\b @IBOutlet
+\f1\b0  is a way of connecting code to storyboard layouts, and 
+\f3\b @IBAction
+\f1\b0  is a way of making storyboard layouts trigger code.\
+\
+This method takes one parameter, called 
+\f3\b sender
+\f1\b0 . It's of type 
+\f3\b UIButton
+\f1\b0  because we know that's what will be calling the method. And this is important: all three buttons are calling the same method, so it's important we know which button was tapped so we can judge whether the answer was correct.\
+But how do we know whether the correct button was tapped? Right now, all the buttons look the same, but behind the scenes \cf13 all views have a special identifying number that we can set, called its Tag.\cf2  This can be any number you want, so we're going to give our buttons the numbers 0, 1 and 2. This isn't a coincidence: our code is already set to put flags 0, 1 and 2 into those buttons, so if we give them the same tags we know exactly what flag was tapped.\
+Select the second flag (not the first one!), then look in the attributes inspector (Alt+Cmd+4) for the input box marked Tag. You might need to scroll down, because 
+\f3\b UIButton
+\f1\b0 s have lots of properties to work with! Once you find it (it's about two-thirds of the way down, just above the color and alpha properties), make sure it's set to 1.\
+Now choose the third flag and set its tag to be 2. We don't need to change the tag of the first flag because 0 is the default.\
+\cf3 \
+\cf2 We're done with Interface Builder for now, so go back to the standard editor and select ViewController.swift \'96 it's time to finish up by filling in the contents of the 
+\f3\b buttonTapped()
+\f1\b0  method.\
+This method needs to do three things:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Check whether the answer was correct.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Adjust the player's score up or down.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Show a message telling them what their new score is.\
+\pard\pardeftab720\partightenfactor0
+\cf2 The first task is quite simple, because each button has a tag matching its position in the array, and we stored the position of the correct answer in the 
+\f3\b correctAnswer
+\f1\b0  variable. So, the answer is correct if 
+\f3\b sender.tag
+\f1\b0  is equal to 
+\f3\b correctAnswer
+\f1\b0 .\
+The second task is also simple, because you've already met the 
+\f3\b +=
+\f1\b0  operator that adds to a value. We'll be using that and its counterpart, 
+\f3\b -=
+\f1\b0 , to add or subtract score as needed. The third task is more complicated, so we're going to come to it in a minute.\
+Put this code into the 
+\f3\b buttonTapped()
+\f1\b0  method:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  title: \cf11 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\
+
+\f3\b \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  sender.tag == correctAnswer \{\
+    title = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Correct"\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    score += \cf10 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\} 
+\f3\b \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    title = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Wrong"\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    score -= \cf10 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\}
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\
+Now for the tough bit: we're going to use a new data type called 
+\f3\b UIAlertController()
+\f1\b0 . This is used to show an alert with options to the user. To make this work you're going to need to use a 
+\f2\i closure
+\f1\i0 \'a0\'96\'a0something you\'92ve learned about in theory, but at last finally get to use in practice.\
+If you remember, closures is a special kind of code block that can be used like a variable \'96 Swift literally takes a copy of the block of code so that it can be called later. Swift also copies anything referenced inside the code, so you need to be careful how you use them. We're going to be using closures extensively later, but for now we\'92ll take two shortcuts.\
+Enter this just before the end of the 
+\f3\b buttonTapped()
+\f1\b0  method:\cf3 \
+
+\f3\b\fs36 \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertController\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: title, message: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Your score is \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \\(\cf15 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 score\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ."\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , preferredStyle: .alert)\
+ac.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Continue"\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f3\b \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , handler: askQuestion))\
+\pard\pardeftab720\partightenfactor0
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 present\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (ac, animated: \cf10 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs35\fsmilli17600 \cf2 \cb1 \shad0 That code will produce an error for a moment, but that\'92s OK.
+\f1\b0 \
+\
+The 
+\f3\b title
+\f1\b0  variable was set in our if statement to be either "correct" or "wrong", and you've already learned about string interpolation, so the first new thing there is the 
+\f3\b .alert
+\f1\b0  parameter being used for 
+\f3\b preferredStyle
+\f1\b0 . 
+\f3\b UIAlertController()
+\f1\b0  gives us two kinds of style: 
+\f3\b .alert
+\f1\b0 , which pops up a message box over the center of the screen, and 
+\f3\b .actionSheet
+\f1\b0 , which slides options up from the bottom. They are similar, but Apple recommends you use 
+\f3\b .alert
+\f1\b0  when telling users about a situation change, and 
+\f3\b .actionSheet
+\f1\b0  when asking them to choose from a set of options.\
+\
+The second line uses the 
+\f3\b UIAlertAction
+\f1\b0  data type to add a button to the alert that says "Continue", and gives it the style \'93default". There are three possible styles: 
+\f3\b .default
+\f1\b0 , 
+\f3\b .cancel
+\f1\b0 , and 
+\f3\b .destructive
+\f1\b0 . What these look like depends on iOS, but it's important you use them appropriately because they provide subtle user interface hints to users.\
+\
+The sting in the tail is at the end of that line: 
+\f3\b handler: askQuestion
+\f1\b0 . The 
+\f3\b handler
+\f1\b0  parameter is looking for a closure, which is some code that it can execute when the button is tapped. You can write custom code in there if you want, but in our case we want the game to continue when the button is tapped, so we pass in 
+\f3\b askQuestion
+\f1\b0  so that iOS will call our 
+\f3\b askQuestion()
+\f1\b0  method.\
+
+\f0\b Warning:
+\f1\b0  We must use 
+\f3\b askQuestion
+\f1\b0  and not 
+\f3\b askQuestion()
+\f1\b0 . If you use the former, it means "here's the name of the method to run," but if you use the latter it means "run the 
+\f3\b askQuestion()
+\f1\b0  method now, and it will tell you the name of the method to run."\
+There are many good reasons to use closures, but in the example here just passing in 
+\f3\b askQuestion
+\f1\b0  is a neat shortcut \'96 although it does break something that we'll need to fix in a moment.\cf3 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+The final line calls 
+\f3\b present()
+\f1\b0 , which takes two parameters: a view controller to present and whether to animate the presentation. It has an optional third parameter that is another closure that should be executed when the presentation animation has finished, but we don\'92t need it here. We send our 
+\f3\b UIAlertController
+\f1\b0  for the first parameter, and true for the second because animation is always nice.\
+\
+Before the code completes, there's a problem, and Xcode is probably telling you what it is: \'93Cannot convert value of type \'91() -> ()\'92 to expected argument type \'91((UIAlertAction) -> Void)?\'92.\'94\
+This is a good example of Swift's terrible error messages, and it's something I'm afraid you'll have to get used to. What it 
+\f2\i means
+\f1\i0  to say is that using a method for this closure is fine, but Swift wants the method to accept a 
+\f3\b UIAlertAction
+\f1\b0  parameter saying which 
+\f3\b UIAlertAction
+\f1\b0  was tapped.\
+To make this problem go away, we need to change the way the 
+\f3\b askQuestion()
+\f1\b0  method is defined. So, scroll up and change 
+\f3\b askQuestion()
+\f1\b0  from this:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 askQuestion\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \'85to this:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 askQuestion\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (action: \cf11 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 !) \{\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+That will fix the 
+\f3\b UIAlertAction
+\f1\b0  error. However, it will introduce 
+\f2\i another
+\f1\i0  problem: when the app first runs, we call 
+\f3\b askQuestion()
+\f1\b0  inside 
+\f3\b viewDidLoad()
+\f1\b0 , and we don't pass it a parameter. There are two ways to fix this:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+When using 
+\f3\b askQuestion()
+\f1\b0  in 
+\f3\b viewDidLoad()
+\f1\b0 , we could send it the parameter 
+\f3\b nil
+\f1\b0  to mean "there is no 
+\f3\b UIAlertAction
+\f1\b0  for this."\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+We could redefine 
+\f3\b askQuestion()
+\f1\b0  so that the action has a default parameter of 
+\f3\b nil
+\f1\b0 , meaning that if it isn't specified it automatically becomes 
+\f3\b nil
+\f1\b0 .\
+\pard\pardeftab720\partightenfactor0
+\cf2 There's no right or wrong answer here, so I'll show you both and you can choose. If you want to go with the first option, change the 
+\f3\b askQuestion()
+\f1\b0  call in 
+\f3\b viewDidLoad()
+\f1\b0  to this:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf8 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 askQuestion\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (action: \cf16 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 And if you want to go with the second option, change the 
+\f3\b askQuestion()
+\f1\b0  method definition to this:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf9 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 askQuestion\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (action: \cf11 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ! = \cf16 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Now, go ahead and run your program in the simulator, because it's done!\
+}
