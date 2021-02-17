@@ -1,0 +1,264 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 HelveticaNeue-Italic;
+\f3\fnil\fcharset0 Menlo-Bold;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red222\green43\blue91;
+\red246\green246\blue239;\red24\green24\blue28;\red248\green60\blue79;\red235\green0\blue121;\red72\green212\blue251;
+\red157\green101\blue255;\red215\green165\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c90588\c27059\c43137;
+\cssrgb\c97255\c97255\c94902;\cssrgb\c12549\c12549\c14510;\cssrgb\c98824\c33725\c38039;\cssrgb\c94902\c14118\c54902;\cssrgb\c32941\c86275\c98824;
+\cssrgb\c68235\c50588\c100000;\cssrgb\c87843\c72157\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 \expnd0\expndtw0\kerning0
+Project 2, part one\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 Saint Augustine said \'93the world is a book, and those who do not travel read only a page.\'94 If you\'92re like me, you like travel a 
+\f2\i lot
+\f1\i0 , so in this project we\'92re going to make a small game that encourage folks to learn more about the world around them.\
+Yes, you read that correctly: we\'92re making a game. Don\'92t worry \'96 you\'92ll still be using Swift and UIKit, and you\'92ll learn stacks of important skills that work just as well in apps as they do in games.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you have three topics to work through, and you\'92ll meet asset catalogs, buttons, colors, and more.
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/2/1/setting-up"}}{\fldrslt \expnd0\expndtw0\kerning0
+Setting up}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/2/2/designing-your-layout"}}{\fldrslt \expnd0\expndtw0\kerning0
+Designing your layout}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/2/3/making-the-basic-game-work-uibutton-and-calayer"}}{\fldrslt \expnd0\expndtw0\kerning0
+Making the basic game work: UIButton and CALayer}}\expnd0\expndtw0\kerning0
+\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Designing your layout\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 In our game, we're going to show users three flags, with the name of the country to guess shown in the navigation bar at the top. What navigation bar? Well, there isn't one, or at least not yet. We need to add one, just like we did with the previous project.\
+We covered a 
+\f2\i lot
+\f1\i0  in project 1, so you\'92ve probably forgotten how to do this, but that\'92s OK: Single View App projects don't come with a navigation controller as standard, but it's trivial to add one: click inside the view controller, then go to the Editor menu and choose Embed In > Navigation Controller.\
+With the new navigation controller in place, scroll so you can see our empty view controller again, then use the object library to draw out three buttons onto the canvas. This is a new view type, but as you might imagine it's just a button that users can tap. Each of them should be 200 wide by 100 high. You can set these values exactly by using the size inspector in the top-right of the Xcode window.\cf2 \
+\
+\cf2 The last step before we're finished with Interface Builder for now is to add some outlets for our three flag buttons, so that we can reference them in code. Activate the assistant editor by pressing Alt+Cmd+Return or by going to View > Assistant Editor > Show Assistant Editor. Now Ctrl-drag from the first flag to your code in order to create an outlet called 
+\f3\b button1
+\f1\b0 , then from the second flag to create 
+\f3\b button2
+\f1\b0 , and from the third flag to create 
+\f3\b button3
+\f1\b0 .\
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 We'll come back to it later on, but for now we're done with Interface Builder. Select ViewController.swift and go back to the standard editor (that is, press Cmd+return to turn off the assistant editor) so we can get busy with some coding.\cf2 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Making the basic game work: UIButton and CALayer\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 his is identical to the code you saw in project 1, so there's nothing to learn here. If you recall your Swift introduction, you\'92ll know there's a more efficient way of doing this, which is to create it all on one line. To do that, you would write:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 countries += [\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "estonia"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "france"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "germany"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "ireland"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "italy"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "monaco"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "nigeria"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "poland"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "russia"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "spain"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "uk"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "us"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]
+\f0\b\fs98 \cf3 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 The next step is to write a method that shows three random flag images on the screen. Buttons have a 
+\f3\b setImage()
+\f1\b0  method that lets us control what picture is shown inside and when, so we can use that with 
+\f3\b UIImage
+\f1\b0  to display our flags.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf8 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 askQuestion\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    button1.\cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 setImage\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIImage\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (named: countries[\cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]), 
+\f3\b \cf8 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f4\b0 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : .normal)\
+    button2.\cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 setImage\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIImage\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (named: countries[\cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]), 
+\f3\b \cf8 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f4\b0 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : .normal)\
+    button3.\cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 setImage\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIImage\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (named: countries[\cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 2\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]), 
+\f3\b \cf8 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f4\b0 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : .normal)\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 The first line is easy enough: we're declaring a new method called 
+\f3\b askQuestion()
+\f1\b0 , and it takes no parameters. The next three use 
+\f3\b UIImage(named:)
+\f1\b0  and read from an array by position, both of which we used in project 1, so that bit isn't new either. However, the rest of those lines is new, and shows off two things:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\f3\b \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+button1.setImage()
+\f1\b0  assigns a 
+\f3\b UIImage
+\f1\b0  to the button. We have the US flag in there right now, but this will change it when 
+\f3\b askQuestion()
+\f1\b0  is called.\
+\ls2\ilvl0
+\f3\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+for: .normal
+\f1\b0  The 
+\f3\b setImage()
+\f1\b0  method takes a second parameter that describes which state of the button should be changed. We're specifying 
+\f3\b .normal
+\f1\b0 , which means "the standard state of the button."\
+\pard\pardeftab720\partightenfactor0
+\cf2 That 
+\f3\b .normal
+\f1\b0  parameter looks like an enum, but it\'92s actually a static property of a struct called 
+\f3\b UIControlState
+\f1\b0 . In Objective-C \'96\'a0the language UIKit was written in \'96 it\'92s an enum, but in Swift it gets mapped to a struct that just happens to be 
+\f2\i used
+\f1\i0  like an enum, so if you want to be technically correct it\'92s not a true enum in Swift. At this point in your Swift career there is no difference, but let\'92s face it: \'93technically correct\'94 is the best kind of correct.\
+\
+You'll immediately notice two problems\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+We're showing the Estonian and French flags, both of which have white in them so it's hard to tell whether they are flags or just blocks of color\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+The "game" isn't much fun, because it's always the same three flags!\
+\pard\pardeftab720\partightenfactor0
+\cf2 The second problem is going to have to wait a few minutes, but we can fix the first problem now. One of the many powerful things about views in iOS is that they are backed by what's called a 
+\f3\b CALayer
+\f1\b0 , which is a Core Animation data type responsible for managing the way your view looks.\
+Conceptually, 
+\f3\b CALayer
+\f1\b0  sits beneath all your 
+\f3\b UIView
+\f1\b0 s (that's the parent of 
+\f3\b UIButton
+\f1\b0 , 
+\f3\b UITableView
+\f1\b0 , and so on), so it's like an exposed underbelly giving you lots of options for modifying the appearance of views, as long as you don't mind dealing with a little more complexity. We're going to use one of these appearance options now: 
+\f3\b borderWidth
+\f1\b0 .\
+The Estonian flag has a white stripe at the bottom, and because our view controller has a white background that whole stripe is invisible. We can fix that by giving the layer of our buttons a 
+\f3\b borderWidth
+\f1\b0  of 1, which will draw a one point black line around them. Put these three lines in 
+\f3\b viewDidLoad()
+\f1\b0  directly before it calls 
+\f3\b askQuestion()
+\f1\b0 :\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 button1.layer.borderWidth = \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+button2.layer.borderWidth = \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+button3.layer.borderWidth = \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+By default, the border of 
+\f3\b CALayer
+\f1\b0  is black, but you can change that if you want by using the 
+\f3\b UIColor
+\f1\b0  data type. I said that 
+\f3\b CALayer
+\f1\b0  brings with it a little more complexity, and here's where it starts to be visible: 
+\f3\b CALayer
+\f1\b0  sits at a lower technical level than 
+\f3\b UIButton
+\f1\b0 , which means it doesn't understand what a 
+\f3\b UIColor
+\f1\b0  is. 
+\f3\b UIButton
+\f1\b0  knows what a 
+\f3\b UIColor
+\f1\b0  is because they are both at the same technical level, but 
+\f3\b CALayer
+\f1\b0  is below 
+\f3\b UIButton
+\f1\b0 , so 
+\f3\b UIColor
+\f1\b0  is a mystery.\
+Don't despair, though: 
+\f3\b CALayer
+\f1\b0  has its own way of setting colors called 
+\f3\b CGColor
+\f1\b0 , which comes from Apple's Core Graphics framework. This, like 
+\f3\b CALayer
+\f1\b0 , is at a lower level than 
+\f3\b UIButton
+\f1\b0 , so the two can talk happily \'96 again, as long as you're happy with the extra complexity.\
+Even better, 
+\f3\b UIColor
+\f1\b0  (which sits above 
+\f3\b CGColor
+\f1\b0 ) is able to convert to and from 
+\f3\b CGColor
+\f1\b0  easily, which means you don't need to worry about the complexity \'96 hurray!\
+So, let's put all that together into some code that changes the border color using 
+\f3\b UIColor
+\f1\b0  and 
+\f3\b CGColor
+\f1\b0  together. Put these three just below the three 
+\f3\b borderWidth
+\f1\b0  lines in 
+\f3\b viewDidLoad()
+\f1\b0 :\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 button1.layer.borderColor = \cf11 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .lightGray.cgColor\
+button2.layer.borderColor = \cf11 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .lightGray.cgColor\
+button3.layer.borderColor = \cf11 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .lightGray.cgColor
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\
+As you can see, 
+\f3\b UIColor
+\f1\b0  has a property called 
+\f3\b lightGray
+\f1\b0  that returns (shock!) a 
+\f3\b UIColor
+\f1\b0  instance that represents a light gray color. But we can't put a 
+\f3\b UIColor
+\f1\b0  into the 
+\f3\b borderColor
+\f1\b0  property because it belongs to a 
+\f3\b CALayer
+\f1\b0 , which doesn't understand what a 
+\f3\b UIColor
+\f1\b0  is. So, we add 
+\f3\b .cgColor
+\f1\b0  to the end of the 
+\f3\b UIColor
+\f1\b0  to have it automagically converted to a 
+\f3\b CGColor
+\f1\b0 . Perfect.\
+If 
+\f3\b lightGray
+\f1\b0  doesn't interest you, you can create your own color like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (red: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1.0\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , green: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0.6\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , blue: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0.2\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , alpha: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1.0\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ).cgColor\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 You need to specify four values: red, green, blue and alpha, each of which should range from 0 (none of that color) to 1.0 (all of that color). The code above generates an orange color, then converts it to a 
+\f3\b CGColor
+\f1\b0  so it can be assigned to a 
+\f3\b CALayer
+\f1\b0 's 
+\f3\b borderColor
+\f1\b0  property.\
+\
+\
+}
