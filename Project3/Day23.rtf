@@ -1,0 +1,216 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fnil\fcharset0 HelveticaNeue-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red222\green43\blue91;
+\red246\green246\blue239;\red24\green24\blue28;\red72\green212\blue251;\red235\green0\blue121;\red224\green213\blue97;
+\red157\green101\blue255;\red248\green60\blue79;\red252\green55\blue54;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c90588\c27059\c43137;
+\cssrgb\c97255\c97255\c94902;\cssrgb\c12549\c12549\c14510;\cssrgb\c32941\c86275\c98824;\cssrgb\c94902\c14118\c54902;\cssrgb\c90196\c85882\c45490;
+\cssrgb\c68235\c50588\c100000;\cssrgb\c98824\c33725\c38039;\cssrgb\c100000\c31373\c27059;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+UIActivityViewController explained\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 Sharing things using iOS uses a standard, powerful component that other apps can plug into. As a result, it should be your first port of call when adding sharing to an app. This component is called 
+\f2\b UIActivityViewController
+\f1\b0 : you tell it what kind of data you want to share, and it figures out how best to share it.\
+As we're working with images, 
+\f2\b UIActivityViewController
+\f1\b0  will automatically give us functionality to share by iMessage, by email and by Twitter and Facebook, as well as saving the image to the photo library, assigning it to contact, printing it out via AirPrint, and more. It even hooks into AirDrop and the iOS extensions system so that other apps can read the image straight from us.\
+Best of all, it takes just a handful of lines of code to make it all work. But before we touch 
+\f2\b UIActivityViewController
+\f1\b0 , we first need to give users a way to trigger sharing, and the way we\'92re going to use it is to add a bar button item.\
+Project 1, if you recall, used a 
+\f2\b UINavigationController
+\f1\b0  to let users move between two screens. By default, a 
+\f2\b UINavigationController
+\f1\b0  has a bar across the top, called a 
+\f2\b UINavigationBar
+\f1\b0 , and as developers we can add buttons to this navigation bar that call our methods.\
+Let's create one of those buttons now. First, take a copy of your existing Project1 folder (the whole thing), and rename it to be Project3. Now launch it in Xcode, open the file DetailViewController.swift, and find the 
+\f2\b viewDidLoad()
+\f1\b0  method. Directly beneath the 
+\f2\b title =
+\f1\b0  line,\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 navigationItem.rightBarButtonItem = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIBarButtonItem\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (barButtonSystemItem: .action, target: 
+\f2\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , action: #\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (shareTapped))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 You\'92ll get an error for a moment, but that\'92s OK; please read on.\
+This is easily split into two parts: on the left we're assigning to the 
+\f2\b rightBarButtonItem
+\f1\b0  of our view controller's 
+\f2\b navigationItem
+\f1\b0 . This navigation item is used by the navigation bar so that it can show relevant information. In this case, we're setting the right bar button item, which is a button that appears on the right of the navigation bar when this view controller is visible.\
+\
+On the right we create a new instance of the 
+\f2\b UIBarButtonItem
+\f1\b0  data type, setting it up with three parameters: a system item, a target, and an action. The system item we specify is 
+\f2\b .action
+\f1\b0 , but you can type 
+\f2\b .
+\f1\b0  to have code completion tell you the many other options available. The 
+\f2\b .action
+\f1\b0  system item displays an arrow coming out of a box, signaling the user can do something when it's tapped.\
+The 
+\f2\b target
+\f1\b0  and 
+\f2\b action
+\f1\b0  parameters go hand in hand, because combined they tell the 
+\f2\b UIBarButtonItem
+\f1\b0  what method should be called. The 
+\f2\b action
+\f1\b0  parameter is saying "when you're tapped, call the 
+\f2\b shareTapped()
+\f1\b0  method," and the target parameter tells the button that the method belongs to the current view controller \'96 
+\f2\b self
+\f1\b0 .\
+\
+The part in 
+\f2\b #selector
+\f1\b0  bears explaining a bit more, because it's new and unusual syntax. What it does is tell the Swift compiler that a method called "shareTapped" will exist, and should be triggered when the button is tapped. Swift will check this for you: if we had written "shareTaped" by accident \'96 missing the second P \'96 Xcode will refuse to build our app until we fix the typo.\
+If you don't like the look of the various system bar button items available, you can create one with your own title or image instead. However, it's generally preferred to use the system items where possible because users already know what they do.\
+\
+With the bar button created, it's time to create the 
+\f2\b shareTapped()
+\f1\b0  method. Are you ready for this huge, complicated amount of code? Here goes! Put this just after the 
+\f2\b viewWillDisappear()
+\f1\b0  method:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs36 \cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 @objc\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 shareTapped\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f2\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 guard
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  image = imageView.image?.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 jpegData\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (compressionQuality: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0.8\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) 
+\f2\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf11 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "No image found"\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+        
+\f2\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    
+\f2\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  vc = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIActivityViewController\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (activityItems: [image], applicationActivities: [])\
+    vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem\
+    \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 present\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (vc, animated: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That's it. With those handful of lines of code, 
+\f2\b shareTapped()
+\f1\b0  can send photos via AirDrop, post to Twitter, and much more. You have to admit, iOS can be pretty amazing sometimes!\
+A lot of that code is old; we already learned about 
+\f2\b present()
+\f1\b0  in project 2. However, some other parts are new, so let me explain what they do:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We start with the method name, marked with 
+\f2\b @objc
+\f1\b0  because this method will get called by the underlying Objective-C operating system (the 
+\f2\b UIBarButtonItem
+\f1\b0 ) so we need to mark it as being available to Objective-C code. When you call a method using 
+\f2\b #selector
+\f1\b0  you\'92ll always need to use 
+\f2\b @objc
+\f1\b0  too.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Our image view may or may not have an image inside, so we\'92ll read it out safely and convert it to JPEG data. This has a 
+\f2\b compressionQuality
+\f1\b0  parameter where you can specify a value between 1.0 (maximum quality) and 0.0 (minimum quality_.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Next we create a 
+\f2\b UIActivityViewController
+\f1\b0 , which is the iOS method of sharing content with other apps and services.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Finally, we tell iOS where the activity view controller should be anchored \'96\'a0where it should appear from.\
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+On iPhone, activity view controllers automatically take up the full screen, but on iPad they appear as a popover that allows the user to see what they were working on below. This line of code tells iOS to anchor the activity view controller to the right bar button item (our share button), but this only has an effect on iPad \'96\'a0on iPhone it's ignored.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Tip:
+\f1\b0  In case you were wondering, when you use 
+\f2\b @IBAction
+\f1\b0  to make storyboards call your code, that automatically implies 
+\f2\b @objc
+\f1\b0  \'96\'a0Swift knows that no 
+\f2\b @IBAction
+\f1\b0  makes sense unless it can be called by Objective-C code.\
+\
+Let's focus on how activity view controllers are created. As you can see in the code, you pass in two items: an array of items you want to share, and an array of any of your own app's services you want to make sure are in the list. We're passing an empty array into the second parameter, because our app doesn't have any services to offer. But if you were to extend this app to have something like "Other pictures like this", for example, then you would include that functionality here.\
+So, the real focus is on the first parameter: we're passing in 
+\f2\b [image]
+\f1\b0 . This is the JPEG data that describes the user\'92s selected image, and iOS understands that it\'92s an image so it can post it to Twitter, Facebook, and other places.\
+And\'85 that's it. No, really. We're pretty much done: your app now supports sharing.\
+Don\'92t worry if you\'92re not sure about 
+\f2\b @objc
+\f1\b0  just yet \'96 we\'92ll be coming back to it again and again. The main thing to remember is that when Swift code calls a Swift method that method doesn\'92t need to be marked 
+\f2\b @objc
+\f1\b0 . On the other hand, when Objective-C code needs to call a Swift method \'96 and that\'92s any time it gets called by one of Apple\'92s UI components, for example \'96 then the 
+\f2\b @objc
+\f1\b0  
+\f4\i is
+\f1\i0  required.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Fixing a small bug\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 There\'92s one small but important bug with the current code: if you select Save Image inside the activity view controller, you\'92ll see the app crashes immediately. What\'92s happening here is that our app tries to access the user\'92s photo library so it can write the image there, but that isn\'92t allowed on iOS unless the user grants permission first.\
+To fix this we need to edit the Info.plist file for our project. We haven\'92t touched this yet, but it\'92s designed to hold configuration settings for your app that won\'92t ever change over time.\
+Select Info.plist in the project navigator, then when you see a big table full of data please right-click in the white space below that. Click \'93Add Row\'94 from the menu that appears, and you should see a new list of options appear that starts with \'93Application Category\'94.\
+What I\'92d like you to do is scroll down in that list and find the name \'93Privacy - Photo Library Additions Usage Description\'94. This is what will be shown to the user when your app needs to add to their photo library.\
+When you select \'93Privacy - Photo Library Additions Usage Description\'94 you\'92ll see \'93String\'94 appear to the right of it, and to the right of \'93String\'94 will be an empty white space. That white space is where you can type some text to show to the user that explains what your app intends to do with their photo library.\
+In this app we only need to save images, so put this text in the box: \'93We need to save photos you like.\'94\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Wrap up\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 This was a deliberately short technique project taking an existing app and making it better. I hope you didn't get too bored, and hope even more that some of the new material sunk in because we covered 
+\f2\b UIBarButtonItem
+\f1\b0  and 
+\f2\b UIActivityViewController
+\f1\b0 .\
+As you\'92ve seen, it really is trivial to add social media to your apps, and it can make a huge difference to helping spread the word about your work once your apps are on the App Store. All being well, this project has also shown you how easy it is to go back to previous projects and improve them with only a little extra effort.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Review what you learned\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 Anyone can sit through a tutorial, but it takes actual work to remember what was taught. It\'92s my job to make sure you take as much from these tutorials as possible, so I\'92ve prepared a short review to help you check your learning.\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/review/hws/project-3-social-media"}}{\fldrslt \cf2 Click here to review what you learned in project 3}}.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Challenge\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 One of the best ways to learn is to write your own code as often as possible, so here are three ways you can apply your knowledge to make sure you fully understand what\'92s going on:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Try adding the image name to the list of items that are shared. The 
+\f2\b activityItems
+\f1\b0  parameter is an array, so you can add strings and other things freely. Note: Facebook won\'92t let you share text, but most other share options will.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Go back to project 1 and add a bar button item to the main view controller that recommends the app to other people.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Go back to project 2 and add a bar button item that shows their score when tapped.}
