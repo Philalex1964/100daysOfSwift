@@ -1,0 +1,430 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 HelveticaNeue-Italic;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red212\green212\blue212;
+\red222\green43\blue91;\red252\green55\blue54;\red235\green0\blue121;\red24\green24\blue28;\red246\green246\blue239;
+\red215\green165\blue255;\red72\green212\blue251;\red103\green225\blue255;\red248\green60\blue79;\red157\green101\blue255;
+\red224\green213\blue97;\red244\green0\blue95;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c86275\c86275\c86275;
+\cssrgb\c90588\c27059\c43137;\cssrgb\c100000\c31373\c27059;\cssrgb\c94902\c14118\c54902;\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;
+\cssrgb\c87843\c72157\c100000;\cssrgb\c32941\c86275\c98824;\cssrgb\c46275\c90196\c100000;\cssrgb\c98824\c33725\c38039;\cssrgb\c68235\c50588\c100000;
+\cssrgb\c90196\c85882\c45490;\cssrgb\c97647\c14902\c44706;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\qc\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+DAY 24\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Project 4, part one\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 Alexis Ohanian, the founder of Reddit, once said \'93to join in the industrial revolution, you needed to open a factory; in the Internet revolution, you need to open a laptop.\'94 Well, thanks to iOS we have something even easier: you just need to tap a button on your iPhone.\
+Apple gives us the ability to render any kind of web content just like Safari does, all powered through its open source WebKit framework. This is cross-platform, meaning that we can use it on macOS and iOS just the same, and it\'92s also blazingly fast as you\'92ll see in a moment.\
+In this project we\'92re going to build a simple web browser using WebKit. The whole thing takes only about 60 lines of code once you remove comments and empty lines, which shows you just how easy to use WebKit is.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you have three topics to work through, and you\'92ll meet 
+\f2 WKWebView
+\f0 , action sheets, and more.
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/4/1/setting-up"}}{\fldrslt \expnd0\expndtw0\kerning0
+Setting up}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/4/2/creating-a-simple-browser-with-wkwebview"}}{\fldrslt \expnd0\expndtw0\kerning0
+Creating a simple browser with WKWebView}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/4/3/choosing-a-website-uialertcontroller-action-sheets"}}{\fldrslt \expnd0\expndtw0\kerning0
+Choosing a website: UIAlertController action sheets}}\expnd0\expndtw0\kerning0
+\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Setting up\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 In this project you're going to build on your new knowledge of 
+\f2\b UIBarButtonItem
+\f1\b0  and 
+\f2\b UIAlertController
+\f1\b0  by producing a simple web browser app. Yes, I realize this is another easy project, but learning is as much about tackling new challenges as going over what you've already learned.\
+To sweeten the deal, I'm going to use this opportunity to teach you lots of new things: 
+\f2\b WKWebView
+\f1\b0  (Apple's extraordinary web widget), 
+\f2\b UIToolbar
+\f1\b0  (a toolbar component that holds 
+\f2\b UIBarButtonItem
+\f1\b0 s), 
+\f2\b UIProgressView
+\f1\b0 , delegation, key-value observing, and how to create your views in code. Plus, this is the last easy app project, so enjoy it while it lasts!\
+To get started, create a new Xcode project using the Single View App template, and call it Project4. Make sure Swift is selected for the language, then save the project on your desktop.\
+Open up Main.storyboard, select the view controller, and choose Editor > Embed In > Navigation Controller \'96 that's our storyboard finished. Nice!\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Creating a simple browser with WKWebView\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 In our first two projects we used Interface Builder for a lot of layout work, but here our layout will be so simple that we can do the entire thing in code. You see, before we were adding buttons and images to our view, but in this project the web view is going to take up all the space so it might as well 
+\f3\i be
+\f1\i0  the view controller's main view.\
+So far, we've been using the 
+\f2\b viewDidLoad()
+\f1\b0  method to configure our view once its layout has loaded. This time we need to override the actual loading of the view because we don't want that empty thing on the storyboard, we want our own code. It will still be placed inside the navigation controller, but the rest is up to us.\
+iOS has two different ways of working with web views, but the one we\'92ll be using for this project is called 
+\f2\b WKWebView
+\f1\b0 . It\'92s part of the WebKit framework rather than the UIKit framework, but we can import it by adding this line to the top of ViewController.swift:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 import
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf10 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WebKit\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 When we create the web view, we need to store it as a property so we can reference it later on. So, add this property to the class now:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  webView: \cf10 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKWebView\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 !\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Finally, add this new method 
+\f3\i before
+\f1\i0  
+\f2\b viewDidLoad()
+\f1\b0 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 loadView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    webView = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKWebView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    webView.navigationDelegate = 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    view = webView\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That code will trigger a compiler error for now, but we\'92ll fix it in a moment.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Note:
+\f1\b0  You don\'92t need to put 
+\f2\b loadView()
+\f1\b0  before 
+\f2\b viewDidLoad()
+\f1\b0 , and in fact you could put it anywhere between 
+\f2\b class ViewController: UIViewController \{
+\f1\b0  down to the last closing brace in the file. However, I encourage you to structure your methods in an organized way, and because 
+\f2\b loadView()
+\f1\b0  gets called before 
+\f2\b viewDidLoad()
+\f1\b0  it makes sense to position the code above it too.\
+Anyway, there are only three things we care about, because by now you should understand why we need to use the 
+\f2\b override
+\f1\b0  keyword. (Hint: it's because there's a default implementation, which is to load the layout from the storyboard.)\
+First, we create a new instance of Apple's 
+\f2\b WKWebView
+\f1\b0  web browser component and assign it to the 
+\f2\b webView
+\f1\b0  property. Third, we make our view (the root view of the view controller) that web view.\
+Yes, I missed out the second line, and that's because it introduces new concept: delegation. Delegation is what's called a 
+\f3\i programming pattern
+\f1\i0  \'96 a way of writing code \'96 and it's used extensively in iOS. And for good reason: it's easy to understand, easy to use, and extremely flexible.\
+A 
+\f3\i delegate
+\f1\i0  is one thing acting in place of another, effectively answering questions and responding to events on its behalf. In our example, we're using WKWebView: Apple's powerful, flexible and efficient web renderer. But as smart as 
+\f2\b WKWebView
+\f1\b0  is, it doesn't know (or care) how our application wants to behave, because that's our custom code.\
+The delegation solution is brilliant: we can tell 
+\f2\b WKWebView
+\f1\b0  that we want to be informed when something interesting happens. In our code, we're setting the web view's 
+\f2\b navigationDelegate
+\f1\b0  property to 
+\f2\b self
+\f1\b0 , which means "when any web page navigation happens, please tell me \'96 the current view controller.\'94\
+When you do this, two things happen:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+You must conform to the protocol. This is a fancy way of saying, "if you're telling me you can handle being my delegate, here are the methods you need to implement." In the case of 
+\f2\b navigationDelegate
+\f1\b0 , all these methods are optional, meaning that we don't 
+\f3\i need
+\f1\i0  to implement any methods.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Any methods you do implement will now be given control over the 
+\f2\b WKWebView
+\f1\b0 's behavior. Any you don't implement will use the default behavior of 
+\f2\b WKWebView
+\f1\b0 .\
+\pard\pardeftab720\partightenfactor0
+\cf2 Before we go any further, it\'92s time to fix the compilation error. When you set any delegate, you need to conform to the protocol that matches the delegate. Yes, all the 
+\f2\b navigationDelegate
+\f1\b0  protocol methods are optional, but Swift doesn't know that yet. All it knows is that we're promising we're a suitable delegate for the web view, and yet haven't implemented the protocol.\
+The fix for this is simple, but I'm going to hijack it to introduce something else at the same time, because this is an opportune moment. First, the fix: find this line:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : \cf10 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \'85and change it to this:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : \cf10 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf10 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKNavigationDelegate\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+That's the fix. But what I want to discuss is the way 
+\f2\b ViewController
+\f1\b0  now appears to inherit from two things, which isn\'92t possible in Swift. As you know, when we say 
+\f2\b class A: B
+\f1\b0  we\'92re defining a new class called 
+\f2\b A
+\f1\b0  that builds on the functionality provided by class 
+\f2\b B
+\f1\b0 . However, when we say 
+\f2\b class A: B, C
+\f1\b0  we\'92re saying it inherits from 
+\f2\b UIViewController
+\f1\b0  (the first item in the list), 
+\f3\i and
+\f1\i0  promises it implements the 
+\f2\b WKNavigationDelegate
+\f1\b0  protocol.\
+The order here really is important: the parent class (superclass) comes first, then all protocols implemented come next, all separated by commas. We're saying that we conform to only one protocol here (
+\f2\b WKNavigationDelegate
+\f1\b0 ) but you can specify as many as you need to.\
+So, the complete meaning of this line is "create a new subclass of 
+\f2\b UIViewController
+\f1\b0  called 
+\f2\b ViewController
+\f1\b0 , and tell the compiler that we promise we\'92re safe to use as a 
+\f2\b WKNavigationDelegate
+\f1\b0 ."\
+\
+This program is almost doing something useful, so before you run it let's add three more lines. Please place these in the 
+\f2\b viewDidLoad()
+\f1\b0  method, just after the 
+\f2\b super
+\f1\b0  call:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "https://www.hackingwithswift.com"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )!\
+webView.\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 load\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URLRequest\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (url: url))\
+webView.allowsBackForwardNavigationGestures = \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 The first line creates a new data type called 
+\f2\b URL
+\f1\b0 , which is Swift\'92s way of storing the location of files. You\'92re probably already familiar with URLs as being used online, like with {\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/"}}{\fldrslt https://www.hackingwithswift.com}}, but they are just as important for storing local filenames too \'96 they are flexible little things!\
+Even though we\'92re used to URLs being strings of text, Swift stores URLs in a specific 
+\f2\b URL
+\f1\b0  data type that adds a lot of extra functionality. So, that first line of code creates a new 
+\f2\b URL
+\f1\b0  out of the string \'93{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/"}}{\fldrslt https://www.hackingwithswift.com}}\'94. I'm using hackingwithswift.com as an example website, but please change it to something you like.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Warning: you need to ensure you use https:// for your websites, because iOS does not like apps sending or receiving data insecurely.
+\f1\b0  If this is something you want to override, I wrote an article specifically about App Transport Security: </example-code/system/how-to-handle-the-https-requirements-in-ios-9-with-app-transport-security>.\
+The second line does two things: it creates a new 
+\f2\b URLRequest
+\f1\b0  object from that URL, and gives it to our web view to load.\
+Now, this probably seems like pointless obfuscation from Apple, but 
+\f2\b WKWebViews
+\f1\b0  don't load websites from strings like www.hackingwithswift.com, or even from a 
+\f2\b URL
+\f1\b0  made out of those strings. You need to turn the string into a 
+\f2\b URL
+\f1\b0 , then put the 
+\f2\b URL
+\f1\b0  into an 
+\f2\b URLRequest
+\f1\b0 , and 
+\f2\b WKWebView
+\f1\b0  will load 
+\f3\i that
+\f1\i0 . Fortunately it's not hard to do!\
+
+\f0\b Warning:
+\f1\b0  Your URL must be complete, and valid, in order for this process to work. That means including the 
+\f0\b https://
+\f1\b0  part.\
+The third line enables a property on the web view that allows users to swipe from the left or right edge to move backward or forward in their web browsing. This is a feature from the Safari browser that many users rely on, so it's nice to keep it around.\
+It\'92s time to run the app, so please press Cmd+R to run your app, and you should be able to view your website. Step one done!\cf4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Choosing a website: UIAlertController action sheets\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 We're going to lock this app down so that it opens websites selected by the user. The first step to doing this is to give the user the option to choose from one of our selected websites, and that means adding a button to the navigation bar.\
+Somewhere in 
+\f2\b viewDidLoad()
+\f1\b0  (but always after it has called 
+\f2\b super.viewDidLoad()
+\f1\b0 ), add this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 navigationItem.rightBarButtonItem = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIBarButtonItem\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Open"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .plain, target: 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , action: #\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (openTapped))\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf4 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 We did exactly this in the previous project, except here we're using a custom title for our bar button rather than a system icon. It\'92s going to call the 
+\f2\b openTapped()
+\f1\b0  method when the button is tapped, so let's add that now. Put this method below 
+\f2\b viewDidLoad()
+\f1\b0 :\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf15 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 @objc\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 openTapped\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Open page\'85"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , message: \cf16 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , preferredStyle: .actionSheet)\
+    ac.\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "apple.com"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , handler: openPage))\
+    ac.\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "hackingwithswift.com"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , handler: openPage))\
+    ac.\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Cancel"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .cancel))\
+    ac.popoverPresentationController?.barButtonItem = 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .navigationItem.rightBarButtonItem\
+    \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 present\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (ac, animated: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf4 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 We haven\'92t written the 
+\f2\b openPage()
+\f1\b0  method yet, so ignore any warnings you see about it for the time being. Just like in project 3 we\'92re calling 
+\f2\b openTapped()
+\f1\b0  from Apple\'92s own Objective-C code in 
+\f2\b UIBarButtonItem
+\f1\b0 , so the method must be marked 
+\f2\b @objc
+\f1\b0 .\
+Just like in project 3, setting the alert controller\'92s 
+\f2\b popoverPresentationController?.barButtonItem
+\f1\b0  property is used only on iPad, and tells iOS where it should make the action sheet be anchored.\
+We used the 
+\f2\b UIAlertController
+\f1\b0  class in project 2, but here it's slightly different for three reason:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+We're using 
+\f2\b nil
+\f1\b0  for the message, because this alert doesn't need one.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+We're using the 
+\f2\b preferredStyle
+\f1\b0  of 
+\f2\b .actionSheet
+\f1\b0  because we're prompting the user for more information.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+We're adding a dedicated Cancel button using style 
+\f2\b .cancel
+\f1\b0 . It doesn\'92t provide a 
+\f2\b handler
+\f1\b0  parameter, which means iOS will just dismiss the alert controller if it\'92s tapped.\
+\pard\pardeftab720\partightenfactor0
+\cf2 Both our website buttons point to the 
+\f2\b openPage()
+\f1\b0  method, which, again, doesn't exist yet. This is going to be very similar to how we loaded the web page before, but now you will at least see why the handler method of 
+\f2\b UIAlertAction
+\f1\b0  takes a parameter telling you which action was selected!\
+Add this method directly beneath the 
+\f2\b openTapped()
+\f1\b0  method you just made:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 openPage\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (action: \cf10 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "https://"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  + action.title!)!\
+    webView.\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 load\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URLRequest\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (url: url))\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf4 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 This method takes one parameter, which is the 
+\f2\b UIAlertAction
+\f1\b0  object that was selected by the user. Obviously it won't be called if Cancel was tapped, because that had a 
+\f2\b nil
+\f1\b0  handler rather than 
+\f2\b openPage
+\f1\b0 .\
+What the method does is use the 
+\f2\b title
+\f1\b0  property of the action (apple.com, hackingwithswift.com), put "https://" in front of it to satisfy App Transport Security, then construct a 
+\f2\b URL
+\f1\b0  out of it. It then wraps that inside an 
+\f2\b URLRequest
+\f1\b0 , and gives it to the web view to load. All you need to do is make sure the websites in the 
+\f2\b UIAlertController
+\f1\b0  are correct, and this method will load anything.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 You can go ahead and test the app now, but there's one small change we can add to make the whole experience more pleasant: setting the title in the navigation bar. Now, we are the web view's navigation delegate, which means we will be told when any interesting navigation happens, such as when the web page has finished loading. We're going to use this to set the navigation bar title.\
+As soon as we told Swift that our 
+\f2\b ViewController
+\f1\b0  class conformed to the 
+\f2\b WKNavigationDelegate
+\f1\b0  protocol, Xcode updated its code completion system to support all the 
+\f2\b WKNavigationDelegate
+\f1\b0  methods that can be called. As a result, if you go below the 
+\f2\b openPage()
+\f1\b0  method and start typing "web" you'll see a list of all the 
+\f2\b WKNavigationDelegate
+\f1\b0  methods we can use.\
+Scroll through the list of options until you see 
+\f2\b didFinish
+\f1\b0  and press return to have Xcode fill in the method for you. Now modify it to this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 webView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  webView: \cf10 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKWebView\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , didFinish navigation: \cf10 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKNavigation\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 !) \{\
+    title = webView.title\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 All this method does is update our view controller's 
+\f2\b title
+\f1\b0  property to be the title of the web view, which will automatically be set to the page title of the web page that was most recently loaded.
+\f0\b\fs98 \cf4 \
+\
+\
+\
+}
