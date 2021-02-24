@@ -14,6 +14,8 @@
 		2CBCEAA525E54C41004CCE91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CBCEAA425E54C41004CCE91 /* Assets.xcassets */; };
 		2CBCEAA825E54C41004CCE91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CBCEAA625E54C41004CCE91 /* LaunchScreen.storyboard */; };
 		2CBCEAB025E54CCB004CCE91 /* Day24.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBCEAAF25E54CCB004CCE91 /* Day24.rtf */; };
+		2CBCEAB225E663DD004CCE91 /* Day25.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBCEAB125E663DB004CCE91 /* Day25.rtf */; };
+		2CBCEAB425E681B8004CCE91 /* Day26.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBCEAB325E681B7004CCE91 /* Day26.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		2CBCEAA725E54C41004CCE91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CBCEAA925E54C41004CCE91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2CBCEAAF25E54CCB004CCE91 /* Day24.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day24.rtf; sourceTree = "<group>"; };
+		2CBCEAB125E663DB004CCE91 /* Day25.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day25.rtf; sourceTree = "<group>"; };
+		2CBCEAB325E681B7004CCE91 /* Day26.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day26.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				2CBCEAA625E54C41004CCE91 /* LaunchScreen.storyboard */,
 				2CBCEAA925E54C41004CCE91 /* Info.plist */,
 				2CBCEAAF25E54CCB004CCE91 /* Day24.rtf */,
+				2CBCEAB125E663DB004CCE91 /* Day25.rtf */,
+				2CBCEAB325E681B7004CCE91 /* Day26.rtf */,
 			);
 			path = Project4;
 			sourceTree = "<group>";
@@ -128,10 +134,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBCEAB225E663DD004CCE91 /* Day25.rtf in Resources */,
 				2CBCEAA825E54C41004CCE91 /* LaunchScreen.storyboard in Resources */,
 				2CBCEAA525E54C41004CCE91 /* Assets.xcassets in Resources */,
 				2CBCEAA325E54C0D004CCE91 /* Main.storyboard in Resources */,
 				2CBCEAB025E54CCB004CCE91 /* Day24.rtf in Resources */,
+				2CBCEAB425E681B8004CCE91 /* Day26.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
