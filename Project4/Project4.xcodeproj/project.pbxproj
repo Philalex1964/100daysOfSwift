@@ -16,6 +16,7 @@
 		2CBCEAB025E54CCB004CCE91 /* Day24.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBCEAAF25E54CCB004CCE91 /* Day24.rtf */; };
 		2CBCEAB225E663DD004CCE91 /* Day25.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBCEAB125E663DB004CCE91 /* Day25.rtf */; };
 		2CBCEAB425E681B8004CCE91 /* Day26.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CBCEAB325E681B7004CCE91 /* Day26.rtf */; };
+		2CF25F3525E7A9480018A30A /* TableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF25F3425E7A9480018A30A /* TableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		2CBCEAAF25E54CCB004CCE91 /* Day24.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day24.rtf; sourceTree = "<group>"; };
 		2CBCEAB125E663DB004CCE91 /* Day25.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day25.rtf; sourceTree = "<group>"; };
 		2CBCEAB325E681B7004CCE91 /* Day26.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day26.rtf; sourceTree = "<group>"; };
+		2CF25F3425E7A9480018A30A /* TableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				2CBCEA9B25E54C0C004CCE91 /* AppDelegate.swift */,
 				2CBCEA9D25E54C0D004CCE91 /* SceneDelegate.swift */,
 				2CBCEA9F25E54C0D004CCE91 /* ViewController.swift */,
+				2CF25F3425E7A9480018A30A /* TableTableViewController.swift */,
 				2CBCEAA125E54C0D004CCE91 /* Main.storyboard */,
 				2CBCEAA425E54C41004CCE91 /* Assets.xcassets */,
 				2CBCEAA625E54C41004CCE91 /* LaunchScreen.storyboard */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF25F3525E7A9480018A30A /* TableTableViewController.swift in Sources */,
 				2CBCEAA025E54C0D004CCE91 /* ViewController.swift in Sources */,
 				2CBCEA9C25E54C0C004CCE91 /* AppDelegate.swift in Sources */,
 				2CBCEA9E25E54C0D004CCE91 /* SceneDelegate.swift in Sources */,
