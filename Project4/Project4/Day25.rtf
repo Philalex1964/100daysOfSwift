@@ -1,0 +1,521 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fnil\fcharset0 HelveticaNeue-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red212\green212\blue212;
+\red222\green43\blue91;\red252\green55\blue54;\red235\green0\blue121;\red24\green24\blue28;\red246\green246\blue239;
+\red72\green212\blue251;\red244\green0\blue95;\red157\green101\blue255;\red215\green165\blue255;\red248\green60\blue79;
+}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c86275\c86275\c86275;
+\cssrgb\c90588\c27059\c43137;\cssrgb\c100000\c31373\c27059;\cssrgb\c94902\c14118\c54902;\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;
+\cssrgb\c32941\c86275\c98824;\cssrgb\c97647\c14902\c44706;\cssrgb\c68235\c50588\c100000;\cssrgb\c87843\c72157\c100000;\cssrgb\c98824\c33725\c38039;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid301\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\qc\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+DAY 25\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Project 4, part two\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 If there\'92s one Martin Fowler quote that I love, it\'92s this: \'93I'm not a great programmer; I'm just a good programmer with great habits.\'94 Today we need to add some more functionality to our project, but we\'92re faced with a choice: do we take the easy route or take the harder route?\
+As you\'92ll see, sometimes the \'93easy\'94 route ends up being hard in the long term, because we need to maintain that code for a long time. The harder route takes a little rewriting of our code, but it\'92s one of many steps you\'92ll take towards having better coding habits\'a0\'96\'a0an important skill to have!\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you have two topics to work through, and you\'92ll meet 
+\f2 UIProgressView
+\f0 , key-value observing, and more.
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/4/4/monitoring-page-loads-uitoolbar-and-uiprogressview"}}{\fldrslt \expnd0\expndtw0\kerning0
+Monitoring page loads: UIToolbar and UIProgressView}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/4/5/refactoring-for-the-win"}}{\fldrslt \expnd0\expndtw0\kerning0
+Refactoring for the win}}\expnd0\expndtw0\kerning0
+\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Monitoring page loads: UIToolbar and UIProgressView
+\f1\b0\fs35\fsmilli17600 \
+\pard\pardeftab720\partightenfactor0
+\cf2 Now is a great time to meet two new 
+\f2\b UIView
+\f1\b0  subclasses: 
+\f2\b UIToolbar
+\f1\b0  and 
+\f2\b UIProgressView
+\f1\b0 . 
+\f2\b UIToolbar
+\f1\b0  holds and shows a collection of 
+\f2\b UIBarButtonItem
+\f1\b0  objects that the user can tap on. We already saw how each view controller has a 
+\f2\b rightBarButton
+\f1\b0  item, so a 
+\f2\b UIToolbar
+\f1\b0  is like having a whole bar of these items. 
+\f2\b UIProgressView
+\f1\b0  is a colored bar that shows how far a task is through its work, sometimes called a "progress bar."\
+The way we're going to use 
+\f2\b UIToolbar
+\f1\b0  is quite simple: all view controllers automatically come with a 
+\f2\b toolbarItems
+\f1\b0  array that automatically gets read in when the view controller is active inside a 
+\f2\b UINavigationController
+\f1\b0 .\
+This is very similar to the way 
+\f2\b rightBarButtonItem
+\f1\b0  is shown only when the view controller is active. All we need to do is set the array, then tell our navigation controller to show its toolbar, and it will do the rest of the work for us.\
+We're going to create two 
+\f2\b UIBarButtonItems
+\f1\b0  at first, although one is special because it's a flexible space. This is a unique 
+\f2\b UIBarButtonItem
+\f1\b0  type that acts like a spring, pushing other buttons to one side until all the space is used.\
+In 
+\f2\b viewDidLoad()
+\f1\b0 , put this new code directly below where we set the 
+\f2\b rightBarButtonItem
+\f1\b0 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  spacer = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIBarButtonItem\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (barButtonSystemItem: .flexibleSpace, target: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , action: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  refresh = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIBarButtonItem\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (barButtonSystemItem: .refresh, target: webView, action: #\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (webView.reload))\
+\
+toolbarItems = [spacer, refresh]\
+navigationController?.isToolbarHidden = \cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\tx560\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 The first line is new, or at least part of it is: we're creating a new bar button item using the special system item type 
+\f2\b .flexibleSpace
+\f1\b0 , which creates a flexible space. It doesn't need a target or action because it can't be tapped. The second line you've seen before, although now it's calling the 
+\f2\b reload()
+\f1\b0  method on the web view rather than using a method of our own.\
+The last two lines are new: the first creates an array containing the flexible space and the refresh button, then sets it to be our view controller's 
+\f2\b toolbarItems
+\f1\b0  array. The second sets the navigation controller's 
+\f2\b isToolbarHidden
+\f1\b0  property to be false, so the toolbar will be shown \'96 and its items will be loaded from our current view.\
+That code will compile and run, and you'll see the refresh button neatly aligned to the right \'96 that's the effect of the flexible space automatically taking up as much room as it can on the left.\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 The next step is going to be to add a 
+\f2\b UIProgressView
+\f1\b0  to our toolbar, which will show how far the page is through loading. However, this requires two new pieces of information:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+You can't just add random 
+\f2\b UIView
+\f1\b0  subclasses to a 
+\f2\b UIToolbar
+\f1\b0 , or to the 
+\f2\b rightBarButtonItem
+\f1\b0  property. Instead, you need to wrap them in a special 
+\f2\b UIBarButtonItem
+\f1\b0 , and use that instead.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Although 
+\f2\b WKWebView
+\f1\b0  tells us how much of the page has loaded using its 
+\f2\b estimatedProgress
+\f1\b0  property, the 
+\f2\b WKNavigationDelegate
+\f1\b0  system doesn't tell us when this value has changed. So, we're going to ask iOS to tell us using a powerful technique called key-value observing, or KVO.\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 First, let's create the progress view and place it inside the bar button item. Begin by declaring the property at the top of the 
+\f2\b ViewController
+\f1\b0  class next to the existing 
+\f2\b WKWebView
+\f1\b0  property:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  progressView: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIProgressView\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 !\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Now place this code directly before the 
+\f2\b let spacer =
+\f1\b0  line in viewDidLoad():\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 progressView = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIProgressView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (progressViewStyle: .
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+progressView.\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  progressButton = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIBarButtonItem\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (customView: progressView)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 All three of those lines are new, so let's go over them:\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 All three of those lines are new, so let's go over them:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+The first line creates a new 
+\f2\b UIProgressView
+\f1\b0  instance, giving it the default style. There is an alternative style called 
+\f2\b .bar
+\f1\b0 , which doesn't draw an unfilled line to show the extent of the progress view, but the default style looks best here.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+The second line tells the progress view to set its layout size so that it fits its contents fully.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+The last line creates a new 
+\f2\b UIBarButtonItem
+\f1\b0  using the 
+\f2\b customView
+\f1\b0  parameter, which is where we wrap up our 
+\f2\b UIProgressView
+\f1\b0  in a 
+\f2\b UIBarButtonItem
+\f1\b0  so that it can go into our toolbar.\
+\pard\pardeftab720\partightenfactor0
+\cf2 With the new 
+\f2\b progressButton
+\f1\b0  item created, we can put it into our toolbar items anywhere we want it. The existing spacer will automatically make itself smaller to give space to the progress button, so I'm going to modify my 
+\f2\b toolbarItems
+\f1\b0  array to this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 toolbarItems = [progressButton, spacer, refresh]\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That is, progress view first, then a space in the center, then the refresh button on the right.\
+\
+If you run the app now, you'll just see a thin gray line for our progress view \'96 that's because it's default value is 0, so there's nothing colored in. Ideally we want to set this to match our webView's 
+\f2\b estimatedProgress
+\f1\b0  value, which is a number from 0 to 1, but WKNavigationDelegate doesn't tell us when this value has changed.\
+Apple's solution to this is huge. Apple's solution is powerful. And, best of all, Apple's solution is almost everywhere in its toolkits, so once you learn how it works you can apply it elsewhere. It's called key-value observing (KVO), and it effectively lets you say, "please tell me when the property X of object Y gets changed by anyone at any time."\
+We're going to use KVO to watch the 
+\f2\b estimatedProgress
+\f1\b0  property, and I hope you'll agree that it's useful. First, we add ourselves as an observer of the property on the web view by adding this to 
+\f2\b viewDidLoad()
+\f1\b0 :\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 webView.\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addObserver\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , forKeyPath: #\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 keyPath\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKWebView\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .estimatedProgress), options: .
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 new
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , context: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+The 
+\f2\b addObserver()
+\f1\b0  method takes four parameters: who the observer is (we're the observer, so we use 
+\f2\b self
+\f1\b0 ), what property we want to observe (we want the 
+\f2\b estimatedProgress
+\f1\b0  property of 
+\f2\b WKWebView
+\f1\b0 ), which value we want (we want the value that was just set, so we want the new one), and a context value.\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf2 forKeyPath
+\f1\b0  and 
+\f2\b context
+\f1\b0  bear a little more explanation. 
+\f2\b forKeyPath
+\f1\b0  isn't named 
+\f2\b forProperty
+\f1\b0  because it's not just about entering a property name. You can actually specify a path: one property inside another, inside another, and so on. More advanced key paths can even add functionality, such as averaging all elements in an array! Swift has a special keyword, 
+\f2\b #keyPath
+\f1\b0 , which works like the 
+\f2\b #selector
+\f1\b0  keyword you saw previously: it allows the compiler to check that your code is correct \'96\'a0that the 
+\f2\b WKWebView
+\f1\b0  class actually has an 
+\f2\b estimatedProgress
+\f1\b0  property.\
+
+\f2\b context
+\f1\b0  is easier: if you provide a unique value, that same context value gets sent back to you when you get your notification that the value has changed. This allows you to check the context to make sure it was your observer that was called. There are some corner cases where specifying (and checking) a context is required to avoid bugs, but you won't reach them during any of this series.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Warning:
+\f1\b0  in more complex applications, all calls to 
+\f2\b addObserver()
+\f1\b0  should be matched with a call to 
+\f2\b removeObserver()
+\f1\b0  when you're finished observing \'96 for example, when you're done with the view controller.\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 Once you have registered as an observer using KVO, you 
+\f4\i must
+\f1\i0  implement a method called 
+\f2\b observeValue()
+\f1\b0 . This tells you when an observed value has changed, so add this method now:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 observeValue\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (forKeyPath keyPath: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?, of object: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Any\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?, change: [\cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSKeyValueChangeKey\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  : \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Any\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]?, context: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UnsafeMutableRawPointer\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?) \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  keyPath == \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "estimatedProgress"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        progressView.progress = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Float\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (webView.estimatedProgress)\
+    \}\
+\}\
+\pard\tx560\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 As you can see it's telling us which key path was changed, and it also sends us back the context we registered earlier so you can check whether this callback is for you or not.\
+In this project, all we care about is whether the 
+\f2\b keyPath
+\f1\b0  parameter is set to 
+\f2\b estimatedProgress
+\f1\b0  \'96 that is, if the 
+\f2\b estimatedProgress
+\f1\b0  value of the web view has changed. And if it has, we set the 
+\f2\b progress
+\f1\b0  property of our progress view to the new 
+\f2\b estimatedProgress
+\f1\b0  value.\
+Minor note: 
+\f2\b estimatedProgress
+\f1\b0  is a 
+\f2\b Double
+\f1\b0 , which as you should remember is one way of representing decimal numbers like 0.5 or 0.55555. Unhelpfully, 
+\f2\b UIProgressView
+\f1\b0 's 
+\f2\b progress
+\f1\b0  property is a 
+\f2\b Float
+\f1\b0 , which is another (lower-precision) way of representing decimal numbers. Swift doesn't let you put a 
+\f2\b Double
+\f1\b0  into a 
+\f2\b Float
+\f1\b0 , so we need to create a new 
+\f2\b Float
+\f1\b0  from the 
+\f2\b Double
+\f1\b0 .\
+If you run your project now, you'll see the progress view fills up with blue as the page loads.\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf6 \ul \ulc6 \
+\pard\tx560\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 \ulnone \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Refactoring for the win
+\f1\b0\fs35\fsmilli17600 \
+\pard\pardeftab720\partightenfactor0
+\cf4 O\cf2 ur app has a fatal flaw, and there are two ways to fix it: double up on code, or refactor. Cunningly, the first option is nearly always the easiest, and yet counter-intuitively also the hardest.\
+The flaw is this: we let users select from a list of websites, but once they are on that website they can get pretty much anywhere else they want just by following links. Wouldn't it be nice if we could check every link that was followed so that we can make sure it's on our safe list?\
+One solution \'96 doubling up on code \'96 would have us writing the list of accessible websites twice: once in the 
+\f2\b UIAlertController
+\f1\b0  and once when we're checking the link. This is extremely easy to write, but it can be a trap: you now have two lists of websites, and it's down to you to keep them both up to date. And if you find a bug in your duplicated code, will you remember to fix it in the other place too?\
+The second solution is called refactoring, and it's effectively a rewrite of the code. The end result should do the same thing, though. The purpose of the rewrite is to make it more efficient, make it easier to read, reduce its complexity, and to make it more flexible. This last use is what we'll be shooting for: we want to refactor our code so there's a shared array of allowed websites.\
+Up where we declared our two properties 
+\f2\b webView
+\f1\b0  and 
+\f2\b progressView
+\f1\b0 , add this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  websites = [\cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "apple.com"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "hackingwithswift.com"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That's an array containing the websites we want the user to be able to visit.\
+With that array, we can modify the web view's initial web page so that it's not hard-coded. In 
+\f2\b viewDidLoad()
+\f1\b0 , change the initial web page to this:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "https://"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  + websites[\cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ])!\
+webView.\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 load\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URLRequest\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (url: url))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 So far, so easy. The next change is to make our 
+\f2\b UIAlertController
+\f1\b0  use the websites for its list of 
+\f2\b UIAlertAction
+\f1\b0 s. Go down to the 
+\f2\b openTapped()
+\f1\b0  method and replace these two lines:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs36 \cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ac.\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "apple.com"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , handler: openPage))\
+ac.\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "hackingwithswift.com"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , handler: openPage))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \'85with this loop:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  website 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  websites \{\
+    ac.\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: website, style: .
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , handler: openPage))\
+\}\
+\pard\tx560\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 That will add one 
+\f2\b UIAlertAction
+\f1\b0  object for each item in our array. Again, not too complicated.\
+\
+The final change is something new, and it belongs to the 
+\f2\b WKNavigationDelegate
+\f1\b0  protocol. If you find space for a new method and start typing "web" you'll see the list of 
+\f2\b WKWebView
+\f1\b0 -related code completion options. Look for the one called 
+\f2\b decidePolicyFor
+\f1\b0  and let Xcode fill in the method for you.\
+This delegate callback allows us to decide whether we want to allow navigation to happen or not every time something happens. We can check which part of the page started the navigation, we can see whether it was triggered by a link being clicked or a form being submitted, or, in our case, we can check the URL to see whether we like it.\
+Now that we've implemented this method, it expects a response: should we load the page or should we not? When this method is called, you get passed in a parameter called 
+\f2\b decisionHandler
+\f1\b0 . This actually holds a function, which means if you "call" the parameter, you're actually calling the function.\
+In project 2 I talked about closures: chunks of code that you can pass into a function like a variable and have executed at a later date. This 
+\f2\b decisionHandler
+\f1\b0  is also a closure, except it's the other way around \'96 rather than giving someone else a chunk of code to execute, you're being given it and are required to execute it.\
+And make no mistake: you 
+\f4\i are required
+\f1\i0  to do something with that 
+\f2\b decisionHandler
+\f1\b0  closure. That might make sound an extremely complicated way of returning a value from a method, and that's true \'96 but it's also underestimating the power a little! Having this 
+\f2\b decisionHandler
+\f1\b0  variable/function means you can show some user interface to the user "Do you really want to load this page?" and call the closure when you have an answer.\
+You might think that already sounds complicated, but I\'92m afraid there\'92s one more thing that might hurt your head. Because you might call the 
+\f2\b decisionHandler
+\f1\b0  closure straight away, or you might call it later on (perhaps after asking the user what they want to do), Swift considers it to be an 
+\f4\i escaping
+\f1\i0  closure. That is, the closure has the potential to escape the current method, and be used at a later date. We won\'92t be using it that way, but it has the 
+\f4\i potential
+\f1\i0  and that\'92s what matters.\
+Because of this, Swift wants us to add the special keyword 
+\f2\b @escaping
+\f1\b0  when specifying this method, so we\'92re acknowledging that the closure might be used later. You don\'92t need to do anything else \'96\'a0just add that one keyword, as you\'92ll see in the code below.\
+So, we need to evaluate the URL to see whether it's in our safe list, then call the 
+\f2\b decisionHandler
+\f1\b0  with a negative or positive answer. Here's the code for the method:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 webView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  webView: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKWebView\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , decidePolicyFor navigationAction: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKNavigationAction\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , decisionHandler: @escaping (\cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKNavigationActionPolicy\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) -> \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = navigationAction.request.url\
+\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  host = url?.host \{\
+        
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  website 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  websites \{\
+            
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  host.\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 contains\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (website) \{\
+                \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 decisionHandler\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (.allow)\
+                
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f3\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+            \}\
+        \}\
+    \}\
+\
+    \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 decisionHandler\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (.cancel)\
+\}\
+\pard\tx560\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+\cf2 There are some easy bits, but they are outweighed by the hard bits so let's go through every line in detail to make sure:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+First, we set the constant 
+\f2\b url
+\f1\b0  to be equal to the 
+\f2\b URL
+\f1\b0  of the navigation. This is just to make the code clearer.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Second, we use 
+\f2\b if let
+\f1\b0  syntax to unwrap the value of the optional 
+\f2\b url.host
+\f1\b0 . Remember I said that 
+\f2\b URL
+\f1\b0  does a lot of work for you in parsing URLs properly? Well, here's a good example: this line says, "if there is a host for this URL, pull it out" \'96 and by "host" it means "website domain" like apple.com. Note: we need to unwrap this carefully because not all URLs have hosts.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Third, we loop through all sites in our safe list, placing the name of the site in the 
+\f2\b website
+\f1\b0  variable.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	4	}\expnd0\expndtw0\kerning0
+Fourth, we use the 
+\f2\b contains()
+\f1\b0  String method to see whether each safe website exists somewhere in the host name.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	5	}\expnd0\expndtw0\kerning0
+Fifth, if the website was found then we call the decision handler with a positive response -\'a0we want to allow loading.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	6	}\expnd0\expndtw0\kerning0
+Sixth, if the website was found, after calling the 
+\f2\b decisionHandler
+\f1\b0  we use the 
+\f2\b return
+\f1\b0  statement. This means "exit the method now."\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	7	}\expnd0\expndtw0\kerning0
+Last, if there is no host set, or if we've gone through all the loop and found nothing, we call the decision handler with a negative response: cancel loading.\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 You give the 
+\f2\b contains()
+\f1\b0  method a string to check, and it will return true if it is found inside whichever string you used with 
+\f2\b contains()
+\f1\b0 . You've already met the 
+\f2\b hasPrefix()
+\f1\b0  method in project 1, but 
+\f2\b hasPrefix()
+\f1\b0  isn't suitable here because our safe site name could appear anywhere in the URL. For example, slashdot.org redirects to m.slashdot.org for mobile devices, and 
+\f2\b hasPrefix()
+\f1\b0  would fail that test.\
+The 
+\f2\b return
+\f1\b0  statement is new, but it's one you'll be using a lot from now on. It exits the method immediately, executing no further code. If you said your method returns a value, you'll use the 
+\f2\b return
+\f1\b0  statement to return that value.\
+Your project is complete: press Cmd+R to run the finished app, and enjoy!\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+}
