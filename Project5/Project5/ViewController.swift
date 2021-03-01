@@ -63,6 +63,9 @@ class ViewController: UITableViewController {
     func submit(_ answer: String) {
         let lowerAnswer = answer.lowercased()
         
+        let errorTitle: String
+        let errorMessage: String
+        
         if isPossible(word: lowerAnswer) {
             if isOriginal(word: lowerAnswer) {
                 if isReal(word: lowerAnswer) {
@@ -73,15 +76,19 @@ class ViewController: UITableViewController {
                     
                     return
                 } else {
-                    showErrorMessage(title: "Word not recognised", message: "You can't just make them up, you know!")
+                    errorTitle = "Word not recognised"
+                    errorMessage = "You can't just make them up, you know!"
                 }
             } else {
-                showErrorMessage(title: "Word used already", message: "Be more original!")
+                errorTitle = "Word used already"
+                errorMessage = "Be more original!"
             }
         } else {
             guard let title = title?.lowercased() else { return }
-            showErrorMessage(title: "Word not possible", message: "You can't spell that word from \(title)")
+            errorTitle = "Word not possible"
+            errorMessage = "You can't spell that word from \(title)"
         }
+        showErrorMessage(title: errorTitle, message: errorMessage)
     }
     
     func isPossible(word: String) -> Bool {
