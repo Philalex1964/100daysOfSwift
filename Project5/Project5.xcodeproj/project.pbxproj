@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CCC43C325ED1331002B8B26 /* Day29.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CCC43C225ED1331002B8B26 /* Day29.rtf */; };
 		2CF25F6325E7D2E50018A30A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF25F6225E7D2E50018A30A /* AppDelegate.swift */; };
 		2CF25F6525E7D2E50018A30A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF25F6425E7D2E50018A30A /* SceneDelegate.swift */; };
 		2CF25F6725E7D2E60018A30A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF25F6625E7D2E60018A30A /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CCC43C225ED1331002B8B26 /* Day29.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day29.rtf; sourceTree = "<group>"; };
 		2CF25F5F25E7D2E50018A30A /* Project5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF25F6225E7D2E50018A30A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CF25F6425E7D2E50018A30A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				2CF25F7C25E7FDD80018A30A /* start.txt */,
 				2CF25F7625E7D6B90018A30A /* Day27.rtf */,
 				2CF25F7E25E9309F0018A30A /* Day28.rtf */,
+				2CCC43C225ED1331002B8B26 /* Day29.rtf */,
 				2CF25F7A25E7D7720018A30A /* ClosureArticle.rtf */,
 			);
 			path = Project5;
@@ -144,6 +147,7 @@
 				2CF25F7B25E7D7720018A30A /* ClosureArticle.rtf in Resources */,
 				2CF25F7D25E7FDD80018A30A /* start.txt in Resources */,
 				2CF25F6F25E7D33F0018A30A /* LaunchScreen.storyboard in Resources */,
+				2CCC43C325ED1331002B8B26 /* Day29.rtf in Resources */,
 				2CF25F6C25E7D33F0018A30A /* Assets.xcassets in Resources */,
 				2CF25F7725E7D6B90018A30A /* Day27.rtf in Resources */,
 				2CF25F6A25E7D2E60018A30A /* Main.storyboard in Resources */,
