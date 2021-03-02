@@ -1,0 +1,1003 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue-Medium;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\fnil\fcharset0 HelveticaNeue-Italic;\f4\fnil\fcharset0 Menlo-Bold;\f5\fnil\fcharset0 Menlo-Regular;
+\f6\fswiss\fcharset0 Helvetica-Oblique;\f7\fswiss\fcharset0 Helvetica;\f8\fswiss\fcharset0 Helvetica-Bold;
+\f9\fswiss\fcharset0 Helvetica-BoldOblique;\f10\fnil\fcharset77 ZapfDingbatsITC;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red235\green0\blue121;
+\red24\green24\blue28;\red246\green246\blue239;\red103\green225\blue255;\red72\green212\blue251;\red248\green60\blue79;
+\red222\green43\blue91;\red215\green165\blue255;\red74\green200\blue164;\red157\green101\blue255;\red31\green31\blue31;
+\red255\green255\blue255;\red239\green239\blue239;\red21\green23\blue26;\red203\green35\blue57;\red27\green31\blue34;
+\red91\green40\blue180;\red7\green68\blue184;\red6\green33\blue79;\red87\green96\blue106;\red83\green83\blue83;
+\red245\green245\blue245;\red70\green77\blue86;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c94902\c14118\c54902;
+\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;\cssrgb\c46275\c90196\c100000;\cssrgb\c32941\c86275\c98824;\cssrgb\c98824\c33725\c38039;
+\cssrgb\c90588\c27059\c43137;\cssrgb\c87843\c72157\c100000;\cssrgb\c33725\c81569\c70196;\cssrgb\c68235\c50588\c100000;\cssrgb\c16078\c16078\c16078;
+\cssrgb\c100000\c100000\c100000;\cssrgb\c94902\c94902\c94902;\cssrgb\c10588\c12157\c13725\c30196;\cssrgb\c84314\c22745\c28627;\cssrgb\c14118\c16078\c18039;
+\cssrgb\c43529\c25882\c75686;\cssrgb\c0\c36078\c77255;\cssrgb\c1176\c18431\c38431;\cssrgb\c41569\c45098\c49020;\cssrgb\c40000\c40000\c40000;
+\cssrgb\c96863\c96863\c96863;\cssrgb\c34510\c37647\c41176;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+Capture lists in Swift: what\'92s the difference between weak, strong, and unowned references?\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs40 \cf2 Weak vs strong vs unowned\'a0\'96 know the difference in closures\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 Capture lists come before a closure\'92s parameter list in your code, and capture values from the environment as either strong, weak, or unowned. We use them a 
+\f3\i lot
+\f2\i0 , mainly to avoid strong reference cycles \'96\'a0aka retain cycles.\
+Deciding which to use isn\'92t easy when you\'92re learning, so you can spend time trying to figure out strong vs weak, or weak vs unowned, but as you progress with your learning you\'92ll start to realize there\'92s often only one right choice.\
+First, let\'92s take a look at the problem. First, here\'92s a simple class:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+        \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Shake it off!"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\}
+\f2\fs35\fsmilli17600 \cf3 \cb1 \shad0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 Second, here\'92s a function that creates an instance of 
+\f4\b Singer
+\f2\b0 , creates a closure that uses the singer\'92s 
+\f4\b playSong()
+\f2\b0  method, and returns that closure for us to use elsewhere:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sing\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () -> () -> \cf11 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing = \{\
+        taylor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+        
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing\
+\}
+\f2\fs35\fsmilli17600 \cf3 \cb1 \shad0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 Finally, we can call 
+\f4\b sing()
+\f2\b0  to get back a function we can call wherever we want to have 
+\f4\b playSong()
+\f2\b0  printed:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singFunction = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sing\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 singFunction\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 That will print \'93Shake it off!\'94 thanks to the call to 
+\f4\b singFunction()
+\f2\b0 .\
+\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs51 \cf2 Strong capturing\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 Unless you ask for something special, Swift uses 
+\f3\i strong capturing
+\f2\i0 . This means the closure will capture any external values that are used inside the closure, and make sure they never get destroyed.\
+Look again at our 
+\f4\b sing()
+\f2\b0  function:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sing\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () -> () -> \cf11 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing = \{\
+        taylor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+        
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 That 
+\f4\b taylor
+\f2\b0  constant is made inside the 
+\f4\b sing()
+\f2\b0  function, so normally it would be destroyed when the function ends. However, it gets used inside the closure, which means Swift will automatically make sure it stays alive for as long as the closure exists somewhere, even after the function has returned.\
+This is strong capturing in action. If Swift allowed 
+\f4\b taylor
+\f2\b0  to be destroyed, then the closure would no longer be safe to call \'96\'a0its 
+\f4\b taylor.playSong()
+\f2\b0  method wouldn\'92t be valid any more.\
+\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs51 \cf2 Weak capturing\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 Swift lets us specify a 
+\f3\i capture list
+\f2\i0  to determine how values used inside the closure should be captured. The most common alternative to strong capturing is called weak capturing, and it changes two things:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Weakly captured values aren\'92t kept alive by the closure, so they might be destroyed and be set to 
+\f4\b nil
+\f2\b0 .\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+As a result of 1, weakly captured values are always 
+\f3\i optional
+\f2\i0  in Swift. This stops you assuming they are present when in fact they might not be.\
+\pard\pardeftab720\partightenfactor0
+\cf2 We can modify our example to use weak capturing and you\'92ll see an immediate difference:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sing\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () -> () -> \cf11 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing = \{ [
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor] 
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        taylor?.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+        
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 That 
+\f4\b [weak taylor]
+\f2\b0  part is our capture list, which is a specific part of closures where we give specific instructions as to how values should be captured. Here we\'92re saying that 
+\f4\b taylor
+\f2\b0  should be captured weakly, which is why we need to use 
+\f4\b taylor?.playSong()
+\f2\b0  \'96\'a0it\'92s an optional now, because it could be set to nil at any time.\
+If you run the code now you\'92ll see that calling 
+\f4\b singFunction()
+\f2\b0  doesn\'92t print anything any more. The reason is that 
+\f4\b taylor
+\f2\b0  exists only inside 
+\f4\b sing()
+\f2\b0 , because the closure it returns doesn\'92t keep a strong hold of it.\
+To see this behavior in action, try changing 
+\f4\b sing()
+\f2\b0  to this:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sing\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () -> () -> \cf11 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing = \{ [
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor] 
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        taylor!.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+        
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 That force unwraps 
+\f4\b taylor
+\f2\b0  inside the closure, which will cause your code to crash because 
+\f4\b taylor
+\f2\b0  becomes nil.\
+\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs51 \cf2 Unowned capturing\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 An alternative to 
+\f4\b weak
+\f2\b0  is 
+\f4\b unowned
+\f2\b0 , which behaves more like implicitly unwrapped optionals. Like weak capturing, unowned capturing allows values to become nil at any point in the future. However, you can work with them as if they are always going to be there \'96 you don\'92t need to unwrap optionals.\
+For example:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sing\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () -> () -> \cf11 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing = \{ [
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 unowned
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor] 
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        taylor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+        
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 That will crash in a similar way to our force-unwrapped example from earlier: 
+\f4\b unowned taylor
+\f2\b0  says I know for sure that 
+\f4\b taylor
+\f2\b0  will always exist for the lifetime of the closure I\'92m sending back so I don\'92t need to hold on to the memory, but in practice 
+\f4\b taylor
+\f2\b0  will be destroyed almost immediately so the code will crash.\
+You should use 
+\f4\b unowned
+\f2\b0  very carefully indeed.\
+\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs51 \cf2 Common problems\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 There are four problems folks commonly hit when using closure capturing:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+They aren\'92t sure where to use capture lists when closures accept parameters.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+They make strong reference cycles, causing memory to get eaten up.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+They accidentally use strong references, particularly when using multiple captures.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	4	}\expnd0\expndtw0\kerning0
+They make copies of closures and share captured data.\
+\pard\pardeftab720\partightenfactor0
+\cf2 Let\'92s walk through each of those with some code examples, so you can see what happens.\
+\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs42 \cf2 Capture lists alongside parameters\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 This is a common problem to hit when you\'92re first starting out with capture lists, but fortunately it\'92s one that Swift catches for us.\
+When using capture lists and closure parameters together the capture list must always come first, then the word 
+\f4\b in
+\f2\b0  to mark the start of your closure body \'96 trying to put it 
+\f3\i after
+\f2\i0  the closure parameters will stop your code from compiling.\
+For example:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f5\fs36 \cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 writeToLog \{ [
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ] user, message 
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addToLog\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \\(\cf12 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 user\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  triggered event: \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \\(\cf12 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 message\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}
+\f2\fs35\fsmilli17600 \cf3 \cb1 \shad0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs42 \cf2 Strong reference cycles\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 When thing A owns thing B, and thing B owns thing A, you have what\'92s called a strong reference cycle, or often just a 
+\f3\i retain
+\f2\i0  cycle.\
+As an example, consider this code:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 House\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ownerDetails: (() -> \cf11 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )?\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 printDetails\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+        \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "This is a great house."\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 deinit
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "I'm being demolished!"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 That creates a 
+\f4\b House
+\f2\b0  class with one property (a closure), one method, and a deinitializer so it prints a message when it\'92s being destroyed.\
+Now here\'92s an 
+\f4\b Owner
+\f2\b0  class that is the same, except its closure stores house details:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Owner\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  houseDetails: (() -> \cf11 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )?\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 printDetails\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+        \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "I own a house."\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 deinit
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "I'm dying!"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\}
+\f2\fs35\fsmilli17600 \cf3 \cb1 \shad0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 We can try creating two instances of those classes inside a 
+\f4\b do
+\f2\b0  block. We don\'92t need a 
+\f4\b catch
+\f2\b0  block here, but using 
+\f4\b do
+\f2\b0  ensures they will be destroyed as soon as the 
+\f4\b \}
+\f2\b0  is reached:\
+\pard\pardeftab720\partightenfactor0
+
+\f5\fs36 \cf8 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Creating a house and an owner"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\
+
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 do
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  house = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 House\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  owner = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Owner\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\}\
+\
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Done"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf3 \cb1 \shad0 \
+\cf2 That should print \'93Creating a house and an owner\'94, \'93I\'92m dying!\'94, \'93I'm being demolished!\'94, then \'93Done\'94 \'96\'a0everything works as expected.\
+Now let\'92s create a strong reference cycle:\
+\pard\pardeftab720\partightenfactor0
+
+\f5\fs36 \cf8 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Creating a house and an owner"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\
+
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 do
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  house = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 House\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  owner = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Owner\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    house.ownerDetails = owner.printDetails\
+    owner.houseDetails = house.printDetails\
+\}\
+\
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Done"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 Now it will print \'93Creating a house and an owner\'94 then \'93Done\'94, with neither deinitializer being called.\
+\cf3 \
+\cf2 What\'92s happening here is that 
+\f4\b house
+\f2\b0  has a property that points to a method of 
+\f4\b owner
+\f2\b0 , and 
+\f4\b owner
+\f2\b0  has a property that points to a method of 
+\f4\b house
+\f2\b0 , so neither can be safely destroyed. In real code this causes memory that can\'92t be freed, known as a 
+\f3\i memory leak
+\f2\i0 , which degrades system performance and can even cause your app to be terminated.\
+To fix this we need to create a new closure and use weak capturing for one or both values, like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f5\fs36 \cf8 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Creating a house and an owner"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\
+
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 do
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  house = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 House\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  owner = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Owner\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    house.ownerDetails = \{ [
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  owner] 
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  owner?.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 printDetails\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \}\
+    owner.houseDetails = \{ [
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  house] 
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  house?.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 printDetails\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \}\
+\}\
+\
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Done"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 It isn\'92t necessary to have 
+\f3\i both
+\f2\i0  values weakly captured \'96\'a0all that matters is that at least one is, because it allows Swift to destroy them both when necessary.\
+Now, in real project code it\'92s rare to find strong reference cycles that are so obvious, but that just means it\'92s all the more important to use weak capturing to avoid the problem entirely.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs42 \cf2 Accidental strong references\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 Swift defaults to strong capturing, which can cause unintentional problems.\
+Going back to our singing example from earlier, consider this code:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sing\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () -> () -> \cf11 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Void\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  adele = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing = \{ [
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 unowned
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor, adele] 
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        taylor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+        adele.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+        
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  singing\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 Now we have two values being captured by the closure, and both values are being used the same way inside the closure. However, only 
+\f4\b taylor
+\f2\b0  is being captured as unowned \'96 
+\f4\b adele
+\f2\b0  is being captured strongly, because the 
+\f4\b unowned
+\f2\b0  keyword must be used for each captured value in the list.\
+Now, if you 
+\f3\i want
+\f2\i0  
+\f4\b taylor
+\f2\b0  to be unowned but 
+\f4\b adele
+\f2\b0  to be strongly captured, that\'92s fine. But if you want 
+\f3\i both
+\f2\i0  to be unowned you need to say so:\
+\pard\pardeftab720\partightenfactor0
+
+\f5\fs36 \cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 [
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 unowned
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  taylor, 
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 unowned
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  adele]\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 Swift does offer 
+\f3\i some
+\f2\i0  protection against accidental capturing, but it\'92s limited: if you use 
+\f4\b self
+\f2\b0  implicitly inside a closure, Swift forces you to add 
+\f4\b self.
+\f2\b0  or 
+\f4\b self?
+\f2\b0 . to make your intentions clear.\
+Implicit use of self happens a lot in Swift. For example, this initializer calls 
+\f4\b playSong()
+\f2\b0 , but what it 
+\f3\i really
+\f2\i0  means is 
+\f4\b self.playSong()
+\f2\b0  \'96 the 
+\f4\b self
+\f2\b0  part is implied by the context:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Singer\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 init
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+        \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    \}\
+\
+    
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 playSong\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+        \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Shake it off!"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 Swift won\'92t let you use implicit 
+\f4\b self
+\f2\b0  inside closures, which helps reduce a common type of retain cycle.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs42 \cf2 Copies of closures\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 The last thing that trips people up is the way closures themselves are copied, because their captured data becomes shared amongst copies.\
+For example, here\'92s a simple closure that captures the 
+\f4\b numberOfLinesLogged
+\f2\b0  integer created outside so that it can increment and print its value whenever its called:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  numberOfLinesLogged = \cf13 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\
+
+\f4\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  logger1 = \{\
+    numberOfLinesLogged += \cf13 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Lines logged: \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \\(\cf12 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 numberOfLinesLogged\cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 logger1\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 That will print \'93Lines logged: 1\'94 because we call the closure at the end.\
+Now, if we take a 
+\f3\i copy
+\f2\i0  of that closure, that copy shares the same capturing values as its original, so whether we call the original or the copy you\'92ll see the log line count increasing:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  logger2 = logger1\
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 logger2\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 logger1\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 logger2\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs35\fsmilli17600 \cf2 \cb1 \shad0 That will now print that 1, 2, 3, and 4 lines have been logged, because both 
+\f4\b logger1
+\f2\b0  and 
+\f4\b logger2
+\f2\b0  are pointing at the same captured 
+\f4\b numberOfLinesLogged
+\f2\b0  value.\
+\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs51 \cf2 When to use strong, when to use weak, when to use unowned\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs35\fsmilli17600 \cf2 Now that you understand how everything works, let\'92s try to summarize whether to use strong, weak, or unowned references:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+If you know for sure your captured value will never go away while the closure has any chance of being called, you can use 
+\f4\b unowned
+\f2\b0 . This is really only for the handful of times when 
+\f4\b weak
+\f2\b0  would cause annoyances to use, but even when you could use 
+\f4\b guard let
+\f2\b0  inside the closure with a weakly captured variable.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+If you have a strong reference cycle situation \'96 where thing A owns thing B and thing B owns thing A \'96 then one of the two should use weak capturing. This should usually be whichever of the two will be destroyed first, so if view controller A presents view controller B, view controller B might hold a weak reference back to A.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+If there\'92s no chance of a strong reference cycle you can use strong capturing. For example, performing animation won\'92t cause 
+\f4\b self
+\f2\b0  to be retained inside the animation closure, so you can use strong capturing.\
+\pard\pardeftab720\partightenfactor0
+\cf2 If you\'92re not sure which to use, start out with 
+\f4\b weak
+\f2\b0  and change only if you need to.\
+\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f6\i\fs44 \cf14 \cb15 UNOWNED\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\i0\fs42 \cf14 \cb15 \uc0\u1055 \u1086 \u1074 \u1077 \u1076 \u1077 \u1085 \u1080 \u1077  
+\f8\b weak
+\f7\b0  \uc0\u1080  
+\f8\b unowned 
+\f7\b0 \uc0\u1089 \u1089 \u1099 \u1083 \u1086 \u1082  \u1087 \u1086 \u1093 \u1086 \u1078 \u1077 , \u1085 \u1086  \u1085 \u1077  \u1086 \u1076 \u1080 \u1085 \u1072 \u1082 \u1086 \u1074 \u1086 . 
+\f8\b Unowned 
+\f7\b0 \uc0\u1089 \u1089 \u1099 \u1083 \u1082 \u1080 , \u1082 \u1072 \u1082  \u1080  
+\f8\b weak
+\f7\b0 , \uc0\u1085 \u1077  \u1091 \u1074 \u1077 \u1083 \u1080 \u1095 \u1080 \u1074 \u1072 \u1102 \u1090  \u1082 \u1086 \u1083 \u1080 \u1095 \u1077 \u1089 \u1090 \u1074 \u1086  
+\f8\b retain 
+\f7\b0 \uc0\u1089 \u1089 \u1099 \u1083 \u1086 \u1082  \u1085 \u1072  \u1086 \u1073 \u1098 \u1077 \u1082 \u1090 . \u1058 \u1077 \u1084  \u1085 \u1077  \u1084 \u1077 \u1085 \u1077 \u1077  \u1074  Swift 
+\f8\b unowned 
+\f7\b0 \uc0\u1089 \u1089 \u1099 \u1083 \u1082 \u1072  \u1080 \u1084 \u1077 \u1077 \u1090  \u1087 \u1088 \u1077 \u1080 \u1084 \u1091 \u1097 \u1077 \u1089 \u1090 \u1074 \u1086  \'97 \u1086 \u1085 \u1072  \u1085 \u1077  \u1086 \u1087 \u1094 \u1080 \u1086 \u1085 \u1072 \u1083 \u1100 \u1085 \u1072 . \u1069 \u1090 \u1086  \u1086 \u1073 \u1083 \u1077 \u1075 \u1095 \u1072 \u1077 \u1090  \u1091 \u1087 \u1088 \u1072 \u1074 \u1083 \u1077 \u1085 \u1080 \u1077  \u1086 \u1073 \u1098 \u1077 \u1082 \u1090 \u1072 \u1084 \u1080  \u1089  
+\f8\b unowned 
+\f7\b0 \uc0\u1089 \u1089 \u1099 \u1083 \u1082 \u1086 \u1081 . \u1044 \u1072 \u1085 \u1085 \u1099 \u1081  \u1087 \u1088 \u1080 \u1085 \u1094 \u1080 \u1087  \u1086 \u1095 \u1077 \u1085 \u1100  \u1089 \u1093 \u1086 \u1078  \u1089  
+\f8\b force-unwrap 
+\f7\b0 \uc0\u1091  \u1086 \u1087 \u1094 \u1080 \u1086 \u1085 \u1072 \u1083 \u1086 \u1074 . \u1050 \u1088 \u1086 \u1084 \u1077  \u1090 \u1086 \u1075 \u1086 , unowned \u1089 \u1089 \u1099 \u1083 \u1082 \u1080  \u1085 \u1077  \u1086 \u1073 \u1085 \u1091 \u1083 \u1103 \u1102 \u1090 \u1089 \u1103 . \u1069 \u1090 \u1086  \u1086 \u1079 \u1085 \u1072 \u1095 \u1072 \u1077 \u1090 , \u1095 \u1090 \u1086  \u1082 \u1086 \u1075 \u1076 \u1072  \u1086 \u1073 \u1098 \u1077 \u1082 \u1090  \u1086 \u1089 \u1074 \u1086 \u1073 \u1086 \u1078 \u1076 \u1072 \u1077 \u1090 \u1089 \u1103 , \u1086 \u1085  \u1085 \u1077  \u1086 \u1073 \u1085 \u1091 \u1083 \u1103 \u1077 \u1090  \u1091 \u1082 \u1072 \u1079 \u1072 \u1090 \u1077 \u1083 \u1100 . \u1069 \u1090 \u1086  \u1086 \u1079 \u1085 \u1072 \u1095 \u1072 \u1077 \u1090 , \u1095 \u1090 \u1086  \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1086 \u1074 \u1072 \u1085 \u1080 \u1077  unowned \u1089 \u1089 \u1099 \u1083 \u1086 \u1082  \u1074  \u1085 \u1077 \u1082 \u1086 \u1090 \u1086 \u1088 \u1099 \u1093  \u1089 \u1083 \u1091 \u1095 \u1072 \u1103 \u1093  \u1084 \u1086 \u1078 \u1077 \u1090  \u1087 \u1088 \u1080 \u1074 \u1077 \u1089 \u1090 \u1080  \u1082  \u1087 \u1086 \u1103 \u1074 \u1083 \u1077 \u1085 \u1080 \u1102  \u1074 \u1080 \u1089 \u1103 \u1097 \u1080 \u1093  \u1091 \u1082 \u1072 \u1079 \u1072 \u1090 \u1077 \u1083 \u1077 \u1081 . \u1044 \u1083 \u1103  \u1074 \u1072 \u1089 , \u1089 \u1090 \u1072 \u1088 \u1080 \u1082 \u1086 \u1074 , \u1082 \u1086 \u1090 \u1086 \u1088 \u1099 \u1077  \u1087 \u1086 \u1084 \u1085 \u1103 \u1090  \u1076 \u1085 \u1080  Objective-C, \u1082 \u1072 \u1082  \u1080  \u1103 , \u1085 \u1077 \u1087 \u1086 \u1076 \u1090 \u1074 \u1077 \u1088 \u1078 \u1076 \u1077 \u1085 \u1085 \u1099 \u1077  \u1089 \u1089 \u1099 \u1083 \u1082 \u1080  \u1086 \u1090 \u1086 \u1073 \u1088 \u1072 \u1078 \u1072 \u1102 \u1090 \u1089 \u1103  \u1085 \u1072  
+\f5\fs31\fsmilli15750 \cb16 unsafe_unretained
+\f7\fs42 \cb15 .\cb1 \
+\cb15 \uc0\u1069 \u1090 \u1086  \u1085 \u1077 \u1084 \u1085 \u1086 \u1075 \u1086  \u1089 \u1073 \u1080 \u1074 \u1072 \u1077 \u1090  \u1089  \u1090 \u1086 \u1083 \u1082 \u1091 . 
+\f5\fs31\fsmilli15750 \cb16 weak
+\f7\fs42 \cb15  \uc0\u1080  
+\f5\fs31\fsmilli15750 \cb16 unowned
+\f7\fs42 \cb15  \uc0\u1089 \u1089 \u1099 \u1083 \u1082 \u1080  \u1085 \u1077  \u1091 \u1074 \u1077 \u1083 \u1080 \u1095 \u1080 \u1074 \u1072 \u1102 \u1090  \u1082 \u1086 \u1083 \u1080 \u1095 \u1077 \u1089 \u1090 \u1074 \u1086  \u1089 \u1086 \u1093 \u1088 \u1072 \u1085 \u1103 \u1077 \u1084 \u1099 \u1093  \u1076 \u1072 \u1085 \u1085 \u1099 \u1093 . \u1054 \u1085 \u1080  \u1086 \u1073 \u1072  \u1084 \u1086 \u1075 \u1091 \u1090  \u1073 \u1099 \u1090 \u1100  \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1086 \u1074 \u1072 \u1085 \u1099  \u1076 \u1083 \u1103  \u1080 \u1079 \u1073 \u1077 \u1078 \u1072 \u1085 \u1080 \u1103  
+\f8\b retain
+\f7\b0  \uc0\u1094 \u1080 \u1082 \u1083 \u1086 \u1074 . \u1058 \u1072 \u1082  \u1082 \u1086 \u1075 \u1076 \u1072  \u1078 \u1077  \u1084 \u1099  \u1080 \u1093  \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1091 \u1077 \u1084 ?! \u1057 \u1086 \u1075 \u1083 \u1072 \u1089 \u1085 \u1086  \u1076 \u1086 \u1082 \u1091 \u1084 \u1077 \u1085 \u1090 \u1072 \u1094 \u1080 \u1080  Apple:\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f6\i \cf14 \cb15 \'ab\uc0\u1048 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1091 \u1081 \u1090 \u1077  
+\f9\b weak
+\f6\b0  \uc0\u1089 \u1089 \u1099 \u1083 \u1082 \u1091 , \u1077 \u1089 \u1083 \u1080  \u1074 \u1099  \u1079 \u1085 \u1072 \u1077 \u1090 \u1077 , \u1095 \u1090 \u1086  \u1074  \u1082 \u1072 \u1082 \u1086 \u1081 -\u1090 \u1086  \u1084 \u1086 \u1084 \u1077 \u1085 \u1090  \u1074 \u1088 \u1077 \u1084 \u1077 \u1085 \u1080  \u1101 \u1090 \u1072  \u1089 \u1089 \u1099 \u1083 \u1082 \u1072  \u1089 \u1090 \u1072 \u1085 \u1077 \u1090  \u1085 \u1091 \u1083 \u1077 \u1074 \u1086 \u1081 . \u1048  \u1085 \u1072 \u1086 \u1073 \u1086 \u1088 \u1086 \u1090 , \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1091 \u1081 \u1090 \u1077  
+\f9\b unowned
+\f6\b0  \uc0\u1089 \u1089 \u1099 \u1083 \u1082 \u1091 , \u1077 \u1089 \u1083 \u1080  \u1074 \u1099  \u1079 \u1085 \u1072 \u1077 \u1090 \u1077 , \u1095 \u1090 \u1086  \u1089 \u1089 \u1099 \u1083 \u1082 \u1072  \u1085 \u1080 \u1082 \u1086 \u1075 \u1076 \u1072  \u1085 \u1077  \u1073 \u1091 \u1076 \u1077 \u1090  \u1088 \u1072 \u1074 \u1085 \u1072  \u1085 \u1091 \u1083 \u1102 .\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\i0 \cf14 \cb15 \uc0\u1055 \u1088 \u1080 \u1093 \u1086 \u1076 \u1080 \u1084  \u1082  \u1074 \u1099 \u1074 \u1086 \u1076 \u1091 : \u1090 \u1072 \u1082  \u1078 \u1077  \u1082 \u1072 \u1082  \u1080  force-unwrap, \u1077 \u1089 \u1083 \u1080  \u1074 \u1099  \u1084 \u1086 \u1078 \u1077 \u1090 \u1077  
+\f8\b \uc0\u1075 \u1072 \u1088 \u1072 \u1085 \u1090 \u1080 \u1088 \u1086 \u1074 \u1072 \u1090 \u1100 
+\f7\b0 , \uc0\u1095 \u1090 \u1086  \u1089 \u1089 \u1099 \u1083 \u1082 \u1072  \u1085 \u1077  \u1073 \u1091 \u1076 \u1077 \u1090  
+\f8\b nil,
+\f7\b0  \uc0\u1090 \u1086  \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1091 \u1081 \u1090 \u1077  
+\f8\b unowned
+\f7\b0 . \uc0\u1045 \u1089 \u1083 \u1080  \u1085 \u1077 \u1090 , \u1090 \u1086  \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1091 \u1081 \u1090 \u1077  
+\f8\b weak
+\f7\b0 .\cb1 \
+\cb15 \uc0\u1047 \u1076 \u1077 \u1089 \u1100  \u1093 \u1086 \u1088 \u1086 \u1096 \u1080 \u1081  \u1087 \u1088 \u1080 \u1084 \u1077 \u1088  \u1090 \u1086 \u1075 \u1086 , \u1082 \u1072 \u1082  \u1082 \u1083 \u1072 \u1089 \u1089  \u1089 \u1086 \u1079 \u1076 \u1072 \u1077 \u1090  
+\f8\b retain
+\f7\b0  \uc0\u1094 \u1080 \u1082 \u1083 , \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1091 \u1103  
+\f8\b closure
+\f7\b0 , \uc0\u1082 \u1086 \u1090 \u1086 \u1088 \u1099 \u1081  \u1085 \u1077  \u1073 \u1091 \u1076 \u1077 \u1090  nil, \u1087 \u1086 \u1090 \u1086 \u1084 \u1091  \u1095 \u1090 \u1086  \u1086 \u1085  \u1087 \u1086 \u1083 \u1091 \u1095 \u1072 \u1077 \u1090  \u1079 \u1085 \u1072 \u1095 \u1077 \u1085 \u1080 \u1077  \u1074  
+\f5\fs31\fsmilli15750 \cb16 init()
+\f7\fs42 \cb15 :\cb1 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f5\fs24 \cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf18 \cb15 class\cf19  \cf20 RetainCycle\cf19  \{\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15     \cf18 var\cf19  closure: (() \cf18 ->\cf19  \cf21 Void\cf19 )\cf18 !\cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15     \cf18 var\cf19  string \cf18 =\cf19  \cf22 "Hello"\cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15 \
+\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15     \cf18 init\cf19 () \{\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15         closure \cf18 =\cf19  \{\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15             \cf21 self\cf19 .string \cf18 =\cf19  \cf22 "Hello, World!"\cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15         \}\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15     \}\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15 \}\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15 \
+\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf23 \cb15 // \uc0\u1048 \u1085 \u1080 \u1094 \u1080 \u1072 \u1083 \u1080 \u1079 \u1080 \u1088 \u1091 \u1077 \u1084  \u1082 \u1083 \u1072 \u1089 \u1089  \u1080  \u1072 \u1082 \u1090 \u1080 \u1074 \u1080 \u1088 \u1091 \u1077 \u1084  retain \u1094 \u1080 \u1082 \u1083 \cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf18 \cb15 let\cf19  retainCycleInstance \cf18 =\cf19  \cf21 RetainCycle\cf19 ()\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15 retainCycleInstance.\cf21 closure\cf19 () \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf23 \cb15 // \uc0\u1042  \u1076 \u1072 \u1085 \u1085 \u1086 \u1084  \u1089 \u1083 \u1091 \u1095 \u1072 \u1077  \u1084 \u1099  \u1084 \u1086 \u1078 \u1077 \u1084  \u1075 \u1072 \u1088 \u1072 \u1085 \u1090 \u1080 \u1088 \u1086 \u1074 \u1072 \u1090 \u1100 , \u1095 \u1090 \u1086  self \u1074 \u1085 \u1091 \u1090 \u1088 \u1080  closure \u1085 \u1077  \u1073 \u1091 \u1076 \u1077 \u1090  nil. \cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf23 \cb15 // \uc0\u1051 \u1102 \u1073 \u1086 \u1081  \u1087 \u1086 \u1089 \u1083 \u1077 \u1076 \u1091 \u1102 \u1097 \u1080 \u1081  \u1082 \u1086 \u1076  \u1087 \u1086 \u1089 \u1083 \u1077  \u1101 \u1090 \u1086 \u1075 \u1086  (\u1086 \u1089 \u1086 \u1073 \u1077 \u1085 \u1085 \u1086  \u1082 \u1086 \u1076 , \u1082 \u1086 \u1090 \u1086 \u1088 \u1099 \u1081  \u1080 \u1079 \u1084 \u1077 \u1085 \u1103 \u1077 \u1090  \u1089 \u1089 \u1099 \u1083 \u1082 \u1091  \u1085 \u1072  self) \cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth289\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12470\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf23 \cb15 // \uc0\u1076 \u1086 \u1083 \u1078 \u1077 \u1085  \u1073 \u1099 \u1090 \u1100  \u1086 \u1094 \u1077 \u1085 \u1077 \u1085  \u1085 \u1072  \u1087 \u1088 \u1077 \u1076 \u1084 \u1077 \u1090  \u1090 \u1086 \u1075 \u1086 , \u1088 \u1072 \u1073 \u1086 \u1090 \u1072 \u1077 \u1090  \u1083 \u1080  \u1079 \u1076 \u1077 \u1089 \u1100  \u1077 \u1097 \u1077  unowned \u1086 \u1073 \u1098 \u1077 \u1082 \u1090 \cf19 \cb1 \cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://gist.github.com/Hadevs/dc701484df997a35cf21f3fcb6f2dc7e/raw/ad3d297a1e2075db7ad317866a4a87c5f1a44232/unwoned.swift"}}{\fldrslt 
+\f0\b \cf24 \cb25 view raw}}
+\f0\b \cf24 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://gist.github.com/Hadevs/dc701484df997a35cf21f3fcb6f2dc7e#file-unwoned-swift"}}{\fldrslt \cf24 \cb25 unwoned.swift}}
+\f2\b0 \cf26 \cb25  hosted with 
+\f10 \uc0\u10084 
+\f2  by {\field{\*\fldinst{HYPERLINK "https://github.com/"}}{\fldrslt 
+\f0\b \cf24 GitHub}}\
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs42 \cf14 \cb15 \uc0\u1042  \u1101 \u1090 \u1086 \u1084  \u1089 \u1083 \u1091 \u1095 \u1072 \u1077  \u1094 \u1080 \u1082 \u1083  \u1089 \u1086 \u1093 \u1088 \u1072 \u1085 \u1077 \u1085 \u1080 \u1103  \u1087 \u1088 \u1086 \u1080 \u1089 \u1093 \u1086 \u1076 \u1080 \u1090  \u1086 \u1090  \u1090 \u1086 \u1075 \u1086 , \u1095 \u1090 \u1086  \u1079 \u1072 \u1084 \u1099 \u1082 \u1072 \u1085 \u1080 \u1077  \u1079 \u1072 \u1093 \u1074 \u1072 \u1090 \u1099 \u1074 \u1072 \u1077 \u1090  
+\f4\b\fs31\fsmilli15750 \cb16 self
+\f7\b0\fs42 \cb15  \uc0\u1089 \u1080 \u1083 \u1100 \u1085 \u1086 \u1081  \u1089 \u1089 \u1099 \u1083 \u1082 \u1086 \u1081 , \u1074  \u1090 \u1086  \u1074 \u1088 \u1077 \u1084 \u1103  \u1082 \u1072 \u1082  
+\f4\b\fs31\fsmilli15750 \cb16 self
+\f7\b0\fs42 \cb15  \uc0\u1080 \u1084 \u1077 \u1077 \u1090  \u1089 \u1080 \u1083 \u1100 \u1085 \u1091 \u1102  \u1089 \u1089 \u1099 \u1083 \u1082 \u1091  \u1085 \u1072  \u1079 \u1072 \u1084 \u1099 \u1082 \u1072 \u1085 \u1080 \u1077  \u1095 \u1077 \u1088 \u1077 \u1079  \u1089 \u1074 \u1086 \u1081 \u1089 \u1090 \u1074 \u1086  \u1079 \u1072 \u1084 \u1099 \u1082 \u1072 \u1085 \u1080 \u1103 . \u1063 \u1090 \u1086 \u1073 \u1099  \u1089 \u1083 \u1086 \u1084 \u1072 \u1090 \u1100  \u1101 \u1090 \u1086 , \u1084 \u1099  \u1087 \u1088 \u1086 \u1089 \u1090 \u1086  \u1076 \u1086 \u1073 \u1072 \u1074 \u1083 \u1103 \u1077 \u1084  
+\f5\fs31\fsmilli15750 \cb16 [unowned self]
+\f7\fs42 \cb15  \uc0\u1074  \u1085 \u1072 \u1079 \u1085 \u1072 \u1095 \u1077 \u1085 \u1080 \u1077  \u1079 \u1072 \u1084 \u1099 \u1082 \u1072 \u1085 \u1080 \u1103 :\cb1 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f5\fs24 \cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15 closure \cf18 =\cf19  \{ [\cf18 unowned\cf19  \cf21 self\cf19 ] \cf18 in\cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15     \cf21 self\cf19 .string \cf18 =\cf19  \cf22 "Hello, World!"\cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15 \}\cb1 \cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://gist.github.com/Hadevs/5155eb7034c0c5851cf593bacf981117/raw/74fdd691088930a94182caedf7f0f5c5d01ae2f5/closure.swift"}}{\fldrslt 
+\f0\b \cf24 \cb25 view raw}}
+\f0\b \cf24 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://gist.github.com/Hadevs/5155eb7034c0c5851cf593bacf981117#file-closure-swift"}}{\fldrslt \cf24 \cb25 closure.swift}}
+\f2\b0 \cf26 \cb25  hosted with 
+\f10 \uc0\u10084 
+\f2  by {\field{\*\fldinst{HYPERLINK "https://github.com/"}}{\fldrslt 
+\f0\b \cf24 GitHub}}\
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs42 \cf14 \cb15 \uc0\u1042  \u1101 \u1090 \u1086 \u1084  \u1089 \u1083 \u1091 \u1095 \u1072 \u1077  \u1084 \u1099  \u1084 \u1086 \u1078 \u1077 \u1084  \u1087 \u1088 \u1077 \u1076 \u1087 \u1086 \u1083 \u1086 \u1078 \u1080 \u1090 \u1100 , \u1095 \u1090 \u1086  self \u1085 \u1080 \u1082 \u1086 \u1075 \u1076 \u1072  \u1085 \u1077  \u1073 \u1091 \u1076 \u1077 \u1090  nil, \u1090 \u1072 \u1082  \u1082 \u1072 \u1082  \u1084 \u1099  \u1074 \u1099 \u1079 \u1099 \u1074 \u1072 \u1077 \u1084  closure \u1089 \u1088 \u1072 \u1079 \u1091  \u1087 \u1086 \u1089 \u1083 \u1077  \u1080 \u1085 \u1080 \u1094 \u1080 \u1072 \u1083 \u1080 \u1079 \u1072 \u1094 \u1080 \u1080  \u1082 \u1083 \u1072 \u1089 \u1089 \u1072  
+\f5\fs31\fsmilli15750 \cb16 RetainCycle
+\f7\fs42 \cb15 .\cb1 \
+\cb15 \uc0\u1045 \u1089 \u1083 \u1080  \u1074 \u1099  \u1079 \u1085 \u1072 \u1077 \u1090 \u1077 , \u1095 \u1090 \u1086  \u1074 \u1072 \u1096 \u1072  \u1089 \u1089 \u1099 \u1083 \u1082 \u1072  \u1073 \u1091 \u1076 \u1077 \u1090  \u1086 \u1073 \u1085 \u1091 \u1083 \u1077 \u1085 \u1072  \u1076 \u1086 \u1083 \u1078 \u1085 \u1099 \u1084  \u1086 \u1073 \u1088 \u1072 \u1079 \u1086 \u1084 , \u1080  \u1074 \u1072 \u1096 \u1080  \u1076 \u1074 \u1077  \u1089 \u1089 \u1099 \u1083 \u1082 \u1080  \u1074 \u1079 \u1072 \u1080 \u1084 \u1085 \u1086  \u1079 \u1072 \u1074 \u1080 \u1089 \u1103 \u1090  \u1076 \u1088 \u1091 \u1075  \u1086 \u1090  \u1076 \u1088 \u1091 \u1075 \u1072  (\u1086 \u1076 \u1080 \u1085  \u1085 \u1077  \u1084 \u1086 \u1078 \u1077 \u1090  \u1078 \u1080 \u1090 \u1100  \u1073 \u1077 \u1079  \u1076 \u1088 \u1091 \u1075 \u1086 \u1075 \u1086 ), \u1090 \u1086  \u1074 \u1099  \u1076 \u1086 \u1083 \u1078 \u1085 \u1099  \u1086 \u1090 \u1076 \u1072 \u1074 \u1072 \u1090 \u1100  \u1087 \u1088 \u1077 \u1076 \u1087 \u1086 \u1095 \u1090 \u1077 \u1085 \u1080 \u1077  
+\f8\b unowned
+\f7\b0 , \uc0\u1072  \u1085 \u1077  
+\f8\b weak.
+\f7\b0 \cb1 \
+\cb15 then you should prefer unowned over weak, since you aren\'92t going to want to have to deal with the overhead of your program trying to unnecessarily zero your reference pointers.\cb1 \
+\cb15 \uc0\u1048 \u1076 \u1077 \u1072 \u1083 \u1100 \u1085 \u1099 \u1084  \u1084 \u1077 \u1089 \u1090 \u1086 \u1084  \u1076 \u1083 \u1103  \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1086 \u1074 \u1072 \u1085 \u1080 \u1103  
+\f8\b unowned 
+\f7\b0 \uc0\u1089 \u1089 \u1099 \u1083 \u1086 \u1082  \u1073 \u1091 \u1076 \u1091 \u1090  
+\f8\b lazy 
+\f7\b0 \uc0\u1079 \u1072 \u1084 \u1099 \u1082 \u1072 \u1085 \u1080 \u1103 :\cb1 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f5\fs24 \cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf18 \cb15 class\cf19  \cf20 Kraken\cf19  \{\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15     \cf18 let\cf19  petName \cf18 =\cf19  \cf22 "Krakey-poo"\cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15     \cf18 lazy\cf19  \cf18 var\cf19  businessCardName: (\cf21 Void\cf19 ) \cf18 ->\cf19  \cf21 String\cf19  \cf18 =\cf19  \{ [\cf18 unowned\cf19  \cf21 self\cf19 ] \cf18 in\cf19 \cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15         \cf18 return\cf19  \cf22 "Mr. Kraken AKA "\cf19  \cf18 +\cf19  \cf21 self\cf19 .petName\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15     \}\cb1 \cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trcbpat15 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth144\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx4320
+\clvertalt \clshdrawnil \clwWidth12615\clftsWidth3 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl200 \clpadb20 \clpadr200 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf17 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf19 \cb15 \}\cb1 \cell \lastrow\row
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://gist.github.com/Hadevs/58bfec10320ff40264d2de6b1104034e/raw/44f228f4c330745b8828c67380c7bb20111a56bb/lazy.swift"}}{\fldrslt 
+\f0\b \cf24 \cb25 view raw}}
+\f0\b \cf24 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://gist.github.com/Hadevs/58bfec10320ff40264d2de6b1104034e#file-lazy-swift"}}{\fldrslt \cf24 \cb25 lazy.swift}}
+\f2\b0 \cf26 \cb25  hosted with 
+\f10 \uc0\u10084 
+\f2  by {\field{\*\fldinst{HYPERLINK "https://github.com/"}}{\fldrslt 
+\f0\b \cf24 GitHub}}\
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs42 \cf14 \cb15 \uc0\u1053 \u1072 \u1084  \u1085 \u1091 \u1078 \u1077 \u1085  
+\f5\fs31\fsmilli15750 \cb16 unowned self
+\f7\fs42 \cb15  \uc0\u1079 \u1076 \u1077 \u1089 \u1100  \u1095 \u1090 \u1086 \u1073 \u1099  \u1080 \u1079 \u1073 \u1077 \u1078 \u1072 \u1090 \u1100  
+\f8\b retain
+\f7\b0  \uc0\u1094 \u1080 \u1082 \u1083 \u1072 . 
+\f5\fs31\fsmilli15750 \cb16 Kraken
+\f7\fs42 \cb15  \uc0\u1076 \u1077 \u1088 \u1078 \u1080 \u1090  
+\f5\fs31\fsmilli15750 \cb16 businessCardName
+\f7\fs42 \cb15  closure \uc0\u1074 \u1089 \u1077  \u1074 \u1088 \u1077 \u1084 \u1103 , \u1072  \u1089 \u1072 \u1084  closure \u1076 \u1077 \u1088 \u1078 \u1080 \u1090  
+\f5\fs31\fsmilli15750 \cb16 Kraken'a
+\f7\fs42 \cb15 . \uc0\u1054 \u1085 \u1080  \u1074 \u1079 \u1072 \u1080 \u1084 \u1086 \u1079 \u1072 \u1074 \u1080 \u1089 \u1080 \u1084 \u1099 , \u1087 \u1086 \u1101 \u1090 \u1086 \u1084 \u1091  \u1086 \u1085 \u1080  \u1074 \u1089 \u1077 \u1075 \u1076 \u1072  \u1073 \u1091 \u1076 \u1091 \u1090  \u1086 \u1089 \u1074 \u1086 \u1073 \u1086 \u1078 \u1076 \u1077 \u1085 \u1099  \u1086 \u1076 \u1085 \u1086 \u1074 \u1088 \u1077 \u1084 \u1077 \u1085 \u1085 \u1086 . \u1058 \u1072 \u1082 \u1080 \u1084  \u1086 \u1073 \u1088 \u1072 \u1079 \u1086 \u1084 , \u1086 \u1085  \u1091 \u1076 \u1086 \u1074 \u1083 \u1077 \u1090 \u1074 \u1086 \u1088 \u1103 \u1077 \u1090  \u1087 \u1088 \u1072 \u1074 \u1080 \u1083 \u1072 \u1084  \u1080 \u1089 \u1087 \u1086 \u1083 \u1100 \u1079 \u1086 \u1074 \u1072 \u1085 \u1080 \u1103  unowned!
+\f2\fs35\fsmilli17600 \cf3 \cb1 \
+\
+\
+}

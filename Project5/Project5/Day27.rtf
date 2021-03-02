@@ -1,0 +1,614 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 HelveticaNeue-Italic;
+\f3\fnil\fcharset0 Menlo-Bold;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red212\green212\blue212;
+\red252\green55\blue54;\red222\green43\blue91;\red235\green0\blue121;\red24\green24\blue28;\red246\green246\blue239;
+\red103\green225\blue255;\red215\green165\blue255;\red72\green212\blue251;\red248\green60\blue79;\red157\green101\blue255;
+\red224\green213\blue97;\red244\green0\blue95;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c86275\c86275\c86275;
+\cssrgb\c100000\c31373\c27059;\cssrgb\c90588\c27059\c43137;\cssrgb\c94902\c14118\c54902;\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;
+\cssrgb\c46275\c90196\c100000;\cssrgb\c87843\c72157\c100000;\cssrgb\c32941\c86275\c98824;\cssrgb\c98824\c33725\c38039;\cssrgb\c68235\c50588\c100000;
+\cssrgb\c90196\c85882\c45490;\cssrgb\c97647\c14902\c44706;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\qc\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+DAY 27\
+
+\f1\b0\fs28 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Project 5, part one\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 You probably remember learning about closures a couple of weeks ago, mostly because it was a particularly tough part of the course. Since then I\'92ve tried to work them back in slowly so you can master them little by little, and today it\'92s time to dive into them with our 
+\f2\i own
+\f1\i0  closure.\
+I think you already know what I\'92m going to say, but I\'92ll say it anyway: this isn\'92t going to be easy. But the US general George Patton once said, \'93accept the challenges so that you can feel the exhilaration of victory\'94 \'96\'a0when you finally feel like you understand closures (which might be today!) that\'92s when you know you\'92re really getting comfortable with Swift.\
+Today I\'92ll be introducing a new aspect of closures called 
+\f2\i capture lists
+\f1\i0 . To make things easier, I prepared a new article just for this series that explains in detail what capture lists are and how they work \'96 you should start by reading that.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you should work through the article on capture lists, then the three topics from project 5.
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/articles/179/capture-lists-in-swift-whats-the-difference-between-weak-strong-and-unowned-references"}}{\fldrslt \expnd0\expndtw0\kerning0
+Capture lists in Swift: what\'92s the difference between weak, strong, and unowned references?}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/5/1/setting-up"}}{\fldrslt \expnd0\expndtw0\kerning0
+Setting up}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/5/2/reading-from-disk-contentsoffile"}}{\fldrslt \expnd0\expndtw0\kerning0
+Reading from disk: contentsOfFile}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/5/3/pick-a-word-any-word-uialertcontroller"}}{\fldrslt \expnd0\expndtw0\kerning0
+Pick a word, any word: UIAlertController}}\expnd0\expndtw0\kerning0
+\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf4 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Setting up
+\f1\b0\fs35\fsmilli17600 \cf4 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+In this project you're going to learn how to make a word game that deals with anagrams, but as per usual I'll be hijacking it as a method to teach you more about iOS development. This time around we're going back to the table views as seen in project 1, but you're also going to learn how to load text from files, how to ask for user input in 
+\f3\b UIAlertController
+\f1\b0 , and get a little more insight to how closures work.\
+\pard\pardeftab720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+In Xcode, create a new Single View App called Project5. We\'92re going to turn this into a table view controller, just like we did in project 1. So, open ViewController.swift and find this line:\
+\ls2\ilvl0
+\f3\b\fs36 \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ViewController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+\ls2\ilvl0
+\f1\fs35\fsmilli17600 \cf2 \cb1 \kerning1\expnd0\expndtw0 \shad0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Please change it to read this instead:\
+\ls2\ilvl0
+\f3\b\fs36 \cf7 \cb8 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ViewController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITableViewController\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+\ls2\ilvl0
+\f1\fs35\fsmilli17600 \cf4 \cb1 \kerning1\expnd0\expndtw0 \shad0 {\listtext	\uc0\u8226 	}\cf2 \expnd0\expndtw0\kerning0
+If you remember, that only changes the definition of our view controller 
+\f2\i in code
+\f1\i0 . We need to change in the storyboard too, so open Main.storyboard now.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Inside Interface Builder, use the document outline to select and delete the existing view controller so that the document is blank, then replace it with a new table view controller. Use the identity inspector to change the class of the new controller to be \'93ViewController\'94, then select its prototype cell and give it the re-use identifier \'93Word\'94 and the cell style Basic.\
+\ls2\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+All this was covered in project 1, but it\'92s OK if you forgot \'96\'a0don\'92t be afraid to go back to project 1 and re-read any bits you\'92re not sure about.
+\f1\b0 \
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Now select the view controller again (use the document outline \'96\'a0it\'92s easier!) then make sure the \'93Is Initial View Controller\'94 box is checked under the attributes inspector. Finally, go to the Editor menu and choose Embed In > Navigation Controller. We won\'92t be pushing anything onto the navigation controller stack like we did with project 1, but it does automatically provide the navigation bar at the top, which we 
+\f2\i will
+\f1\i0  be using.\
+\ls2\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Note:
+\f1\b0  This app asks users to make anagrams out of a word, e.g. when given the word \'93anagrams\'94 they might provide \'93rags\'94. If you look at that and think \'93that\'92s not an anagram \'96 it doesn\'92t use all the letters!\'94 then you need to search the internet for \'93well actually\'94 and have a good, long think about life.\cf4 \
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Reading from disk: contentsOf\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 We're going to make an anagram game, where the user is asked to make words out of a larger word. We're going to put together a list of possible starter words for the game, and that list will be stored in a separate file. But how do we get the text from the file into the app? Well, it turns out that Swift's 
+\f3\b String
+\f1\b0  data type makes it a cinch \'96 thanks, Apple!\
+If you haven't already downloaded the assets for this project from GitHub ({\field{\*\fldinst{HYPERLINK "https://github.com/twostraws/HackingWithSwift"}}{\fldrslt https://github.com/twostraws/HackingWithSwift}}), please do so now. In the project5-files folder you'll find the file start.txt \'96 please drag that into your Xcode project, making sure that "Copy items if needed" is checked.\
+The start.txt file contains over 12,000 eight-letter words we can use for our game, all stored one word per line. We need to turn that into an array of words we can play with. Behind the scenes, those line breaks are marked with a special line break character that is usually expressed as 
+\f3\b \\n
+\f1\b0 . So, we need to load that word list into a string, then split it into an array by breaking up wherever we see 
+\f3\b \\n
+\f1\b0 .\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 First, go to the start of your class and make two new arrays. We\'92re going to use the first one to hold all the words in the input file, and the second one will hold all the words the player has currently used in the game.\
+So, open ViewController.swift and add these two properties:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  allWords = [\cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]()\
+
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  usedWords = [\cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]()
+\f0\b\fs98 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf4 \
+\cf2 Second, loading our array. This is done in three parts: finding the path to our start.txt file, loading the contents of that file, then splitting it into an array.\cf4 \
+\
+\
+\cf2 Finding a path to a file is something you'll do a lot, because even though you know the file is called "start.txt" you don't know where it might be on the filesystem. So, we use a built-in method of 
+\f3\b Bundle
+\f1\b0  to find it: 
+\f3\b path(forResource:)
+\f1\b0 . This takes as its parameters the name of the file and its path extension, and returns a 
+\f3\b URL?
+\f1\b0  \'96 i.e., you either get the path back or you get 
+\f3\b nil
+\f1\b0  if it didn\'92t exist.\
+Loading a file into a string is also something you'll need to get familiar with, and again there's an easy way to do it: when you create a 
+\f3\b String
+\f1\b0  instance, you can ask it to create itself from the contents of a file at a particular path.\
+Finally, we need to split our single string into an array of strings based on wherever we find a line break (
+\f3\b \\n
+\f1\b0 ). This is as simple as another method call on 
+\f3\b String
+\f1\b0 : 
+\f3\b components(separatedBy:)
+\f1\b0 . Tell it what string you want to use as a separator (for us, that's 
+\f3\b \\n
+\f1\b0 ), and you'll get back an array.\
+Before we get onto the code, there are two things you should know: 
+\f3\b path(forResource:)
+\f1\b0  and creating a 
+\f3\b String
+\f1\b0  from the contents of a file both return 
+\f3\b String?
+\f1\b0 , which means we need to check and unwrap the optional using 
+\f3\b if let
+\f1\b0  syntax.\
+OK, time for some code. Put this into 
+\f3\b viewDidLoad()
+\f1\b0 , after the 
+\f3\b super
+\f1\b0  call:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  startWordsURL = \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Bundle\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .main.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 url\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (forResource: \cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "start"\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , withExtension: \cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "txt"\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+    
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  startWords = 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (contentsOf: startWordsURL) \{\
+        allWords = startWords.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 components\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (separatedBy: \cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "\\n"\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\}\
+\
+
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  allWords.\cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 isEmpty\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    allWords = [\cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "silkworm"\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 If you look carefully, there's a new keyword in there: 
+\f3\b try?
+\f1\b0 . You already saw 
+\f3\b try!
+\f1\b0  previously, and really we could use that here too because we're loading a file from our app's bundle so any failure is likely to be catastrophic. However, this way I have a chance to teach you something new: 
+\f3\b try?
+\f1\b0  means "call this code, and if it throws an error just send me back 
+\f3\b nil
+\f1\b0  instead." This means the code you call will always work, but you need to unwrap the result carefully.\
+I also added in a new and useful property of arrays: 
+\f3\b isEmpty
+\f1\b0 . This returns true if the array is empty, and is effectively equal to writing 
+\f3\b allWords.count == 0
+\f1\b0 . The reason we use 
+\f3\b isEmpty
+\f1\b0  is because some collection types, such as string, have to calculate their size by counting over all the elements they contain, so reading 
+\f3\b count == 0
+\f1\b0  can be significantly slower than using 
+\f3\b isEmpty
+\f1\b0 .\
+As you can see, that code carefully checks for and unwraps the contents of our start file, then converts it to an array. When it has finished, 
+\f3\b allWords
+\f1\b0  will contain 12,000+ strings ready for us to use in our game.\
+To prove that everything is working before we continue, let's create a new method called 
+\f3\b startGame()
+\f1\b0 . This will be called every time we want to generate a new word for the player to work with, and it will use the 
+\f3\b randomElement()
+\f1\b0  method of Swift\'92s arrays to choose one random item from all the strings.\
+Here\'92s the code:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 startGame\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    title = allWords.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 randomElement\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    usedWords.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 removeAll\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (keepingCapacity: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    tableView.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 reloadData\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\}
+\f0\b\fs98 \cf2 \cb1 \shad0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 Line 1 sets our view controller's title to be a random word in the array, which will be the word the player has to find.\
+Line 2 removes all values from the 
+\f3\b usedWords
+\f1\b0  array, which we'll be using to store the player's answers so far. We aren't adding anything to it right now, so 
+\f3\b removeAll()
+\f1\b0  won't do anything just yet.\
+Line 3 is the interesting part: it calls the 
+\f3\b reloadData()
+\f1\b0  method of 
+\f3\b tableView
+\f1\b0 . That table view is given to us as a property because our 
+\f3\b ViewController
+\f1\b0  class comes from 
+\f3\b UITableViewController
+\f1\b0 , and calling 
+\f3\b reloadData()
+\f1\b0  forces it to call 
+\f3\b numberOfRowsInSection
+\f1\b0  again, as well as calling 
+\f3\b cellForRowAt
+\f1\b0  repeatedly. Our table view doesn't have any rows yet, so this won't do anything for a few moments. However, the method is ready to be used, and allows us to check we've loaded all the data correctly, so add this just before the end of 
+\f3\b viewDidLoad()
+\f1\b0 :\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf12 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 startGame\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()
+\f0\b\fs98 \cf2 \cb1 \shad0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 Before we\'92re done, we need to add a few methods to handle the table view data: 
+\f3\b numberOfRowsInSection
+\f1\b0  and 
+\f3\b cellForRowAt
+\f1\b0 . These are identical to the implementations in project 1, except now we\'92re drawing on the 
+\f3\b usedWords
+\f1\b0  array and the \'93Word\'94 cell identifier. Add these two methods now:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 tableView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  tableView: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITableView\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , numberOfRowsInSection section: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Int\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) -> \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Int\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  usedWords.\cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 count\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\}\
+\
+
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 tableView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  tableView: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITableView\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , cellForRowAt indexPath: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 IndexPath\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) -> \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITableViewCell\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  cell = tableView.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 dequeueReusableCell\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withIdentifier: \cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Word"\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : indexPath)\
+    cell.textLabel?.text = usedWords[indexPath.row]\
+    
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  cell\
+\}
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Pick a word, any word: UIAlertController
+\f1\b0\fs35\fsmilli17600 \
+This game will prompt the user to enter a word that can be made from the eight-letter prompt word. For example, if the eight-letter word is "agencies", the user could enter "cease." We're going to solve this with 
+\f3\b UIAlertController
+\f1\b0 , because it's a nice fit, and also gives me the chance to introduce some new teaching. I'm all about ulterior motives!\
+Add this code to 
+\f3\b viewDidLoad()
+\f1\b0 , just after the call to 
+\f3\b super
+\f1\b0 :\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 navigationItem.rightBarButtonItem = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIBarButtonItem\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (barButtonSystemItem: .add, target: 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , action: #\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (promptForAnswer))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That created a new UIBarButtonItem using the "add" system item, and configured it to run a method called 
+\f3\b promptForAnswer()
+\f1\b0  when tapped \'96\'a0we haven\'92t created it yet, so you\'92ll get a compiler error for a few minutes as you read on. This new method will show a 
+\f3\b UIAlertController
+\f1\b0  with space for the user to enter an answer, and when the user clicks Submit to that alert controller the answer is checked to make sure it's valid.\
+\
+Before I give you the code, let me explain what you need to know.\
+You see, we're about to use a closure, and things get a little complicated. As a reminder, these are chunks of code that can be treated like a variable \'96 we can send the closure somewhere, where it gets stored away and executed later. To make this work, Swift takes a copy of the code and captures any data it references, so it can use them later.\
+But there's a problem: what if the closure references the view controller? Then what could happen is a strong reference cycle: the view controller owns an object that owns a closure that owns the view controller, and nothing could ever be destroyed.\
+I'm going to try (and likely fail!) to give you a metaphorical example, so please bear with me. Imagine if you built two cleaning robots, red and blue. You told the red robot, "don't stop cleaning until the blue robot stops," and you told the blue robot "don't stop cleaning until the red robot stops."\
+When would they stop cleaning? The answer is \'93never\'94, because neither will make the first move.\
+This is the problem we are facing with a strong reference cycle: object A owns object B, and object B owns a closure that referenced object A. And when closures are created, they capture everything they use, thus object B owns object A.\
+Strong reference cycles used to be hard to find, but you'll be glad to know Swift makes them trivial. In fact, Swift makes it so easy that you will use its solution even when you're not sure if there's a cycle simply because you might as well.\
+So, please brace yourself: we're about to take our first look at actual closures. The syntax will hurt. And when you finally understand it, you'll come across examples online that make your brain hurt all over again.\
+Ready? Here's the 
+\f3\b promptForAnswer()
+\f1\b0  method:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf15 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 @objc\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 promptForAnswer\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Enter answer"\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , message: \cf16 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , preferredStyle: .alert)\
+    ac.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addTextField\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  submitAction = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Submit"\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{ [
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac] action 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 guard
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  answer = ac?.textFields?[\cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ].text 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{ 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \}\
+        
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 submit\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (answer)\
+    \}\
+\
+    ac.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (submitAction)\
+    \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 present\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (ac, animated: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf4 T\cf2 hat code won\'92t build just yet, so don\'92t worry if you see errors \'96 we\'92ll fix them soon. But first, let\'92s talk about what the code above does. It introduces quite a few new things, but before we look at them let's eliminate the easy stuff.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+It needs to be called from a 
+\f3\b UIBarButtonItem
+\f1\b0  action, so we must mark it 
+\f3\b @objc
+\f1\b0 . Hopefully you\'92re starting to sense when this is needed, but don\'92t worry if you forget \'96\'a0Xcode will always complain loudly if 
+\f3\b @objc
+\f1\b0  is required and not present!\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Creating a new 
+\f3\b UIAlertController
+\f1\b0 : we did that in project 2.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+The 
+\f3\b addTextField()
+\f1\b0  method just adds an editable text input field to the 
+\f3\b UIAlertController
+\f1\b0 . We could do more with it, but it's enough for now.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+The 
+\f3\b addAction()
+\f1\b0  method is used to add a 
+\f3\b UIAlertAction
+\f1\b0  to a 
+\f3\b UIAlertController
+\f1\b0 . We used this in project 2 also.\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+The 
+\f3\b present()
+\f1\b0  method is also from project 2. Clearly project 2 was brilliant!\
+\pard\pardeftab720\partightenfactor0
+\cf2 That leaves the tricky stuff: creating 
+\f3\b submitAction
+\f1\b0 . These handful of lines of code demonstrate no fewer than four new things to learn, all of which are important. I'm going to sort them easiest first, starting with 
+\f3\b UITextField
+\f1\b0 .\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf2 UITextField
+\f1\b0  is a simple editable text box that shows the keyboard so the user can enter something. We added a single text field to the 
+\f3\b UIAlertController
+\f1\b0  using its 
+\f3\b addTextField()
+\f1\b0  method, and we now read out the value that was inserted.\
+Next up is 
+\f2\i trailing closure syntax
+\f1\i0 . We covered this while you were learning the Swift fundamentals, but now you can see it in action: rather than specifying a 
+\f3\b handler
+\f1\b0  parameter, we pass the code we want to run in braces 
+\f2\i after
+\f1\i0  the method call.\
+Next, 
+\f3\b action in
+\f1\b0 . If you remember project 2, we had to modify the 
+\f3\b askQuestion()
+\f1\b0  method so that it accepted a 
+\f3\b UIAlertAction
+\f1\b0  parameter saying what button was tapped, like this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 askQuestion\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (action: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 !) \{\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 We had no choice but to do that, because the 
+\f3\b handler
+\f1\b0  parameter for 
+\f3\b UIAlertAction
+\f1\b0  expects a method that takes itself as a parameter, and we also added a default value of \'93nil\'94 so we could call it ourselves \'96\'a0hence the 
+\f3\b !
+\f1\b0  part. And that's what's happening here: we're giving the 
+\f3\b UIAlertAction
+\f1\b0  some code to execute when it is tapped, and it wants to know that that code accepts a parameter of type 
+\f3\b UIAlertAction
+\f1\b0 .\
+The 
+\f3\b in
+\f1\b0  keyword is important: everything before that describes the closure; everything after that 
+\f2\i is
+\f1\i0  the closure. So 
+\f3\b action in
+\f1\b0  means that it accepts one parameter in, of type 
+\f3\b UIAlertAction
+\f1\b0 .\
+In our current project, we could simplify this even further: we don't make any reference to the 
+\f3\b action
+\f1\b0  parameter inside the closure, which means we don't need to give it a name at all. In Swift, to leave a parameter unnamed you just use an underscore character, like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs36 \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Fourth is 
+\f3\b weak
+\f1\b0 . Swift "captures" any constants and variables that are used in a closure, based on the values of the closure's surrounding context. That is, if you create an integer, a string, an array and another class outside of the closure, then use them inside the closure, Swift captures them.\
+This is important, because the closure references the variables, and might even change them. But I haven't said yet what "capture" actually means, and that's because it depends what kind of data you're using. Fortunately, Swift hides it all away so you don't have to worry about it\'85\
+\'85except for those strong reference cycles I mentioned. 
+\f2\i Those
+\f1\i0  you need to worry about. That's where objects can't even be destroyed because they all hold tightly on to each other \'96 known as 
+\f2\i strong referencing
+\f1\i0 .\
+Swift's solution is to let you declare that some variables aren't held onto quite so tightly. It's a two-step process, and it's so easy you'll find yourself doing it for everything just in case. In the event that Xcode thinks you\'92re taking it a bit too far, you\'92ll get a warning saying you can relax a bit.\
+First, you must tell Swift what variables you don't want strong references for. This is done in one of two ways: 
+\f3\b unowned
+\f1\b0  or 
+\f3\b weak
+\f1\b0 . These are somewhat equivalent to implicitly unwrapped optionals (unowned) and regular optionals (weak): a weakly owned reference might be 
+\f3\b nil
+\f1\b0 , so you need to unwrap it or use optional chaining; an unowned reference is one you're certifying cannot be 
+\f3\b nil
+\f1\b0  and so doesn't need to be unwrapped, however you'll hit a problem if you were wrong.\
+In our code we use this: 
+\f3\b [weak self, weak ac]
+\f1\b0 . That declares 
+\f3\b self
+\f1\b0  (the current view controller) and 
+\f3\b ac
+\f1\b0  (our 
+\f3\b UIAlertController
+\f1\b0 ) to be captured as weak references inside the closure. It means the closure can use them, but won't create a strong reference cycle because we've made it clear the closure doesn't own either of them.\
+But that's not enough for Swift. Inside our method we're calling the 
+\f3\b submit()
+\f1\b0  method of our view controller. We haven't created it yet, but you should be able to see it's going to take the answer the user entered and try it out in the game.\
+This 
+\f3\b submit()
+\f1\b0  method is external to the closure\'92s current context, so when you're writing it you might not realize that calling 
+\f3\b submit()
+\f1\b0  implicitly requires that 
+\f3\b self
+\f1\b0  be captured by the closure. That is, the closure can't call 
+\f3\b submit()
+\f1\b0  if it doesn't capture the view controller.\
+We've already declared that 
+\f3\b self
+\f1\b0  is weakly owned by the closure, but Swift wants us to be absolutely sure we know what we're doing: every call to a method or property of the current view controller must prefixed with "
+\f3\b self?.
+\f1\b0 \'94, as in 
+\f3\b self?.submit()
+\f1\b0 .\
+In project 1, I told you there were two trains of thought regarding use of 
+\f3\b self
+\f1\b0 , and said, "The first group of people never like to use 
+\f3\b self.
+\f1\b0  unless it's required, because when it's required it's actually important and meaningful, so using it in places where it isn't required can confuse matters."\
+Implicit capture of 
+\f3\b self
+\f1\b0  in closures is that place when using 
+\f3\b self
+\f1\b0  is required and meaningful: Swift won't let you avoid it here. By restricting your use of 
+\f3\b self
+\f1\b0  to closures you can easily check your code doesn\'92t have any reference cycles by searching for "self" \'96 there ought not to be too many to look through!\
+\
+I realize all that sounds very dense, but let\'92s take a look at the code again:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  submitAction = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Submit"\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{ [
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 weak
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac] action 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 guard
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  answer = ac?.textFields?[\cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ].text 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{ 
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \}\
+    
+\f3\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 submit\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (answer)\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Hopefully you can start to see how it breaks down:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We use trailing closure syntax to provide some code to run when the alert action is selected.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+That code will use 
+\f3\b self
+\f1\b0  and 
+\f3\b ac
+\f1\b0  so we declare them as being 
+\f3\b weak
+\f1\b0  so that Swift won\'92t create a strong reference cycle.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+The closure expects to receive a 
+\f3\b UIAlertAction
+\f1\b0  as its parameter, so we write that inside the opening brace.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Everything after 
+\f3\b in
+\f1\b0  is the actual code of the closure.\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Inside the closure we need to reference methods on our view controller using 
+\f3\b self
+\f1\b0  so that we\'92re clearly acknowledging the possibility of a strong reference cycle.\
+\pard\pardeftab720\partightenfactor0
+\cf2 It\'92s complicated and I\'92m not going to pretend otherwise, but we are going to be coming back to this repeatedly in the future \'96\'a0you\'92ll have more than enough chance to understand it better.\
+Before we move on, let's make your code compile again because right now it's calling 
+\f3\b self?.submit()
+\f1\b0  and we haven't made that method yet. So, add this new method somewhere in the class:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 submit\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  answer: \cf11 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That's right, it's empty \'96 but it's enough to make the code compile cleanly so we can carry on.\
+}
