@@ -1,0 +1,329 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 Menlo-Bold;\f4\fnil\fcharset0 HelveticaNeue-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red212\green212\blue212;
+\red252\green55\blue54;\red246\green246\blue239;\red24\green24\blue28;\red72\green212\blue251;\red215\green165\blue255;
+\red248\green60\blue79;\red244\green0\blue95;\red222\green43\blue91;\red235\green0\blue121;\red157\green101\blue255;
+\red93\green108\blue125;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c86275\c86275\c86275;
+\cssrgb\c100000\c31373\c27059;\cssrgb\c97255\c97255\c94902;\cssrgb\c12549\c12549\c14510;\cssrgb\c32941\c86275\c98824;\cssrgb\c87843\c72157\c100000;
+\cssrgb\c98824\c33725\c38039;\cssrgb\c97647\c14902\c44706;\cssrgb\c90588\c27059\c43137;\cssrgb\c94902\c14118\c54902;\cssrgb\c68235\c50588\c100000;
+\cssrgb\c43922\c50196\c56471;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\qc\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+DAY 31\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Project 6, part two\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 One of the three laws laid down by British science fiction writer Arthur C. Clarke is particularly well known: \'93any sufficiently advanced technology is indistinguishable from magic.\'94\
+It\'92s possible\'a0that you\'92re thinking Auto Layout is a bit of a black box, where magic happens to make sure all your rules are followed. But it isn\'92t: Auto Layout is actually straightforward most of the time, and as long as you make sure your constraints are a) complete, and b) non-contradictory, you shouldn\'92t have too many problems.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you have three topics to work through, and you\'92ll learn about advanced Visual Formatting Language and Auto Layout anchors. Once you\'92re done, please complete the project review then work through all three of its challenges.
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/6/4/auto-layout-metrics-and-priorities-constraintswithvisualformat"}}{\fldrslt \expnd0\expndtw0\kerning0
+Auto Layout metrics and priorities: constraints(withVisualFormat:)}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/6/5/auto-layout-anchors"}}{\fldrslt \expnd0\expndtw0\kerning0
+Auto Layout anchors}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/6/6/wrap-up"}}{\fldrslt \expnd0\expndtw0\kerning0
+Wrap up}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/review/hws/project-6-auto-layout"}}{\fldrslt \expnd0\expndtw0\kerning0
+Review for Project 6: Auto Layout}}\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 If you\'92re keen to learn more about Auto Layout, I have an {\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/articles/140/the-auto-layout-cheat-sheet"}}{\fldrslt Auto Layout cheat sheet}} that gives you lots of example code to solve common problems.\
+If you\'92re feeling mathematically brave, there\'92s also a {\field{\*\fldinst{HYPERLINK "https://www.youtube.com/watch?v=gxfyb3ipUFg"}}{\fldrslt great talk by Agnes Vasarhelyi}} that goes into exactly how the Auto Layout algorithm works behind the scenes \'96\'a0it should prove there\'92s no magic once and for all!\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Auto Layout metrics and priorities: constraints(withVisualFormat:)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 We have a working layout now, but it's quite basic: the labels aren't very high, and without a rule regarding the bottom of the last label it's possible the views might be pushed off the bottom edge.\
+To begin to fix this problem, we're going to add a constraint for the bottom edge saying that the bottom of our last label must be at least 10 points away from the bottom of the view controller's view. We're also going to tell Auto Layout that we want each of the five labels to be 88 points high. Replace the previous vertical constraints with this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs36 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "V:|[label1(==88)]-[label2(==88)]-[label3(==88)]-[label4(==88)]-[label5(==88)]-(>=10)-|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 The difference here is that we now have numbers inside parentheses: 
+\f3\b (==88)
+\f1\b0  for the labels, and 
+\f3\b (>=10)
+\f1\b0  for the space to the bottom. Note that when specifying the size of a space, you need to use the - before and after the size: a simple space, -, becomes 
+\f3\b -(>=10)-
+\f1\b0 .\
+We are specifying two kinds of size here: 
+\f3\b ==
+\f1\b0  and 
+\f3\b >=
+\f1\b0 . The first means "exactly equal" and the second "greater than or equal to." So, our labels will be forced to be an exact size, and we ensure that there's some space at the bottom while also making it flexible \'96 it will definitely be at least 10 points, but could be 100 or more depending on the situation.\
+Actually, wait a minute. I didn't want 88 points for the label size, I meant 80 points. Go ahead and change all the labels to 80 points high.\
+Whoa there! It looks like you just received an email from your IT director: he thinks 80 points is a silly size for the labels; they need to be 64 points, because all good sizes are a power of 2.\
+And now it looks like your designer and IT director are having a fight about the right size. A few punches later, they decide to split the difference and go for a number in the middle: 72. So please go ahead and make the labels all 72 points high.\
+Bored yet? You ought to be. And yet this is the kind of pixel-pushing it's easy to fall into, particularly if your app is being designed by committee.
+\f0\b\fs98 \
+\
+
+\f1\b0\fs35\fsmilli17600 Auto Layout has a solution, and it's called 
+\f4\i metrics
+\f1\i0 . All these calls to 
+\f3\b constraints(withVisualFormat:)
+\f1\b0  have been sent 
+\f3\b nil
+\f1\b0  for their metrics parameter, but that's about to change. You see, you can give VFL a set of sizes with names, then use those sizes in the VFL rather than hard-coding numbers. For example, we wanted our label height to be 88, so we could create a metrics dictionary like this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  metrics = [\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "labelHeight"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 88\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Then, whenever we had previously written 
+\f3\b ==88
+\f1\b0 , we can now just write 
+\f3\b labelHeight
+\f1\b0 . So, change your current vertical constraints to be this:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs36 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "V:|[label1(labelHeight)]-[label2(labelHeight)]-[label3(labelHeight)]-[label4(labelHeight)]-[label5(labelHeight)]->=10-|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: metrics, views: viewsDictionary))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 So when your designer / manager / inner-pedant decides that 88 points is wrong and you want some other number, you can change it in one place to have everything update.\
+\
+Before we're done, we're going to make one more change that makes the whole user interface much better, because right now it's still imperfect. To be more specific, we're forcing all labels to be a particular height, then adding constraints to the top and bottom. This still works fine in portrait, but in landscape you're unlikely to have enough room to satisfy all the constraints.\
+With our current configuration, you'll see this message when the app is rotated to landscape: "Unable to simultaneously satisfy constraints." This means your constraints simply don't work given how much screen space there is, and that's where 
+\f4\i priority
+\f1\i0  comes in. You can give any layout constraint a priority, and Auto Layout will do its best to make it work.\
+Constraint priority is a value between 1 and 1000, where 1000 means "this is absolutely required" and anything less is optional. By default, all constraints you have are priority 1000, so Auto Layout will fail to find a solution in our current layout. But if we make the height optional \'96 even as high as priority 999 \'96 it means Auto Layout can find a solution to our layout: shrink the labels to make them fit.\
+It's important to understand that Auto Layout doesn't just discard rules it can't meet \'96 it still does its best to meet them. So in our case, if we make our 88-point height optional, Auto Layout might make them 78 or some other number. That is, it will still do its best to make them as close to 88 as possible. TL;DR: constraints are evaluated from highest priority down to lowest, but all are taken into account.\
+So, we're going to make the label height have priority 999 (i.e., very important, but not required). But we're also going to make one other change, which is to tell Auto Layout that we want all the labels to have the same height. This is important, because if all of them have optional heights using 
+\f3\b labelHeight
+\f1\b0 , Auto Layout might solve the layout by shrinking one label and making another 88.\
+From its point of view it has at least managed to make some of the labels 88, so it's probably quite pleased with itself, but it makes our user interface look uneven. So, we're going to make the first label use 
+\f3\b labelHeight
+\f1\b0  at a priority of 999, then have the other labels adopt the same height as the first label. Here's the new VFL line:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs36 \cf10 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "V:|[label1(labelHeight@999)]-[label2(label1)]-[label3(label1)]-[label4(label1)]-[label5(label1)]->=10-|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 It's the 
+\f3\b @999
+\f1\b0  that assigns priority to a given constraint, and using 
+\f3\b (label1)
+\f1\b0  for the sizes of the other labels is what tells Auto Layout to make them the same height.\
+That's it: your Auto Layout configuration is complete, and the app can now be run safely in portrait and landscape.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Auto Layout anchors\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 You\'92ve seen how to create Auto Layout constraints both in Interface Builder and using Visual Format Language, but there\'92s one more option open to you and it\'92s often the best choice.\
+Every 
+\f3\b UIView
+\f1\b0  has a set of anchors that define its layouts rules. The most important ones are 
+\f3\b widthAnchor
+\f1\b0 , 
+\f3\b heightAnchor
+\f1\b0 , 
+\f3\b topAnchor
+\f1\b0 , 
+\f3\b bottomAnchor
+\f1\b0 , 
+\f3\b leftAnchor
+\f1\b0 , 
+\f3\b rightAnchor
+\f1\b0 , 
+\f3\b leadingAnchor
+\f1\b0 , 
+\f3\b trailingAnchor
+\f1\b0 , 
+\f3\b centerXAnchor
+\f1\b0 , and 
+\f3\b centerYAnchor
+\f1\b0 .\
+Most of those should be self-explanatory, but it\'92s worth clarifying the difference between 
+\f3\b leftAnchor
+\f1\b0 , 
+\f3\b rightAnchor
+\f1\b0 , 
+\f3\b leadingAnchor
+\f1\b0 , and 
+\f3\b trailingAnchor
+\f1\b0 . For me, left and leading are the same, and right and trailing are the same too. This is because my devices are set to use the English language, which is written and read left to right. However, for right-to-left languages such as Hebrew and Arabic, leading and trailing flip around so that leading is equal to right, and trailing is equal to left.\
+In practice, this means using 
+\f3\b leadingAnchor
+\f1\b0  and 
+\f3\b trailingAnchor
+\f1\b0  if you want your user interface to flip around for right to left languages, and 
+\f3\b leftAnchor
+\f1\b0  and 
+\f3\b rightAnchor
+\f1\b0  for things that should look the same no matter what environment.\
+The best bit about working with anchors is that they can be created relative to other anchors. That is you can say \'93this label\'92s width anchor is equal to the width of its container,\'94 or \'93this button\'92s top anchor is equal to the bottom anchor of this other button.\'94\
+To demonstrate anchors, comment out your existing Auto Layout VFL code and replace it with this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label 
+\f3\b \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  [label1, label2, label3, label4, label5] \{\
+    label.widthAnchor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (equalTo: view.widthAnchor).isActive = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label.heightAnchor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (equalToConstant: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 88\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ).isActive = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That loops over each of the five labels, setting them to have the same width as our main view, and to have a height of exactly 88 points.
+\f0\b\fs98 \
+\
+
+\f1\b0\fs35\fsmilli17600 We haven\'92t set top anchors, though, so the layout won\'92t look correct just yet. What we want is for the top anchor for each label to be equal to the bottom anchor of the previous label in the loop. Of course, the first time the loop goes around there 
+\f4\i is
+\f1\i0  no previous label, so we can model that using optionals:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  previous: \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 The first time the loop goes around that will be nil, but then we\'92ll set it to the current item in the loop so the 
+\f4\i next
+\f1\i0  label can refer to it. If 
+\f3\b previous
+\f1\b0  is not nil, we\'92ll set a 
+\f3\b topAnchor
+\f1\b0  constraint.\
+Replace your existing Auto Layout anchors with this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  previous: \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?\
+\
+
+\f3\b \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label 
+\f3\b \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  [label1, label2, label3, label4, label5] \{\
+    label.widthAnchor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (equalTo: view.widthAnchor).isActive = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label.heightAnchor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (equalToConstant: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 88\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ).isActive = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\
+    
+\f3\b \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  previous = previous \{\
+        \cf15 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // we have a previous label \'96 create a height constraint\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        label.topAnchor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (equalTo: previous.bottomAnchor, constant: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 10\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ).isActive = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    \cf15 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // set the previous label to be the current one, for the next loop iteration\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    previous = label\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That third anchor combines a different anchor with a constant value to get spacing between the views \'96\'a0these things are really flexible.
+\f0\b\fs98 \
+\
+
+\f1\b0\fs35\fsmilli17600 Run the app now and you\'92ll see all the labels space themselves out neatly. I hope you\'92ll agree that anchors make Auto Layout code really simple to read and write!\
+Anchors also let us control the safe area nicely. The \'93safe area\'94 is the space that\'92s actually visible inside the insets of the iPhone X and other such devices \'96\'a0with their rounded corners, notch and similar. It\'92s a space that excludes those areas, so labels no longer run underneath the notch or rounded corners.\
+We can fix that using constraints. In our current code we\'92re saying \'93if we have a previous label, make the top anchor of this label equal to the bottom anchor of the previous label plus 10.\'94 But if we add an 
+\f3\b else
+\f1\b0  block we can push the first label away from the top of the safe area, so it doesn\'92t sit under the notch, like this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  previous = previous \{\
+    \cf15 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // we have a previous label \'96 create a height constraint\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label.topAnchor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (equalTo: previous.bottomAnchor, constant: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 10\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ).isActive = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\} 
+\f3\b \cf13 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f2\b0 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    \cf15 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // this is the first label\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label.topAnchor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (equalTo: view.safeAreaLayoutGuide.topAnchor, constant: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ).isActive = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 If you run that code now, you should see all five labels start below the notch in iPhone X-style devices.\
+\
+WRAP UP\
+There are two types of iOS developer in the world: those who use Auto Layout, and people who like wasting time. It has bit of a steep learning curve (and we didn't even use the hard way of adding constraints!), but it's an extremely expressive way of creating great layouts that adapt themselves automatically to whatever device they find themselves running on \'96 now and in the future.\
+Most people recommend you do as much as you can inside Interface Builder, and with good reason \'96 you can drag lines about until you're happy, you get an instant preview of how it all looks, and it will warn you if there's a problem (and help you fix it.) But, as you've seen, creating constraints in code is remarkably easy thanks to the Visual Format language and anchors, so you might find yourself mixing them all to get the best results.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Review what you learned\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 Anyone can sit through a tutorial, but it takes actual work to remember what was taught. It\'92s my job to make sure you take as much from these tutorials as possible, so I\'92ve prepared a short review to help you check your learning.\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/review/hws/project-6-auto-layout"}}{\fldrslt \cf2 Click here to review what you learned in project 6}}.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Challenge\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 One of the best ways to learn is to write your own code as often as possible, so here are three ways you should try extending this app to make sure you fully understand what\'92s going on:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	1	}\expnd0\expndtw0\kerning0
+Try replacing the 
+\f3\b widthAnchor
+\f1\b0  of our labels with 
+\f3\b leadingAnchor
+\f1\b0  and 
+\f3\b trailingAnchor
+\f1\b0  constraints, which more explicitly pin the label to the edges of its parent.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	2	}\expnd0\expndtw0\kerning0
+Once you\'92ve completed the first challenge, try using the 
+\f3\b safeAreaLayoutGuide
+\f1\b0  for those constraints. You can see if this is working by rotating to landscape, because the labels won\'92t go under the safe area.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	3	}\expnd0\expndtw0\kerning0
+Try making the height of your labels equal to 1/5th of the main view, minus 10 for the spacing. This is a hard one, but I\'92ve included hints below!\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Hints\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 It is 
+\f4\i vital
+\f1\i0  to your learning that you try the challenges above yourself, and not just for a handful of minutes before you give up.\
+Every time you try something wrong, you learn that it\'92s wrong and you\'92ll remember that it\'92s wrong. By the time you find the 
+\f4\i correct
+\f1\i0  solution, you\'92ll remember it much more thoroughly, while also remembering a lot of the wrong turns you took.\
+This is what I mean by \'93there is no learning without struggle\'94: if something comes easily to you, it can go just as easily. But when you have to really mentally fight for something, it will stick much longer.\
+But if you\'92ve already worked hard at the challenges above and are still struggling to implement them, I\'92m going to write some hints below that should guide you to the correct answer.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 If you ignore me and read these hints without having spent at least 30 minutes trying the challenges above, the only person you\'92re cheating is yourself.
+\f1\b0 \
+Still here? OK. If you\'92re stuck on the last challenge, try looking at Xcode\'92s code completion options for the 
+\f3\b constraint()
+\f1\b0  method. We\'92re using the 
+\f3\b equalToConstant
+\f1\b0  option right now, but there are others \'96\'a0the 
+\f3\b equalTo
+\f1\b0  option lets you specify another height anchor as its first parameter, along with a multiplier and a constant.\
+When you use both a multiplier and a constant, the multiplier gets factored in first then the constant. So, if you wanted to make one view half the width of the main view plus 50, you might write something like this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs36 \cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 yourView.widthAnchor.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0.5\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , constant: \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 50\cf6 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ).isActive = \cf14 \cb7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true}

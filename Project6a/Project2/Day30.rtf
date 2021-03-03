@@ -1,0 +1,271 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Regular;
+\f3\fnil\fcharset0 HelveticaNeue-Italic;\f4\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red222\green43\blue91;
+\red235\green0\blue121;\red24\green24\blue28;\red246\green246\blue239;\red72\green212\blue251;\red157\green101\blue255;
+\red215\green165\blue255;\red248\green60\blue79;\red244\green0\blue95;\red74\green200\blue164;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c90588\c27059\c43137;
+\cssrgb\c94902\c14118\c54902;\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;\cssrgb\c32941\c86275\c98824;\cssrgb\c68235\c50588\c100000;
+\cssrgb\c87843\c72157\c100000;\cssrgb\c98824\c33725\c38039;\cssrgb\c97647\c14902\c44706;\cssrgb\c33725\c81569\c70196;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\qc\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+DAY 30\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Project 6, part one\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 Famed French fashion designer Coco Chanel once said that \'93fashion is architecture: it is a matter of proportions.\'94 The same is true of user interface design: our goal is to make all our important functionality available to the user without making it feel squashed or squeezed in.\
+Today we\'92re starting a new technique project where we\'92ll look at how Auto Layout lets us set some fairly complicated rules to make our UI look great. There are several different ways of doing this, and I\'92ll be showing you them all in this project \'96\'a0I\'92d rather you tried them yourself and decided which worked best for you, rather than me trying to pick and choose based on my own preferences.\
+Regardless of which you choose, as you\'92ll see the end result is that we have extraordinary power over the way our user interface adapts to different devices and rotation changes.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you have three topics to work through, and you\'92ll learn about using aspect ratio constraints, Visual Format language, and more.
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/6/1/setting-up"}}{\fldrslt \expnd0\expndtw0\kerning0
+Setting up}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/6/2/advanced-auto-layout"}}{\fldrslt \expnd0\expndtw0\kerning0
+Advanced Auto Layout}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/6/3/auto-layout-in-code-addconstraints-with-visual-format-language"}}{\fldrslt \expnd0\expndtw0\kerning0
+Auto Layout in code: 
+\f2 addConstraints()
+\f1  with Visual Format Language}}\expnd0\expndtw0\kerning0
+\
+\pard\tx560\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Setting up\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 In this technique project you're going to learn more about Auto Layout, the powerful and expressive way iOS lets you design your layouts. We used it in project 2 to make sure our flag buttons were positioned correctly, but that project has a problem: if you rotate your device, the flags don't fit on the screen!\
+So, we're first going to fix project 2 so that it demonstrates more advanced Auto Layout techniques (while also making the flags stay on the screen correctly!), then take a look at ways you can use Auto Layout in code.\
+First: take a copy of project 2, call it project6a, then open it in Xcode.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Advanced Auto Layout\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 When you run the project, it looks fine in portrait, but is unplayable on landscape because some of the buttons are hidden. You have two options: either disable landscape mode, or make your layout work across both orientations.\
+Disabling orientations isn't a great solution, but sometimes it's the 
+\f3\i right
+\f1\i0  solution. Most games, for example, fix their orientation because it just doesn't make sense to support both. If you want to do this, press Cmd+1 to show the project navigator on the left of your Xcode window, select your project (it's the first item in the pane), then to the right of where you just clicked will appear another pane showing "PROJECT" and "TARGETS", along with some more information in the center.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Please note:
+\f1\b0  This project and targets list can be hidden by clicking the disclosure button in the top-left of the project editor (directly beneath the icon with four squares), and you may find yours is already hidden. I strongly recommend you show this list \'96 hiding it will only make things harder to find, so please make sure it's visible!\
+In the picture below you can see the project editor, with the device orientations at the bottom. This is the collapsed view of projects and targets, so there's a dropdown arrow at the top that says "Project2" (just above where it says Identity in bold), and to the left of that is the button to show the projects and targets list.\
+\
+This view is called the project editor, and contains a huge number of options that affect the way your app works. You'll be using this a lot in the future, so remember how to get here! Select Project 2 under TARGETS, then choose the General tab, and scroll down until you see four checkboxes called Device Orientation. You can select only the ones you want to support.\
+You'll need to support selective orientations in some later projects, but for now let's take the smart solution: add extra rules to Auto Layout so it can make the layout work great in landscape mode.\
+\
+Open Main.storyboard in Interface Builder, select the bottom flag, then Ctrl-drag from the flag to the white space directly below the flag \'96 in the view controller itself. The direction you drag is important, so please drag straight down.\
+When you release your mouse button, a popup will appear that includes the option \'93Bottom Space to Safe Area\'94 \'96 please select that. This creates a new Auto Layout constraint that the bottom of the flag must be at least X points away from the bottom of the view controller, where X is equal to whatever space there is in there now.\
+Although this is a valid rule, it will screw up your layout because we now have a complete set of exact vertical rules: the top flag should be 36 points from the top, the second 30 from the first, the third 30 from the second, and the third X away from the bottom. It's 207 for me, but yours might be different.\
+Because we've told Auto Layout exactly how big all the spaces should be, it will add them up and divide the remaining space among the three flags however it thinks best. That is, the flags must now be stretched vertically in order to fill the space, which is almost certainly what we don't want.\
+Instead, we're going to tell Auto Layout where there is some flexibility, and that's in the new bottom rule we just created. The bottom flag doesn't need to be precisely 207 points away from the bottom of the safe area \'96 it just needs to be 
+\f3\i some
+\f1\i0  distance away, so that it doesn't touch the edge. If there is more space, great, Auto Layout should use it, but all we care about is the minimum.\
+Select the third flag to see its list of constraints drawn in blue, then (carefully!) select the bottom constraint we just added. In the utilities view on the right, choose the attributes inspector (Alt+Cmd+4), and you should see Relation set to Equal and Constant set to 207 (or some other value, depending on your layout).\
+What you need to do is change Equal to be "Greater Than or Equal", then change the Constant value to be 20. This sets the rule "make it at least 20, but you can make it more to fill up space." The layout won't change visually while you're doing this, because the end result is the same. But at least now that Auto Layout knows it has some flexibility beyond just stretching the flags!\
+Our problem is still not fixed, though: in landscape, an iPhone SE has just 320 points of space to work with, so Auto Layout is going to make our flags fit by squashing one or maybe even two of them. Squashed flags aren't good, and having uneven sizes of flags isn't good either, so we're going to add some more rules.\
+Select the second button, then Ctrl-drag to the first button. When given the list of options, choose Equal Heights. Now do the same from the third button to the second button. This rule ensures that at all times the three flags have the same height, so Auto Layout can no longer squash one button to make it all fit and instead has to squash all three equally.\
+That fixes part of the problem, but in some respects it has made things worse. Rather than having one squashed flag, we now have three! But with one more rule, we can stop the flags from being squashed ever. Select the first button, then Ctrl-drag a little bit upwards \'96 but stay within the button! When you release your mouse button, you'll see the option "Aspect Ratio", so please choose it.\
+The Aspect Ratio constraint solves the squashing once and for all: it means that if Auto Layout is forced to reduce the height of the flag, it will reduce its width by the same proportion, meaning that the flag will always look correct. Add the Aspect Ratio constraint to the other two flags, and run your app again. It should work great in portrait and landscape, all thanks to Auto Layout!\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Auto Layout in code: addConstraints with Visual Format Language\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 Create a new Single View App project in Xcode, naming it Project6b. We're going to create some views by hand, then position them using Auto Layout. Put this into your 
+\f4\b viewDidLoad()
+\f1\b0  method:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f4\b \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewDidLoad\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f4\b \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 super
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewDidLoad\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label1 = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label1.translatesAutoresizingMaskIntoConstraints = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label1.backgroundColor = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .red\
+    label1.text = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "THESE"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label1.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label2 = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label2.translatesAutoresizingMaskIntoConstraints = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label2.backgroundColor = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .cyan\
+    label2.text = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "ARE"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label2.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label3 = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label3.translatesAutoresizingMaskIntoConstraints = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label3.backgroundColor = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .yellow\
+    label3.text = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "SOME"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label3.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label4 = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label4.translatesAutoresizingMaskIntoConstraints = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label4.backgroundColor = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .green\
+    label4.text = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "AWESOME"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label4.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f4\b \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label5 = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label5.translatesAutoresizingMaskIntoConstraints = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label5.backgroundColor = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .orange\
+    label5.text = \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "LABELS"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label5.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()        \
+\
+    view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label1)\
+    view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label2)\
+    view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label3)\
+    view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label4)\
+    view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label5)\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 All that code creates five 
+\f4\b UILabel
+\f1\b0  objects, each with unique text and a unique background color. All five views then get added to the view belonging to our view controller by using 
+\f4\b view.addSubview()
+\f1\b0 .\
+We also set the property 
+\f4\b translatesAutoresizingMaskIntoConstraints
+\f1\b0  to be 
+\f4\b false
+\f1\b0  on each label, because by default iOS generates Auto Layout constraints for you based on a view's size and position. We'll be doing it by hand, so we need to disable this feature.\
+If you run the app now, you'll see seem some colorful labels at the top, overlapping so it looks like it says "LABELS ME". That's because our labels are placed in their default position (at the top-left of the screen) and are all sized to fit their content thanks to us calling 
+\f4\b sizeToFit()
+\f1\b0  on each of them.\
+We're going to add some constraints that say each label should start at the left edge of its superview, and end at the right edge. What\'92s more, we're going to do this using a technique called Auto Layout Visual Format Language (VFL), which is kind of like a way of drawing the layout you want with a series of keyboard symbols.\
+Before we do that, we need to create a dictionary of the views we want to lay out. The reason this is needed for VFL will become clear shortly, but first here's the dictionary you need to add below the last call to 
+\f4\b addSubview()
+\f1\b0 :\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  viewsDictionary = [\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label1"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label1, \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label2"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label2, \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label3"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label3, \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label4"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label4, \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label5"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label5]\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That creates a dictionary with strings for its keys and our labels as its values (the values). So, to get access to 
+\f4\b label1
+\f1\b0 , we can now use 
+\f4\b viewsDictionary["label1"]
+\f1\b0 . This might seem redundant, but wait just a moment longer: it's time for some Visual Format Language!\
+Add these lines directly below the 
+\f4\b viewsDictionary
+\f1\b0  that was just created:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs36 \cf7 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label1]|"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label2]|"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label3]|"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label4]|"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label5]|"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That's a lot of code, but actually it's just the same thing five times over. As a result, we could easily rewrite those in a loop, like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label 
+\f4\b \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f2\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  viewsDictionary.keys \{\
+    view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \\(\cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 label\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]|"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Note that we're using string interpolation to put the key ("label1", etc) into the VFL.\
+Let's eliminate the easy stuff, then focus on what remains.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\f4\b \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+view.addConstraints()
+\f1\b0 : this adds an array of constraints to our view controller's view. This array is used rather than a single constraint because VFL can generate multiple constraints at a time.\
+\ls2\ilvl0
+\f4\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+NSLayoutConstraint.constraints(withVisualFormat:)
+\f1\b0  is the Auto Layout method that converts VFL into an array of constraints. It accepts lots of parameters, but the important ones are the first and last.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We pass 
+\f4\b []
+\f1\b0  (an empty array) for the options parameter and 
+\f4\b nil
+\f1\b0  for the metrics parameter. You can use these options to customize the meaning of the VFL, but for now we don't care.\
+\pard\pardeftab720\partightenfactor0
+\cf2 That's the easy stuff. So, let's look at the Visual Format Language itself: 
+\f4\b "H:|[label1]|"
+\f1\b0 . As you can see it's a string, and that string describes how we want the layout to look. That VFL gets converted into Auto Layout constraints, then added to the view.\
+The 
+\f4\b H:
+\f1\b0  parts means that we're defining a horizontal layout; we'll do a vertical layout soon. The pipe symbol, |, means "the edge of the view." We're adding these constraints to the main view inside our view controller, so this effectively means "the edge of the view controller." Finally, we have 
+\f4\b [label1]
+\f1\b0 , which is a visual way of saying "put 
+\f4\b label1
+\f1\b0  here". Imagine the brackets, [ and ], are the edges of the view.\
+So, 
+\f4\b "H:|[label1]|"
+\f1\b0  means "horizontally, I want my 
+\f4\b label1
+\f1\b0  to go edge to edge in my view." But there's a hiccup: what is "label1"? Sure, 
+\f3\i we
+\f1\i0  know what it is because it's the name of our variable, but variable names are just things for humans to read and write \'96 the variable names aren't actually saved and used when the program runs.\
+This is where our 
+\f4\b viewsDictionary
+\f1\b0  dictionary comes in: we used strings for the key and 
+\f4\b UILabels
+\f1\b0  for the value, then set "label1" to be our label. This dictionary gets passed in along with the VFL, and gets used by iOS to look up the names from the VFL. So when it sees 
+\f4\b [label1]
+\f1\b0 , it looks in our dictionary for the "label1" key and uses its value to generate the Auto Layout constraints.\
+That's the entire VFL line explained: each of our labels should stretch edge-to-edge in our view. If you run the program now, that's sort of what you'll see, although it highlights our second problem: we don't have a vertical layout in place, so although all the labels sit edge-to-edge in the view, they all overlap.\
+We're going to fix this with another set of constraints, but this time it's just one (long) line.\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs36 \cf7 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 view.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "V:|[label1]-[label2]-[label3]-[label4]-[label5]"\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That's identical to the previous five, except for the VFL part. This time we're specifying 
+\f4\b V:
+\f1\b0 , meaning that these constraints are vertical. And we have multiple views inside the VFL, so lots of constraints will be generated. The new thing in the VFL this time is the 
+\f4\b -
+\f1\b0  symbol, which means "space". It's 10 points by default, but you can customize it.\
+Note that our vertical VFL doesn't have a pipe at the end, so we're not forcing the last label to stretch all the way to the edge of our view. This will leave whitespace after the last label, which is what we want right now.\
+If you run your program now, you'll see all five labels stretching edge-to-edge horizontally, then spaced neatly vertically. It would have taken quite a lot of Ctrl-dragging in Interface Builder to make this same layout, so I hope you can appreciate how powerful VFL is!
+\f0\b\fs98 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 \
+}

@@ -1,0 +1,189 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Regular;\f4\fnil\fcharset0 HelveticaNeue-Italic;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red235\green0\blue121;
+\red24\green24\blue28;\red246\green246\blue239;\red72\green212\blue251;\red157\green101\blue255;\red215\green165\blue255;
+\red248\green60\blue79;\red244\green0\blue95;\red74\green200\blue164;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c94902\c14118\c54902;
+\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;\cssrgb\c32941\c86275\c98824;\cssrgb\c68235\c50588\c100000;\cssrgb\c87843\c72157\c100000;
+\cssrgb\c98824\c33725\c38039;\cssrgb\c97647\c14902\c44706;\cssrgb\c33725\c81569\c70196;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+Auto Layout in code: addConstraints with Visual Format Language\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 Create a new Single View App project in Xcode, naming it Project6b. We're going to create some views by hand, then position them using Auto Layout. Put this into your 
+\f2\b viewDidLoad()
+\f1\b0  method:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewDidLoad\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f2\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 super
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewDidLoad\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f2\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label1 = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label1.translatesAutoresizingMaskIntoConstraints = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label1.backgroundColor = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .red\
+    label1.text = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "THESE"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label1.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f2\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label2 = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label2.translatesAutoresizingMaskIntoConstraints = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label2.backgroundColor = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .cyan\
+    label2.text = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "ARE"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label2.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f2\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label3 = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label3.translatesAutoresizingMaskIntoConstraints = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label3.backgroundColor = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .yellow\
+    label3.text = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "SOME"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label3.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f2\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label4 = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label4.translatesAutoresizingMaskIntoConstraints = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label4.backgroundColor = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .green\
+    label4.text = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "AWESOME"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label4.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f2\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label5 = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UILabel\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    label5.translatesAutoresizingMaskIntoConstraints = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label5.backgroundColor = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIColor\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .orange\
+    label5.text = \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "LABELS"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    label5.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 sizeToFit\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()        \
+\
+    view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label1)\
+    view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label2)\
+    view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label3)\
+    view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label4)\
+    view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addSubview\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (label5)\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 All that code creates five 
+\f2\b UILabel
+\f1\b0  objects, each with unique text and a unique background color. All five views then get added to the view belonging to our view controller by using 
+\f2\b view.addSubview()
+\f1\b0 .\
+We also set the property 
+\f2\b translatesAutoresizingMaskIntoConstraints
+\f1\b0  to be 
+\f2\b false
+\f1\b0  on each label, because by default iOS generates Auto Layout constraints for you based on a view's size and position. We'll be doing it by hand, so we need to disable this feature.\
+If you run the app now, you'll see seem some colorful labels at the top, overlapping so it looks like it says "LABELS ME". That's because our labels are placed in their default position (at the top-left of the screen) and are all sized to fit their content thanks to us calling 
+\f2\b sizeToFit()
+\f1\b0  on each of them.\
+We're going to add some constraints that say each label should start at the left edge of its superview, and end at the right edge. What\'92s more, we're going to do this using a technique called Auto Layout Visual Format Language (VFL), which is kind of like a way of drawing the layout you want with a series of keyboard symbols.\
+Before we do that, we need to create a dictionary of the views we want to lay out. The reason this is needed for VFL will become clear shortly, but first here's the dictionary you need to add below the last call to 
+\f2\b addSubview()
+\f1\b0 :\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  viewsDictionary = [\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label1"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label1, \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label2"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label2, \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label3"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label3, \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label4"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label4, \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "label5"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : label5]\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That creates a dictionary with strings for its keys and our labels as its values (the values). So, to get access to 
+\f2\b label1
+\f1\b0 , we can now use 
+\f2\b viewsDictionary["label1"]
+\f1\b0 . This might seem redundant, but wait just a moment longer: it's time for some Visual Format Language!\
+Add these lines directly below the 
+\f2\b viewsDictionary
+\f1\b0  that was just created:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs36 \cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label1]|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label2]|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label3]|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label4]|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[label5]|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That's a lot of code, but actually it's just the same thing five times over. As a result, we could easily rewrite those in a loop, like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  label 
+\f2\b \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f3\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  viewsDictionary.keys \{\
+    view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "H:|[\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \\(\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 label\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]|"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Note that we're using string interpolation to put the key ("label1", etc) into the VFL.\
+Let's eliminate the easy stuff, then focus on what remains.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f2\b \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+view.addConstraints()
+\f1\b0 : this adds an array of constraints to our view controller's view. This array is used rather than a single constraint because VFL can generate multiple constraints at a time.\
+\ls1\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+NSLayoutConstraint.constraints(withVisualFormat:)
+\f1\b0  is the Auto Layout method that converts VFL into an array of constraints. It accepts lots of parameters, but the important ones are the first and last.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We pass 
+\f2\b []
+\f1\b0  (an empty array) for the options parameter and 
+\f2\b nil
+\f1\b0  for the metrics parameter. You can use these options to customize the meaning of the VFL, but for now we don't care.\
+\pard\pardeftab720\partightenfactor0
+\cf2 That's the easy stuff. So, let's look at the Visual Format Language itself: 
+\f2\b "H:|[label1]|"
+\f1\b0 . As you can see it's a string, and that string describes how we want the layout to look. That VFL gets converted into Auto Layout constraints, then added to the view.\
+The 
+\f2\b H:
+\f1\b0  parts means that we're defining a horizontal layout; we'll do a vertical layout soon. The pipe symbol, |, means "the edge of the view." We're adding these constraints to the main view inside our view controller, so this effectively means "the edge of the view controller." Finally, we have 
+\f2\b [label1]
+\f1\b0 , which is a visual way of saying "put 
+\f2\b label1
+\f1\b0  here". Imagine the brackets, [ and ], are the edges of the view.\
+So, 
+\f2\b "H:|[label1]|"
+\f1\b0  means "horizontally, I want my 
+\f2\b label1
+\f1\b0  to go edge to edge in my view." But there's a hiccup: what is "label1"? Sure, 
+\f4\i we
+\f1\i0  know what it is because it's the name of our variable, but variable names are just things for humans to read and write \'96 the variable names aren't actually saved and used when the program runs.\
+This is where our 
+\f2\b viewsDictionary
+\f1\b0  dictionary comes in: we used strings for the key and 
+\f2\b UILabels
+\f1\b0  for the value, then set "label1" to be our label. This dictionary gets passed in along with the VFL, and gets used by iOS to look up the names from the VFL. So when it sees 
+\f2\b [label1]
+\f1\b0 , it looks in our dictionary for the "label1" key and uses its value to generate the Auto Layout constraints.\
+That's the entire VFL line explained: each of our labels should stretch edge-to-edge in our view. If you run the program now, that's sort of what you'll see, although it highlights our second problem: we don't have a vertical layout in place, so although all the labels sit edge-to-edge in the view, they all overlap.\
+We're going to fix this with another set of constraints, but this time it's just one (long) line.\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs36 \cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 view.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addConstraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ( \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 NSLayoutConstraint\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 constraints\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withVisualFormat: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "V:|[label1]-[label2]-[label3]-[label4]-[label5]"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , options: [], metrics: \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , views: viewsDictionary))\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That's identical to the previous five, except for the VFL part. This time we're specifying 
+\f2\b V:
+\f1\b0 , meaning that these constraints are vertical. And we have multiple views inside the VFL, so lots of constraints will be generated. The new thing in the VFL this time is the 
+\f2\b -
+\f1\b0  symbol, which means "space". It's 10 points by default, but you can customize it.\
+Note that our vertical VFL doesn't have a pipe at the end, so we're not forcing the last label to stretch all the way to the edge of our view. This will leave whitespace after the last label, which is what we want right now.\
+If you run your program now, you'll see all five labels stretching edge-to-edge horizontally, then spaced neatly vertically. It would have taken quite a lot of Ctrl-dragging in Interface Builder to make this same layout, so I hope you can appreciate how powerful VFL is!}
