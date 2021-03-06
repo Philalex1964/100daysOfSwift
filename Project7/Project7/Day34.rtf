@@ -1,0 +1,389 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 HelveticaNeue-Italic;\f4\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red212\green212\blue212;
+\red222\green43\blue91;\red252\green55\blue54;\red235\green0\blue121;\red24\green24\blue28;\red246\green246\blue239;
+\red215\green165\blue255;\red103\green225\blue255;\red72\green212\blue251;\red248\green60\blue79;\red157\green101\blue255;
+\red244\green0\blue95;\red93\green108\blue125;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;\cssrgb\c86275\c86275\c86275;
+\cssrgb\c90588\c27059\c43137;\cssrgb\c100000\c31373\c27059;\cssrgb\c94902\c14118\c54902;\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;
+\cssrgb\c87843\c72157\c100000;\cssrgb\c46275\c90196\c100000;\cssrgb\c32941\c86275\c98824;\cssrgb\c98824\c33725\c38039;\cssrgb\c68235\c50588\c100000;
+\cssrgb\c97647\c14902\c44706;\cssrgb\c43922\c50196\c56471;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\qc\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+DAY 34\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs70 \cf2 Project 7, part two\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs28 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs35\fsmilli17600 \cf2 Although I love writing Swift, you\'92ll never hear me say stuff like \'93it\'92s the One True Language.\'94 Programming is a massive landscape of ideas, and there\'92s lots to learn and enjoy outside of Swift.\
+One practice that makes me particularly sad is sneering at web development languages like HTML and JavaScript. You\'92ll see folks saying that HTML isn\'92t really a language, or brag about removing all traces of JavaScript from their site as if it\'92s somehow a pollutant.\
+The simple truth is that having a working knowledge of these web languages can benefit most developers, and today you\'92ll see that in action because we\'92re going to be using a little bit of HTML inside Swift.\
+Now, as you\'92ll see I\'92m not really in a position to teach HTML as part of this course, so we\'92re going to do the least required to make our formatting work. Trust me, this is a good thing \'96\'a0Mike Davidson, the ex-VP of design at Twitter once said that \'93writing old-school HTML code was never very much fun but now it's getting downright tedious for most people.\'94\
+This goes double for putting HTML code directly inside Swift strings, which is why server-side Swift frameworks usually have separate systems for generating HTML. Here, though, we\'92ll keep it nice and short so we can focus on learning new iOS techniques!\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Today you have two topics to work through, and you\'92ll learn about injecting HTML into a web view, 
+\f2 UIStoryboard
+\f0 , adding tabs to a tab bar controller in code, and more.
+\f1\b0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/7/4/rendering-a-petition-loadhtmlstring"}}{\fldrslt \expnd0\expndtw0\kerning0
+Rendering a petition: loadHTMLString}}\expnd0\expndtw0\kerning0
+\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "https://www.hackingwithswift.com/read/7/5/finishing-touches-didfinishlaunchingwithoptions"}}{\fldrslt \expnd0\expndtw0\kerning0
+Finishing touches: didFinishLaunchingWithOptions}}\expnd0\expndtw0\kerning0
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 If you\'92re keen to learn more about the way web views scale pages down to fit small screens, check out this article: {\field{\*\fldinst{HYPERLINK "https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag"}}{\fldrslt Using the viewport meta tag to control layout on mobile browsers}}.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Rendering a petition: loadHTMLString
+\f1\b0\fs35\fsmilli17600 \
+After all the JSON parsing, it's time for something easy: we need to create a detail view controller class so that it can draw the petition content in an attractive way.\
+The easiest way for rendering complex content from the web is nearly always to use a 
+\f2\b WKWebView
+\f1\b0 , and we're going to use the same technique from project 4 to create a 
+\f2\b DetailViewController
+\f1\b0  that contains a web view.\
+Go to the File menu and choose New > File, then choose iOS > Source > Cocoa Touch Class. Click Next, name it \'93DetailViewController\'94, make it a subclass of \'93UIViewController\'94, then click Next and Create.\
+Replace 
+\f3\i all
+\f1\i0  the 
+\f2\b DetailViewController
+\f1\b0  code with this:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 import
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIKit\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 import
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WebKit\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\
+
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 class
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf11 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DetailViewController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 : \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIViewController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  webView: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKWebView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 !\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  detailItem: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Petition\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ?\
+\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 loadView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+        webView = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 WKWebView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+        view = webView\
+    \}\
+\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewDidLoad\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+        
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 super
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewDidLoad\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    \}\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 This is almost identical to the code from project 4, but you'll notice I've added a 
+\f2\b detailItem
+\f1\b0  property that will contain our 
+\f2\b Petition
+\f1\b0  instance.\
+\cf4 \
+\cf2 That was the easy bit. The hard bit is that we can't just drop the petition text into the web view, because it will probably look tiny. Instead, we need to wrap it in some HTML, which is a whole other language with its own rules and its own complexities.\
+Now, this series isn't called "Hacking with HTML," so I don't intend to go into much detail here. However, I will say that the HTML we're going to use tells iOS that the page fits mobile devices, and that we want the font size to be 150% of the standard font size. All that HTML will be combined with the 
+\f2\b body
+\f1\b0  value from our petition, then sent to the web view.\
+Place this in 
+\f2\b viewDidLoad()
+\f1\b0 , directly beneath the call to 
+\f2\b super.viewDidLoad()
+\f1\b0 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 guard
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  detailItem = detailItem 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{ 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \}\
+\
+
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  html = \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ""\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "\
+<html>\
+<head>\
+<meta name=\cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "viewport"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  content=\cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "width=device-width, initial-scale=1"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 >\
+<style> body \{ font-size: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 150\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 %; \} </style>\
+</head>\
+<body>\
+\\(detailItem.body)\
+</body>\
+</html>\
+\pard\pardeftab720\partightenfactor0
+\cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ""\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "\
+\
+webView.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 loadHTMLString\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (html, baseURL: \cf15 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That 
+\f2\b guard
+\f1\b0  at the beginning unwraps 
+\f2\b detailItem
+\f1\b0  into itself if it has a value, which makes sure we exit the method if for some reason we didn\'92t get any data passed into the detail view controller.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b \cf2 Note:
+\f1\b0  It\'92s very common to unwrap variables using the same name, rather than create slight variations. In this case we could have used 
+\f2\b guard let unwrappedItem = detailItem
+\f1\b0 , but that isn\'92t any better.\
+I've tried to make the HTML as clear as possible, but if you don't care for HTML don't worry about it. What matters is that there's a Swift string called 
+\f2\b html
+\f1\b0  that contains everything needed to show the page, and that's passed in to the web view's 
+\f2\b loadHTMLString()
+\f1\b0  method so that it gets loaded. This is different to the way we were loading HTML before, because we aren't using a website here, just some custom HTML.\cf4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 That's it for the detail view controller, it really is that simple. However, we still need to connect it to the table view controller by implementing the 
+\f2\b didSelectRowAt
+\f1\b0  method.\
+Previously we used the 
+\f2\b instantiateViewController()
+\f1\b0  method to load a view controller from Main.storyboard, but in this project 
+\f2\b DetailViewController
+\f1\b0  isn\'92t in the storyboard \'96\'a0it\'92s just a free-floating class. This makes 
+\f2\b didSelectRowAt
+\f1\b0  easier, because it can load the class directly rather than loading the user interface from a storyboard.\
+So, add this new method to your 
+\f2\b ViewController
+\f1\b0  class now:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 tableView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 _\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  tableView: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITableView\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , didSelectRowAt indexPath: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 IndexPath\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  vc = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DetailViewController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    vc.detailItem = petitions[indexPath.row]\
+    navigationController?.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 pushViewController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (vc, animated: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Go ahead and run the project now by pressing Cmd+R or clicking play, then tap on a row to see more detail about each petition. Some petitions don\'92t have detail text, but most do \'96 try a few and see what you can find.\
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 Finishing touches: didFinishLaunchingWithOptions
+\f1\b0\fs35\fsmilli17600 \
+\
+Before this project is finished, we're going to make two changes. First, we're going to add another tab to the 
+\f2\b UITabBarController
+\f1\b0  that will show popular petitions, and second we're going to make our loading code a little more resilient by adding error messages.\
+As I said previously, we can't really put the second tab into our storyboard because both tabs will host a 
+\f2\b ViewController
+\f1\b0  and doing so would require us to duplicate the view controllers in the storyboard. You can do that if you really want, but please don't \'96 it's a maintenance nightmare!\
+Instead, we're going to leave our current storyboard configuration alone, then create the second view controller using code. This isn't something you've done before, but it's not hard and we already took the first step, as you'll see.\
+\
+Open the file AppDelegate.swift. This has been in all our projects so far, but it's not one we've had to work with until now. Look for the 
+\f2\b didFinishLaunchingWithOptions
+\f1\b0  method, which should be at the top of the file. This gets called by iOS when the app has finished loading and is ready to be used, and we're going to hijack it to insert a second 
+\f2\b ViewController
+\f1\b0  into our tab bar.\
+It should already have some default Apple code in there, but we're going to add some more just before the 
+\f2\b return true
+\f1\b0  line:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  tabBarController = window?.rootViewController 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 as
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITabBarController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  storyboard = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIStoryboard\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (name: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Main"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , bundle: \cf15 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  vc = storyboard.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 instantiateViewController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (withIdentifier: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "NavController"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    vc.tabBarItem = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITabBarItem\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (tabBarSystemItem: .topRated, tag: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 1\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    tabBarController.viewControllers?.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 append\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (vc)\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Every line of that is new, so let's dig in deeper:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Our storyboard automatically creates a window in which all our view controllers are shown. This window needs to know what its initial view controller is, and that gets set to its 
+\f2\b rootViewController
+\f1\b0  property. This is all handled by our storyboard.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+In the Single View App template, the root view controller is the 
+\f2\b ViewController
+\f1\b0 , but we embedded ours inside a navigation controller, then embedded 
+\f3\i that
+\f1\i0  inside a tab bar controller. So, for us the root view controller is a 
+\f2\b UITabBarController
+\f1\b0 .\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We need to create a new 
+\f2\b ViewController
+\f1\b0  by hand, which first means getting a reference to our Main.storyboard file. This is done using the 
+\f2\b UIStoryboard
+\f1\b0  class, as shown. You don't need to provide a bundle, because 
+\f2\b nil
+\f1\b0  means "use my current app bundle."\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We create our view controller using the 
+\f2\b instantiateViewController()
+\f1\b0  method, passing in the storyboard ID of the view controller we want. Earlier we set our navigation controller to have the storyboard ID of "NavController", so we pass that in.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We create a 
+\f2\b UITabBarItem
+\f1\b0  object for the new view controller, giving it the "Top Rated" icon and the tag 1. That tag will be important in a moment.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+We add the new view controller to our tab bar controller's 
+\f2\b viewControllers
+\f1\b0  array, which will cause it to appear in the tab bar.\
+\pard\pardeftab720\partightenfactor0
+\cf2 So, the code creates a duplicate 
+\f2\b ViewController
+\f1\b0  wrapped inside a navigation controller, gives it a new tab bar item to distinguish it from the existing tab, then adds it to the list of visible tabs. This lets us use the same class for both tabs without having to duplicate things in the storyboard.\
+The reason we gave a tag of 1 to the new 
+\f2\b UITabBarItem
+\f1\b0  is because it's an easy way to identify it. Remember, both tabs contain a 
+\f2\b ViewController
+\f1\b0 , which means the same code is executed. Right now that means both will download the same JSON feed, which makes having two tabs pointless. But if you modify 
+\f2\b urlString
+\f1\b0  in ViewController.swift\'92s 
+\f2\b viewDidLoad()
+\f1\b0  method to this, it will work much better:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  urlString: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\
+
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  navigationController?.tabBarItem.tag == \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    \cf16 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    urlString = \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "https://www.hackingwithswift.com/samples/petitions-1.json"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\} 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    \cf16 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 // urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    urlString = \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "https://www.hackingwithswift.com/samples/petitions-2.json"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 That adjusts the code so that the first instance of 
+\f2\b ViewController
+\f1\b0  loads the original JSON, and the second loads only petitions that have at least 10,000 signatures. Once again I\'92ve provided cached copies of the Whitehouse API data in case it changes or goes away in the future \'96 use whichever one you prefer.\
+\
+The project is almost done, but we're going to make one last change. Our current loading code isn't very resilient: we have a couple of 
+\f2\b if
+\f1\b0  statements checking that things are working correctly, but no 
+\f2\b else
+\f1\b0  statements showing an error message if there's a problem.\
+This is easily fixed by adding a new 
+\f2\b showError()
+\f1\b0  method that creates a 
+\f2\b UIAlertController
+\f1\b0  showing a general failure message:\cf4 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertController\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Loading error"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , message: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "There was a problem loading the feed; please check your connection and try again."\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , preferredStyle: .alert)\
+    ac.\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf13 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "OK"\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ))\
+    \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 present\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (ac, animated: \cf14 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf9 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 You can now adjust the JSON downloading and parsing code to call this error method everywhere a condition fails, like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: urlString) \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  data = 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Data\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (contentsOf: url) \{\
+        \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 parse\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (json: data)\
+    \} 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+    \}\
+\} 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Alternatively we could rewrite this to be a little cleaner by inserting 
+\f2\b return
+\f1\b0  after the call to 
+\f2\b parse()
+\f1\b0 . This means that the method would exit if parsing was reached, so we get to the end of the method it means parsing 
+\f3\i wasn\'92t
+\f1\i0  reached and we can show the error. Try this instead:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf7 \cb8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: urlString) \{\
+    
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  data = 
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Data\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (contentsOf: url) \{\
+        \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 parse\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (json: data)\
+        
+\f2\b \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f4\b0 \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\}\
+\
+\cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Both approaches are perfectly valid \'96 do whichever you prefer.\
+}
