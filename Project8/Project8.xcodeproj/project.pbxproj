@@ -16,6 +16,7 @@
 		2C8058BC25F775B900EFDE1C /* Day36_37.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C8058BB25F775B900EFDE1C /* Day36_37.rtf */; };
 		2CB0E32125F941B60015A40E /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E31D25F941AF0015A40E /* level2.txt */; };
 		2CB0E32225F941B60015A40E /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E32025F941B50015A40E /* level1.txt */; };
+		2CB0E32425FA4D2C0015A40E /* Day38.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E32325FA4D2C0015A40E /* Day38.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		2C8058BB25F775B900EFDE1C /* Day36_37.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day36_37.rtf; sourceTree = "<group>"; };
 		2CB0E31D25F941AF0015A40E /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 		2CB0E32025F941B50015A40E /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = level1.txt; path = "../../../HackingWithSwift/Classic/project8-files/level1.txt"; sourceTree = "<group>"; };
+		2CB0E32325FA4D2C0015A40E /* Day38.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day38.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				2CB0E32025F941B50015A40E /* level1.txt */,
 				2CB0E31D25F941AF0015A40E /* level2.txt */,
 				2C8058BB25F775B900EFDE1C /* Day36_37.rtf */,
+				2CB0E32325FA4D2C0015A40E /* Day38.rtf */,
 			);
 			path = Project8;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C8058B425F770FB00EFDE1C /* LaunchScreen.storyboard in Resources */,
+				2CB0E32425FA4D2C0015A40E /* Day38.rtf in Resources */,
 				2CB0E32225F941B60015A40E /* level1.txt in Resources */,
 				2CB0E32125F941B60015A40E /* level2.txt in Resources */,
 				2C8058B125F770FB00EFDE1C /* Assets.xcassets in Resources */,

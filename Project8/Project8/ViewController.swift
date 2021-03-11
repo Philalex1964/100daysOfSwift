@@ -18,12 +18,14 @@ class ViewController: UIViewController {
     var activatedButtons = [UIButton]()
     var solutions = [String]()
     
+    var level = 1
     var score = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
         }
     }
-    var level = 1
+    var winningScore = 0
+    
     
     override func loadView() {
         view = UIView()
@@ -74,6 +76,8 @@ class ViewController: UIViewController {
         
         let buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsView.layer.borderWidth = 1
+        buttonsView.layer.borderColor = UIColor.lightGray.cgColor
         view.addSubview(buttonsView)
         
         NSLayoutConstraint.activate([
@@ -107,7 +111,6 @@ class ViewController: UIViewController {
             buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsView.topAnchor.constraint(equalTo: submit.bottomAnchor, constant: 20),
             buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
-        
         ])
         
         let width = 150
@@ -155,12 +158,23 @@ class ViewController: UIViewController {
             
             currentAnswer.text = ""
             score += 1
+            winningScore += 1
             
-            if score % 7 == 0 {
+            if winningScore % 7 == 0 && level < 2 {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
+            } else if winningScore % 7 == 0 && level >= 2 {
+                let ac = UIAlertController(title: "Well done!", message: "Next level will be availble soon", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "Restart!", style: .default, handler: restartGame))
+                present(ac, animated: true)
             }
+        } else {
+            let ac = UIAlertController(title: "Oops...", message: "You made a mistake!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Try again!", style: .cancel))
+            present(ac, animated: true)
+            
+            score -= 1
         }
     }
     
@@ -172,6 +186,17 @@ class ViewController: UIViewController {
         }
         
         activatedButtons.removeAll()
+    }
+    
+    func restartGame(action: UIAlertAction) {
+        level = 1
+        solutions.removeAll(keepingCapacity: true)
+        
+        loadLevel()
+        
+        for btn in letterButtons {
+            btn.isHidden = false
+        }
     }
     
     func levelUp(action: UIAlertAction) {
