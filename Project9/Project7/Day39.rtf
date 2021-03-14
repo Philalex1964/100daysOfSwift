@@ -2,12 +2,12 @@
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 HelveticaNeue-Italic;
 \f3\fnil\fcharset0 Menlo-Bold;\f4\fnil\fcharset0 Menlo-Italic;\f5\fnil\fcharset0 Menlo-Regular;
 }
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red222\green43\blue91;
-\red215\green165\blue255;\red24\green24\blue28;\red246\green246\blue239;\red72\green212\blue251;\red235\green0\blue121;
-\red248\green60\blue79;\red157\green101\blue255;}
-{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c90588\c27059\c43137;
-\cssrgb\c87843\c72157\c100000;\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;\cssrgb\c32941\c86275\c98824;\cssrgb\c94902\c14118\c54902;
-\cssrgb\c98824\c33725\c38039;\cssrgb\c68235\c50588\c100000;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red215\green165\blue255;
+\red24\green24\blue28;\red246\green246\blue239;\red72\green212\blue251;\red235\green0\blue121;\red248\green60\blue79;
+\red157\green101\blue255;\red222\green43\blue91;\red244\green0\blue95;\red224\green213\blue97;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86275\c86275\c86275;\cssrgb\c87843\c72157\c100000;
+\cssrgb\c12549\c12549\c14510;\cssrgb\c97255\c97255\c94902;\cssrgb\c32941\c86275\c98824;\cssrgb\c94902\c14118\c54902;\cssrgb\c98824\c33725\c38039;
+\cssrgb\c68235\c50588\c100000;\cssrgb\c90588\c27059\c43137;\cssrgb\c97647\c14902\c44706;\cssrgb\c90196\c85882\c45490;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
 {\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}
 {\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid201\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid3}}
@@ -122,8 +122,7 @@ To fix our project, you need to learn three new GCD functions, but the most impo
 
 \f0\b\fs98 \cf2 GCD 101: async()
 \f1\b0\fs35\fsmilli17600 \
-\pard\pardeftab720\partightenfactor0
-\cf2 We're going to use 
+We're going to use 
 \f3\b async()
 \f1\b0  twice: once to push some code to a background thread, then once more to push code back to the main thread. This allows us to do any heavy lifting away from the user interface where we don't block things, but then update the user interface safely on the main thread \'96 which is the only place it can be safely updated.\
 How you call 
@@ -144,21 +143,19 @@ The Background queue: this is for long-running tasks that the user isn't activel
 \cf2 Those QoS queues affect the way the system prioritizes your work: User Interactive and User Initiated tasks will be executed as quickly as possible regardless of their effect on battery life, Utility tasks will be executed with a view to keeping power efficiency as high as possible without sacrificing too much performance, whereas Background tasks will be executed with power efficiency as its priority.\
 GCD automatically balances work so that higher priority queues are given more time than lower priority ones, even if that means temporarily delaying a background task because a user interactive task just came in.\
 There\'92s also one more option, which is the default queue. This is prioritized between user-initiated and utility, and is a good general-purpose choice while you\'92re learning.\cf3 \
-\pard\pardeftab720\partightenfactor0
 \cf2 \
-\pard\pardeftab720\partightenfactor0
-\cf2 Enough talking, time for some action: we're going to use 
+Enough talking, time for some action: we're going to use 
 \f3\b async()
 \f1\b0  to make all our loading code run in the background queue with default quality of service. It's actually only two lines of code different:\cf3 \
 \pard\pardeftab720\partightenfactor0
 
-\f5\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 global\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ().async \{\
+\f5\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 global\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ().async \{\
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \'85before the code you want to run in the background, then a closing brace at the end. If you wanted to specify the user-initiated quality of service rather than use the default queue \'96 which is a good choice for this scenario \'96 you would write this instead:\cf3 \
 \pard\pardeftab720\partightenfactor0
 
-\f5\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 global\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (qos: .userInitiated).async \{\
+\f5\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 global\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (qos: .userInitiated).async \{\
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 The 
@@ -172,30 +169,30 @@ Because
 To help you place it correctly, here's how the loading code should look:\cf3 \
 \pard\pardeftab720\partightenfactor0
 
-\f5\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 global\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (qos: .userInitiated).async \{\
+\f5\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 global\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (qos: .userInitiated).async \{\
     
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: urlString) \{\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: urlString) \{\
         
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  data = 
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Data\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (contentsOf: url) \{\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  data = 
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Data\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (contentsOf: url) \{\
             
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 parse\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (json: data)\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 parse\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (json: data)\
             
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
         \}\
     \}\
 \}\
 \
-\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Note that because our code is now inside a closure, we need to prefix our method calls with 
@@ -207,7 +204,7 @@ If you want to try the other QoS queues, you could also use
 \f3\b .utility
 \f1\b0  or 
 \f3\b .background
-\f1\b0 .\cf2 \
+\f1\b0 .\
 \
 \pard\pardeftab720\partightenfactor0
 
@@ -260,7 +257,7 @@ So, inside the
 \f1\b0  method find this code:\cf3 \
 \pard\pardeftab720\partightenfactor0
 
-\f5\fs36 \cf7 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 tableView.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 reloadData\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\f5\fs36 \cf6 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 tableView.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 reloadData\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \'85and replace it with this new code, bearing in mind again the need for 
@@ -268,10 +265,10 @@ So, inside the
 \f1\b0  to make our capturing clear:\
 \pard\pardeftab720\partightenfactor0
 
-\f5\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .main.async \{\
+\f5\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .main.async \{\
     
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .tableView.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 reloadData\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .tableView.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 reloadData\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
 \}\
 \pard\pardeftab720\partightenfactor0
 
@@ -284,31 +281,31 @@ So, inside the
 \f1\b0 , like this:\cf3 \
 \pard\pardeftab720\partightenfactor0
 
-\f5\fs36 \cf5 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 global\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (qos: .userInitiated).async \{\
+\f5\fs36 \cf4 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 global\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (qos: .userInitiated).async \{\
     
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: urlString) \{\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: urlString) \{\
         
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  data = 
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Data\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (contentsOf: url) \{\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  data = 
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Data\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (contentsOf: url) \{\
             
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 parse\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (json: data)\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 parse\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (json: data)\
             
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
         \}\
     \}\
 \
     
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
 \}\
 \pard\pardeftab720\partightenfactor0
 
@@ -327,25 +324,176 @@ So, we need to modify
 \f1\b0  to push that work back to the main thread, like this:\
 \pard\pardeftab720\partightenfactor0
 
-\f3\b\fs36 \cf9 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
-    \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .main.async \{\
+\f3\b\fs36 \cf8 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 DispatchQueue\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .main.async \{\
         
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertController\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Loading error"\cf7 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , message: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "There was a problem loading the feed; please check your connection and try again."\cf7 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , preferredStyle: .alert)\
-        ac.\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf10 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "OK"\cf7 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ))\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertController\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Loading error"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , message: \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "There was a problem loading the feed; please check your connection and try again."\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , preferredStyle: .alert)\
+        ac.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "OK"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ))\
         
-\f3\b \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
-\f5\b0 \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 present\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (ac, animated: \cf11 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf7 \cb6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 present\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (ac, animated: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
     \}\
 \}\
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 At this point, this code is in a better place: we do all the slow work off the main thread, then push work back to the main thread when we want to do user interface work. This background/foreground bounce is common, and you'll see it again in later projects.
 \f0\b\fs98 \
+
+\f1\b0\fs35\fsmilli17600 \
 \pard\pardeftab720\partightenfactor0
 
+\f0\b\fs98 \cf2 Easy GCD using performSelector(inBackground:)
 \f1\b0\fs35\fsmilli17600 \cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 There\'92s another way of using GCD, and it\'92s worth covering because it\'92s a great deal easier in some specific circumstances. It\'92s called 
+\f3\b performSelector()
+\f1\b0 , and it has two interesting variants: 
+\f3\b performSelector(inBackground:)
+\f1\b0  and 
+\f3\b performSelector(onMainThread:)
+\f1\b0 .\
+Both of them work the same way: you pass it the name of a method to run, and 
+\f3\b inBackground
+\f1\b0  will run it on a background thread, and 
+\f3\b onMainThread
+\f1\b0  will run it on a foreground thread. You don\'92t have to care about how it\'92s organized; GCD takes care of the whole thing for you. If you intend to run a whole method on either a background thread or the main thread, these two are easiest.\
+For project 7, we can use this method to clear up the confusion with our 
+\f3\b showError()
+\f1\b0  method. For example, we could refactor the fetching code into a 
+\f3\b fetchJSON()
+\f1\b0  method that can then run in the background like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf8 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 override
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewDidLoad\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 super
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 viewDidLoad\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 performSelector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (inBackground: #\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (fetchJSON), with: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+\cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 @objc\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 fetchJSON\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  urlString: \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\
+    
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  navigationController?.tabBarItem.tag == \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 0\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        urlString = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "https://api.whitehouse.gov/v1/petitions.json?limit=100"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \} 
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        urlString = \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\
+    
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  url = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 URL\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (string: urlString) \{\
+        
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  data = 
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Data\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (contentsOf: url) \{\
+            \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 parse\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (json: data)\
+            
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 return
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+        \}\
+    \}\
+\
+    \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 performSelector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (onMainThread: #\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (showError), with: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , waitUntilDone: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 parse\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (json: \cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Data\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ) \{\
+    
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  decoder = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 JSONDecoder\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ()\
+\
+    
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  jsonPetitions = 
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? decoder.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 decode\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Petitions\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , from: json) \{\
+        petitions = jsonPetitions.results\
+        tableView.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 performSelector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (onMainThread: #\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITableView\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .reloadData), with: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , waitUntilDone: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+    \}\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+\cf13 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 @objc\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 func
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 showError\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 () \{\
+    
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  ac = \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertController\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "Loading error"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , message: \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "There was a problem loading the feed; please check your connection and try again."\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , preferredStyle: .alert)\
+    ac.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 addAction\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UIAlertAction\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (title: \cf9 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "OK"\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , style: .
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 default
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ))\
+    \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 present\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (ac, animated: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 true\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 As you can see, it makes your code easier because you don\'92t need to worry about closure capturing, so we\'92ll come back to this again in the future. Note: because 
+\f3\b performSelector()
+\f1\b0  uses 
+\f3\b #selector
+\f1\b0 , we need to mark both 
+\f3\b fetchJSON()
+\f1\b0  and 
+\f3\b showError()
+\f1\b0  with the 
+\f3\b @objc
+\f1\b0  attribute.\
+Because the code is now much simpler, we can add an 
+\f3\b else
+\f1\b0  block to our JSON decoding, like this:\cf3 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs36 \cf8 \cb5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  jsonPetitions = 
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 try
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ? decoder.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 decode\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 Petitions\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 self
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , from: json) \{\
+    petitions = jsonPetitions.results\
+    tableView.\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 performSelector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (onMainThread: #\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (\cf4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 UITableView\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 .reloadData), with: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , waitUntilDone: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\} 
+\f3\b \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f5\b0 \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+    \cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 performSelector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (onMainThread: #\cf7 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 selector\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (showError), with: \cf12 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 nil\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , waitUntilDone: \cf10 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 false\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 )\
+\}\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 This refactored code also makes the 
+\f3\b return
+\f1\b0  call inside 
+\f3\b fetchJSON()
+\f1\b0  work as intended: the 
+\f3\b showError()
+\f1\b0  method is never called when things go well, because the whole method is exited. What you choose depends on your project\'92s needs, but I think it\'92s much easier to understand the program flow using this final approach.\cf2 \
+\
 }

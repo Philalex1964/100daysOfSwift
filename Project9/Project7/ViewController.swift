@@ -57,10 +57,10 @@ class ViewController: UITableViewController {
     }
     
     func showError() {
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.async { //[weak self] in
             let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Ok", style: .default))
-            self?.present(ac, animated: true)
+            self.present(ac, animated: true)
         }
     }
     
