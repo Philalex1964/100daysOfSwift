@@ -23,36 +23,35 @@ class ViewController: UITableViewController {
         
         performSelector(inBackground: #selector(fetchJSON), with: nil)
         
-        /*
+
 //  MARK: - Variant with DispatchQueue.main.async and DispatchQueue.global(qos: .userInitiated).async.
          
-        let urlString: String
-        
-        if navigationController?.tabBarItem.tag == 0 {
-//            urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
-            urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        } else {
-//            urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
-            urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
-        }
-        
-        DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
-            if let url = URL(string: urlString) {
-                if let data = try? Data(contentsOf: url) {
-                    self.parse(json: data)
-                    self.filteredPetitions = self.petitions
-                    return
-                }
-            }
-
-            self.showError()
-        }
- */
+//        let urlString: String
+//
+//        if navigationController?.tabBarItem.tag == 0 {
+////            urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
+//            urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+//        } else {
+////            urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
+//            urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
+//        }
+//
+//        DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
+//            if let url = URL(string: urlString) {
+//                if let data = try? Data(contentsOf: url) {
+//                    self.parse(json: data)
+//                    self.filteredPetitions = self.petitions
+//                    return
+//                }
+//            }
+//
+//            self.showError()
+//        }
     }
     
     @ objc func fetchJSON() {
         let urlString: String
-        
+
         if navigationController?.tabBarItem.tag == 0 {
             //            urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
             urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
@@ -60,8 +59,8 @@ class ViewController: UITableViewController {
             //            urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
             urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
         }
-        
-        
+
+
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
                 parse(json: data)
@@ -72,27 +71,30 @@ class ViewController: UITableViewController {
         
         performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
     }
-
+    
     func parse(json: Data) {
         let decoder = JSONDecoder()
         
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results            
 //            DispatchQueue.main.async { [weak self] in
-//                self?.tableView.reloadData()
+//            self?.tableView.reloadData()
 //            }
-            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+//            tableView.performSelector(onMainThread: #selector(UITableView.reloadData), with: nil, waitUntilDone: false)
+                }
         } else {
             performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
     }
     
     @objc func showError() {
-//        DispatchQueue.main.async { //[weak self] in
-            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "Ok", style: .default))
-            present(ac, animated: true)
-//        }
+        //        DispatchQueue.main.async { //[weak self] in
+        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(ac, animated: true)
+        //        }
     }
     
     @objc func showCredits() {
@@ -105,16 +107,21 @@ class ViewController: UITableViewController {
         let ac = UIAlertController(title: "Filter", message: "Enter search", preferredStyle: .alert)
         ac.addTextField()
         
-        let filterPetitions = UIAlertAction(title: "Ok", style: .default) { [weak self, weak ac] _ in
-            guard let search = ac?.textFields?[0].text else { return }
-            self?.submit(search)
+        DispatchQueue.global(qos: .userInitiated).async {
+            let filterPetitions = UIAlertAction(title: "Ok", style: .default) { [weak self, weak ac] _ in
+                guard let search = ac?.textFields?[0].text else { return }
+                self?.submit(search)
+            }
+            DispatchQueue.main.async {
+                ac.addAction(filterPetitions)
+            }
         }
         
         let clearSearch = UIAlertAction(title: "Clear search", style: .default) { [weak self] _ in
             self?.clear()
         }
         
-        ac.addAction(filterPetitions)
+//        ac.addAction(filterPetitions)
         ac.addAction(clearSearch)
         present(ac, animated: true)
     }

@@ -17,6 +17,7 @@
 		2C0A790C25F1376E00DE4F5D /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A790B25F1376E00DE4F5D /* Petition.swift */; };
 		2C0A790E25F1387900DE4F5D /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C0A790D25F1387900DE4F5D /* Petitions.swift */; };
 		2C0A791025F251E100DE4F5D /* Day34.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C0A790F25F251E000DE4F5D /* Day34.rtf */; };
+		2C3F53CD25FE5BAB003646BA /* Day40.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C3F53CC25FE5BAB003646BA /* Day40.rtf */; };
 		2C80589825F3944700EFDE1C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C80589725F3944700EFDE1C /* DetailViewController.swift */; };
 		2C80589A25F3CBA500EFDE1C /* Day35.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C80589925F3CBA500EFDE1C /* Day35.rtf */; };
 		2CB0E32625FA68C40015A40E /* Day39.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB0E32525FA68C40015A40E /* Day39.rtf */; };
@@ -35,6 +36,7 @@
 		2C0A790B25F1376E00DE4F5D /* Petition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petition.swift; sourceTree = "<group>"; };
 		2C0A790D25F1387900DE4F5D /* Petitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Petitions.swift; sourceTree = "<group>"; };
 		2C0A790F25F251E000DE4F5D /* Day34.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day34.rtf; sourceTree = "<group>"; };
+		2C3F53CC25FE5BAB003646BA /* Day40.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day40.rtf; sourceTree = "<group>"; };
 		2C80589725F3944700EFDE1C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2C80589925F3CBA500EFDE1C /* Day35.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day35.rtf; sourceTree = "<group>"; };
 		2CB0E32525FA68C40015A40E /* Day39.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Day39.rtf; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				2C0A790F25F251E000DE4F5D /* Day34.rtf */,
 				2C80589925F3CBA500EFDE1C /* Day35.rtf */,
 				2CB0E32525FA68C40015A40E /* Day39.rtf */,
+				2C3F53CC25FE5BAB003646BA /* Day40.rtf */,
 			);
 			path = Project7;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				2C0A791025F251E100DE4F5D /* Day34.rtf in Resources */,
 				2C0A78FD25F127DD00DE4F5D /* Main.storyboard in Resources */,
 				2C0A790A25F1285700DE4F5D /* Day33.rtf in Resources */,
+				2C3F53CD25FE5BAB003646BA /* Day40.rtf in Resources */,
 				2CB0E32625FA68C40015A40E /* Day39.rtf in Resources */,
 				2C80589A25F3CBA500EFDE1C /* Day35.rtf in Resources */,
 			);
