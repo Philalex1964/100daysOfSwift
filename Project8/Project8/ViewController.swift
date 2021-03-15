@@ -162,8 +162,12 @@ class ViewController: UIViewController {
             
             if winningScore % 7 == 0 && level < 2 {
                 let ac = UIAlertController(title: "Well done!", message: "Are you ready for the next level?", preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
-                present(ac, animated: true)
+                DispatchQueue.global().async {
+                    ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: self.levelUp))
+                    DispatchQueue.main.async {
+                        self.present(ac, animated: true)
+                    }
+                }
             } else if winningScore % 7 == 0 && level >= 2 {
                 let ac = UIAlertController(title: "Well done!", message: "Next level will be availble soon", preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "Restart!", style: .default, handler: restartGame))
@@ -199,7 +203,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func levelUp(action: UIAlertAction) {
+    @objc func levelUp(action: UIAlertAction) {
         level += 1
         solutions.removeAll(keepingCapacity: true)
         
