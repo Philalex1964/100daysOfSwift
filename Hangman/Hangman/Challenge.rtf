@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2578
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Bold;
+\f3\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red235\green0\blue121;\red24\green24\blue28;
+\red246\green246\blue239;\red72\green212\blue251;\red212\green212\blue212;\red248\green60\blue79;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c94902\c14118\c54902;\cssrgb\c12549\c12549\c14510;
+\cssrgb\c97255\c97255\c94902;\cssrgb\c32941\c86275\c98824;\cssrgb\c86275\c86275\c86275;\cssrgb\c98824\c33725\c38039;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs98 \cf2 \expnd0\expndtw0\kerning0
+Challenge\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b0\fs35\fsmilli17600 \cf2 This is the first challenge that involves you creating a game. You\'92ll still be using UIKit, though, so it\'92s a good chance to practice your app skills too.\
+The challenge is this: make a hangman game using UIKit. As a reminder, this means choosing a random word from a list of possibilities, but presenting it to the user as a series of underscores. So, if your word was \'93RHYTHM\'94 the user would see \'93??????\'94.\
+The user can then guess letters one at a time: if they guess a letter that it\'92s in the word, e.g. H, it gets revealed to make \'93?H??H?\'94; if they guess an incorrect letter, they inch closer to death. If they seven incorrect answers they lose, but if they manage to spell the full word before that they win.\
+That\'92s the game: can you make it? Don\'92t underestimate this one: it\'92s called a challenge for a reason \'96\'a0it\'92s supposed to stretch you!\
+The main complexity you\'92ll come across is that Swift has a special data type for individual letters, called 
+\f2\b Character
+\f1\b0 . It\'92s easy to create strings from characters and vice versa, but you do need to know how it\'92s done.\
+First, the individual letters of a string are accessible simply by treating the string like an array \'96 it\'92s a bit like an array of 
+\f2\b Character
+\f1\b0  objects that you can loop over, or read its 
+\f2\b count
+\f1\b0  property, just like regular arrays.\
+When you write 
+\f2\b for letter in word
+\f1\b0 , the 
+\f2\b letter
+\f1\b0  constant will be of type 
+\f2\b Character
+\f1\b0 , so if your 
+\f2\b usedLetters
+\f1\b0  array contains strings you will need to convert that letter into a string, like this:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf3 \cb4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  strLetter = \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (letter)\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 Note: unlike regular arrays, you can\'92t read letters in strings just by using their integer positions \'96\'a0they store each letter in a complicated way that prohibits this behavior.\
+Once you have the string form of each letter, you can use 
+\f2\b contains()
+\f1\b0  to check whether it\'92s inside your 
+\f2\b usedLetters
+\f1\b0  array.\
+That\'92s enough for you to get going on this challenge by yourself. As per usual there are some hints below, but it\'92s always a good idea to try it yourself before reading them.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+You already know how to load a list of words from disk and choose one, because that\'92s exactly what we did in tutorial 5.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+You know how to prompt the user for text input, again because it was in tutorial 5. Obviously this time you should only accept single letters rather than whole words \'96\'a0use 
+\f2\b someString.count
+\f1\b0  for that.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+You can display the user\'92s current word and score using the 
+\f2\b title
+\f1\b0  property of your view controller.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+You should create a 
+\f2\b usedLetters
+\f1\b0  array as well as a 
+\f2\b wrongAnswers
+\f1\b0  integer.\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+When the player wins or loses, use 
+\f2\b UIAlertController
+\f1\b0  to show an alert with a message.\
+\pard\pardeftab720\partightenfactor0
+\cf2 Still stuck? Here\'92s some example code you might find useful:\cf7 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs36 \cf3 \cb4 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  word = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "RHYTHM"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+
+\f2\b \cf3 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  usedLetters = [\cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "R"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 , \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "T"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ]\
+
+\f2\b \cf3 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 var
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  promptWord = \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 ""\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+\
+
+\f2\b \cf3 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 for
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  letter 
+\f2\b \cf3 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 in
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  word.characters \{\
+    
+\f2\b \cf3 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 let
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  strLetter = \cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 String\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (letter)\
+\
+    
+\f2\b \cf3 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 if
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  usedLetters.\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 contains\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (strLetter) \{\
+        promptWord += strLetter\
+    \} 
+\f2\b \cf3 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 else
+\f3\b0 \cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0  \{\
+        promptWord += \cf8 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 "?"\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 \
+    \}\
+\}\
+\
+\cf6 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 print\cf5 \shad\shadx0\shady-20\shadr0\shado0 \shadc0 (promptWord)
+\f1\fs35\fsmilli17600 \cf2 \cb1 \shad0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf2 \ul \ulc2 \
+}
